@@ -1,17 +1,23 @@
+/* eslint-disable no-unused-vars */
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { store } from '../../store';
 
+import style from './App.module.css';
+
+import Navbar from '../Navbar/Navbar';
+import Home from '../Home/Home';
+
 function App() {
   return (
-    <BrowserRouter>
-      <Provider store={store}>
-        <div className="App">Hello 123 World</div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Navbar />
         <Routes>
-          <Route />
+          <Route path="/" element={<Home />} />
         </Routes>
-      </Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
