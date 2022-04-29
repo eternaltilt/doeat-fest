@@ -1,0 +1,58 @@
+.navContainer {
+  margin-top: 19px;
+  margin-left: 40px;
+  margin-right: 40px;
+  border-bottom: 2px solid #482F21;
+  height: 77px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-decoration: none;
+  color: white;
+}
+
+.logoPos {
+  padding-top:24px;
+}
+
+.navButtonPos {
+  padding-top: 19px;
+}
+
+.navButton {
+  width: 143px;
+  height: 40px;
+  border: 2px solid #482F21;
+  background: black;
+  color: white;
+}
+
+.leftContainer {
+  display: flex;
+  gap: 33px;
+}
+
+.navCalendar {
+  background: black;
+  border: 0;
+}
+
+.navCalendarPos {
+  padding-top: 23px
+}
+
+.navMenu {
+  background: black;
+  border: 0;
+}
+
+.navMenuPos {
+  padding-top: 21px;
+}
