@@ -8,6 +8,7 @@ import style from './App.module.css';
 
 import Navbar from '../Navbar/Navbar';
 import Home from '../Home/Home';
+import ManagerForm from '../ManagerForm/ManagerForm';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/participate" element={<ManagerForm />} />
         </Routes>
       </BrowserRouter>
     </Provider>
