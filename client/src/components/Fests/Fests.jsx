@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { initFestsAC } from '../../redux/actionCreators/festsAC';
+import { initFestsAC } from '../../redux/ActionCreators/festsAC';
 import FestCard from './FestCard/FestCard';
 import style from './Fests.module.css';
 
 function Fests() {
   const { fests } = useSelector((state) => state.fests);
-  // console.log(fests);
+  console.log(fests);
   const dispatch = useDispatch();
   useEffect(() => {
     const rests = [

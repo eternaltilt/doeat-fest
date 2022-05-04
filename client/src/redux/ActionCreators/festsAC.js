@@ -1,4 +1,4 @@
-import { INIT_FESTS } from '../actionTypes/festsAT';
+import { INIT_FESTS } from '../ActionTypes/festsAT';
 
 export function initFestsAC(payload) {
   return {
