@@ -1,38 +1,39 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { fetchAddRequest } from '../../redux/thunk/index';
+// import { useNavigate } from 'react-router-dom';
+import { festivalFetch, fetchAddRequest } from '../../redux/thunk/index';
 import style from './ManagerForm.module.css';
 
 function ManagerForm() {
-  // const { festivals } = useSelector((state) => state.festivalsReducer);
-  // console.log(festivals);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const name = useRef();
-  const phone = useRef();
-  const email = useRef();
-  const restaurantName = useRef();
-  const festivalId = useRef();
+  const {festival}= useSelector(state=>state.festivalReducer)
 
-  // useEffect(() => {
-  //   dispatch(fetchInitFestivals());
-  // }, [dispatch]);
+  const dispatch = useDispatch()
 
-  const addRequest = (event) => {
-    const newRequest = {
-      name: name.current.value,
-      phone_number: phone.current.value,
-      email: email.current.value,
-      restaurant_name: restaurantName.current.value,
-      festival_id: festivalId.current.current,
-    };
-    dispatch(fetchAddRequest(newRequest));
-    navigate('/');
-  };
+  // собираем данные и отправляем заявку
+  const result = festival.fest?festival.fest:[];
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    const { name, phone, email,restaurantName, festivalId } = event.target;
+    
+    const body  = {
+      name: name.value,
+      phone: phone.value,
+      email: email.value,
+      restaurantName: restaurantName.value,
+      festivalId: festivalId.value,
+    }
+    event.target.reset();
+    dispatch(fetchAddRequest(body))
+  }
+
+  const festival1 = () => {
+    dispatch(festivalFetch())
+  }
 
   return (
     <div className={style.formContainer}>
@@ -40,10 +41,9 @@ function ManagerForm() {
         <h2 className={style.title}>Заявка для представителя завезедия </h2>
       </div>
       <div className={style.rightContainer}>
-        <form onSubmit={addRequest}>
+        <form onSubmit={onSubmit} action="">
           <div>
             <input
-              ref={name}
               className={style.inputSize}
               type="text"
               id="name"
@@ -53,7 +53,6 @@ function ManagerForm() {
           </div>
           <div>
             <input
-              ref={phone}
               className={style.inputSize}
               type="tel"
               id="phone"
@@ -63,7 +62,6 @@ function ManagerForm() {
           </div>
           <div>
             <input
-              ref={email}
               className={style.inputSize}
               type="email"
               id="email"
@@ -73,7 +71,6 @@ function ManagerForm() {
           </div>
           <div>
             <input
-              ref={restaurantName}
               className={style.inputSize}
               type="text"
               id="restaurantName"
@@ -82,14 +79,9 @@ function ManagerForm() {
             />
           </div>
           <div>
-            <select ref={festivalId} className={style.inputSize}>
-              <option value="0">Выберете фестиваль</option>
-              <option value="1">Festival 1</option>
-              <option value="2">Festival 2</option>
-              <option value="3">Festival 3</option>
-              <option value="4">Festival 4</option>
-              <option value="5">Festival 5</option>
-            </select>
+            <select onClick={festival1} className={style.inputSize} id="festivalId">
+             {result.map((el)=> (<option key={el.id} value={el.id}>{el.title}</option>) )}
+             </select>
           </div>
           <div>
             <button className={style.formBtn} type="submit" id="formBtn">

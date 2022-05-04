@@ -1,6 +1,7 @@
 .homeContainer {
-  display:flex;
+  display: flex;
   justify-content: space-between;
+  margin-bottom: 147px;
 }
 
 .title {
@@ -9,13 +10,13 @@
   font-weight: 500;
   font-size: 36px;
   line-height: 44px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
-.text { 
+.text {
   font-weight: 400;
   font-size: 18px;
-  color: #D9B8A5;
+  color: #d9b8a5;
   line-height: 28px;
 }
 
@@ -27,10 +28,10 @@
 .btnList {
   width: 240px;
   height: 58px;
-  padding: 18px 38px;
-  border: 2px solid #482F21;
+  padding: 17px 38px;
+  border: 2px solid #482f21;
   background: #030102;
-  color: #D9B8A5;
+  color: #d9b8a5;
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
@@ -39,4 +40,54 @@
 .imgContainer {
   margin-top: 27px;
   margin-right: 39px;
+}
+
+.actualFestivalImg {
+  margin-left: 40px;
+  margin-bottom: 96px;
+}
+
+.actualFestivalContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 57px;
+}
+
+.actualFestivalTitle {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #ffffff;
+  padding-left: 39px;
+  margin-bottom: 37px;
+}
+
+.actualFestivalText {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 155%;
+  color: #ffffff;
+  padding-left: 39px;
+}
+
+.actualFestivalTextIt {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 155%;
+  color: #d9b8a5;
+  padding-left: 39px;
+  margin-bottom: 233px;
+}
+.btnActualFestival {
+  width: 240px;
+  height: 58px;
+  padding: 15px 30px;
+  border: 2px solid #d9b8a5;
+  background: #030102;
+  color: #d9b8a5;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  margin-left: 373px;
 }

@@ -5,8 +5,7 @@ import FestCard from './FestCard/FestCard';
 import style from './Fests.module.css';
 
 function Fests() {
-  const { fests } = useSelector((state) => state.fests);
-  console.log(fests);
+  const { fests } = useSelector((state) => state.festsReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     const rests = [
@@ -132,7 +131,7 @@ function Fests() {
         {fests.map((elm) => (
           <FestCard
             key={elm.id}
-            // id={elm.id}
+            id={elm.id}
             name={elm.name}
             description={elm.description}
             photo={elm.photo}
