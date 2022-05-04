@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import { loginReduser } from './loginReducer';
+import { loginReducer } from './loginReducer';
 import { festivalReducer } from './festivalReducer';
+import { managerReducer } from './managerReducer';
 
 export const rootReducer = combineReducers({
-  loginReduser,
+  loginReducer,
   festivalReducer,
+  managerReducer,
 });

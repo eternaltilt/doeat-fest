@@ -1,0 +1,42 @@
+.homeContainer {
+  display:flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  color: #FFFFFF;
+}
+
+.text { 
+  font-weight: 400;
+  font-size: 18px;
+  color: #D9B8A5;
+  line-height: 28px;
+}
+
+.leftContainer {
+  margin-top: 179px;
+  margin-left: 155px;
+}
+
+.btnList {
+  width: 240px;
+  height: 58px;
+  padding: 18px 38px;
+  border: 2px solid #482F21;
+  background: #030102;
+  color: #D9B8A5;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.imgContainer {
+  margin-top: 27px;
+  margin-right: 39px;
+}

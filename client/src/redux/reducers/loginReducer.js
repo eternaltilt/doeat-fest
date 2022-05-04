@@ -3,7 +3,7 @@ import { ADMIN_LOGOUT } from '../ActionTypes/logoutAT';
 
 const initialState = { user: [] };
 
-export function loginReduser(state = initialState, action) {
+export function loginReducer(state = initialState, action) {
   switch (action.type) {
     case ADMIN_LOGIN:
       return { ...state, user: action.payload };
