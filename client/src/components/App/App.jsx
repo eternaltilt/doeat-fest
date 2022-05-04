@@ -1,12 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-
-
-import { useEffect, useState } from 'react';
-import { store } from '../../redux/store/store';
+import { store } from '../../redux/store/index';
 import FormSets from '../FormSets/FormSets';
 import AdminLogin from '../AdminLogin/AdminLogin';
 
@@ -36,6 +33,7 @@ function App() {
           {local?<Route path="/admin/panel" element={<FormSets />} />:<Route path="/admin/panel" element={<AdminLogin />} />}
           <Route path="/" element={<Home />} />
           <Route path="/fests" element={<Fests />} />
+          
           <Route path="/participate" element={<ManagerForm />} />
         </Routes>
        <Footer />
