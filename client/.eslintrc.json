@@ -31,6 +31,9 @@
         "import/named": "off",
         "import/prefer-default-export": "off",
         "react/react-in-jsx-scope": "off",
+        "default-param-last": "off",
+        "prettier/prettier": "off",
+        "react/jsx-props-no-spreading": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }]
     }
 }
