@@ -2,7 +2,7 @@
   display: flex;
 } */
 
-input[type=text],
+/* input[type=text],
 input[type=password] {
   color: rgb(197, 82, 24);
   height: 10vh;
@@ -15,7 +15,7 @@ input[type=password] {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-}
+} */
 
 .button {
   background-color: #020702;
