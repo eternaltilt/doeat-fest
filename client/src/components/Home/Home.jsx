@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import style from './Home.module.css';
 
+// мейнпейдж
 function Home() {
   return (
     <>
