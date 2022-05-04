@@ -1,5 +1,5 @@
 /* eslint-disable default-param-last */
-import { ADD_REQUEST } from '../actionTypes/managerRequestAT';
+import { ADD_REQUEST } from '../ActionTypes/managerRequestAT';
 
 const initialState = { requests: [] };
 

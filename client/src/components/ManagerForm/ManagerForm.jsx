@@ -4,12 +4,12 @@ import React, { useEffect, useRef } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchAddRequest, fetchInitFestivals } from '../../redux/thunk/index';
+import { fetchAddRequest } from '../../redux/thunk/index';
 import style from './ManagerForm.module.css';
 
 function ManagerForm() {
-  const { festivals } = useSelector((state) => state.festivalsReducer);
-  console.log(festivals);
+  // const { festivals } = useSelector((state) => state.festivalsReducer);
+  // console.log(festivals);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const name = useRef();
@@ -18,9 +18,9 @@ function ManagerForm() {
   const restaurantName = useRef();
   const festivalId = useRef();
 
-  useEffect(() => {
-    dispatch(fetchInitFestivals());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchInitFestivals());
+  // }, [dispatch]);
 
   const addRequest = (event) => {
     const newRequest = {

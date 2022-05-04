@@ -1,5 +1,62 @@
-import { addRequestAC } from '../actionCreators/managerRequestAC';
-import { initFestivalAC } from '../actionCreators/festivalAC';
+import { addRequestAC } from '../ActionCreators/managerRequestAC';
+import { loginAC } from '../ActionCreators/loginAC';
+import { logoutAC } from '../ActionCreators/logoutAC';
+import { festivalAC } from '../ActionCreators/festivalAC';
+
+export const loginFetch = (payload) => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/admin`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(loginAC(data)))
+      .catch((err) => console.log(err.message));
+  };
+};
+
+export const fetchDelitSession = () => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/logout`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(logoutAC(data)))
+      .catch((err) => console.log(err.message));
+  };
+};
+
+export const formSetFetch = (payload) => {
+  return () => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/sets`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+  };
+};
+
+export const festivalFetch = () => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/festival`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(festivalAC(data)))
+      .catch((err) => console.log(err.message));
+  };
+};
 
 export const fetchAddRequest = (payload) => {
   return (dispatch) => {
@@ -10,14 +67,5 @@ export const fetchAddRequest = (payload) => {
     })
       .then((res) => res.json())
       .then((newRequest) => dispatch(addRequestAC(newRequest)));
-  };
-};
-
-export const fetchInitFestivals = () => {
-  return (dispatch) => {
-    fetch('/festivals')
-      .then((res) => res.json())
-      .then((data) => dispatch(initFestivalAC(data)))
-      .catch((error) => console.log(error));
   };
 };
