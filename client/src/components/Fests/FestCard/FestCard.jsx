@@ -16,14 +16,9 @@ function FestCard({ name, description, photo, adress }) {
     <div>
       <div className={style.background} onClick={openModal}>
         <div>
-          <img
-            className="activator"
-            style={{ height: '200px', width: '100%' }}
-            src={photo}
-            alt="img"
-          />
+          <img style={{ height: '200px', width: '100%' }} src={photo} alt="img" />
         </div>
-        <div className="card-content">
+        <div>
           <span className={style.cardText}> {name} </span>
           <p className={style.cardText}>Адрес: {adress}</p>
         </div>
