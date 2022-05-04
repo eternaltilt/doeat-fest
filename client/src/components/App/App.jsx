@@ -8,7 +8,12 @@ import AdminLogin from '../AdminLogin/AdminLogin';
 import Navbar from '../Navbar/Navbar';
 import Home from '../Home/Home';
 import ManagerForm from '../ManagerForm/ManagerForm';
+import Fests from '../Fests/Fests';
+import Footer from '../Footer/Footer';
 import style from './App.module.css';
+
+
+
 
 function App() {
   // проверка на наличие ключа в localStorage
@@ -26,8 +31,11 @@ function App() {
           <Route path="/admin" element={<AdminLogin />} />
           {local?<Route path="/admin/panel" element={<FormSets />} />:<Route path="/admin/panel" element={<AdminLogin />} />}
           <Route path="/" element={<Home />} />
+          <Route path="/fests" element={<Fests />} />
+          
           <Route path="/participate" element={<ManagerForm />} />
         </Routes>
+       <Footer />
       </BrowserRouter>
     </Provider>
   );
