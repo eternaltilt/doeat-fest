@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDelitSession , formSetFetch,festivalFetch } from '../../redux/thunk';
-import './FormSets.css';
+import style from "./FormSets.module.css"
 
 
 function FormSets() {
@@ -45,32 +45,36 @@ const festival1 = () =>{
 }
 
   return ( 
-    <form onSubmit={onSubmit} action="">
-    <div id="sets">
-      <button onClick ={toLogout} className='button' type='button'>Выйти</button> <br />
-      <div>Форма данных фестиваля</div>
-      <input type="text"  id="titleSets" className="title" placeholder='title' />
-      <input type="text" id='setDescription' className="setDescription" placeholder='setDescription'  />
-      <input type="text" id='firstDish' className="firstDish" placeholder='firstDish' />
-      <input type="text" id='secondDish' className="secondDish" placeholder='secondDish' />
-      <input type="text" id='thirdDish' className="thirdDish" placeholder='thirdDish' />
-      <input type="text" id='allWeight' className="allWeight" placeholder='allWeight' />
+    <div>
+    <form className={style.form} onSubmit={onSubmit} action="">
+      <button onClick ={toLogout} className={style.formBtnExit} type='button'>Выйти</button> <br />
+      <div  className={style.title} >Добавить участника</div>
+    <div className={style.formContainer}  id="sets">
+     <div className={style.rightContainer} >
+      <input type="text"  id="titleSets"  className={style.inputSize} placeholder='Название сета' />
+      <input type="text" id='firstDish'  className={style.inputSize} placeholder='1 блюдо' />
+      <input type="text" id='secondDish'  className={style.inputSize} placeholder='2 блюдо' />
+      <input type="text" id='thirdDish'  className={style.inputSize} placeholder='3 блюдо' />
+      <input type="text" id='setDescription'  className={style.inputSize} placeholder='Описание сета'  />
+      <input type="text" id='allWeight'  className={style.inputSize} placeholder='Вес' />
       {/* <input type="text" onClick={festival1} id='festivalId' className="festivalId" placeholder='festival'/> */}
-      <select onClick={festival1} className="form-select" id="festivalId">
+      <select onClick={festival1} className={style.inputSize} placeholder='Фестиваль' id="festivalId">
       {rezultat.map((el)=> (<option key={el.id} value={el.id}>{el.title}</option>) )}  
       </select>
+      </div>
 
-      <div id="Resta">
-      <div>Форма данных ресторана</div>
-      <input type="text" id='titleRest' className="title" placeholder='name' />
-      <input type="text" id='description' className="description" placeholder='description' />
-      <input type="text" id='adress' className="adress" placeholder='adress'/>
-      <input type="text" id='link' className="link" placeholder='link'/>
-      <input type="text" id='phone' className="phone" placeholder='phone'/>
+      <div id="Resta" className={style.leftContainer}>
+      <input type="text" id='titleRest'  className={style.inputSize} placeholder='Название заведения' />
+      <input type="text" id='adress'  className={style.inputSize} placeholder='Адрес заведения'/>
+      <input type="text" id='phone'  className={style.inputSize} placeholder='телефон'/>
+      <input type="text" id='description'  className={style.inputSize} placeholder='Описание заведения' />
+      <input type="text" id='link'  className={style.inputSize} placeholder='почта'/>
+      <button className={style.formBtn} type="submit">Отправить</button>
+      <button className={style.formBtn} type="submit">Добавить фото</button>
     </div>
-      <button className='button' type="submit">Отправить</button>
     </div>
     </form>
+    </div>
   );
 }
 
