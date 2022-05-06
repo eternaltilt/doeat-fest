@@ -2,25 +2,28 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDelitSession , formSetFetch,festivalFetch, fetchAddFestival } from '../../redux/thunk';
 import './FormSets.css';
+import { useState } from 'react';
 
 
 function FormSets() {
-const {festival}= useSelector(state=>state.festivalReducer)
-const dispatch = useDispatch()
-const navigate = useNavigate()
-// выход, очищение сессии
-const toLogout = async ()=>{
-  await dispatch(fetchDelitSession())
-  localStorage.clear();
-  navigate('/admin')
-}
+  const [img, setImg] = useState(null);
+  const {festival}= useSelector(state=>state.festivalReducer)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  // выход, очищение сессии
+  const toLogout = async ()=>{
+    await dispatch(fetchDelitSession())
+    localStorage.clear();
+    navigate('/admin')
+  }
 
-  const rezultat = festival.fest?festival.fest:[];
+    const rezultat = festival.fest?festival.fest:[];
 
-// отправляем данные по ресторану и фестивалю
-const onSubmit = (e) =>{
-  e.preventDefault();
-  const { titleSets,adress,phone,link, setDescription,firstDish, secondDish,thirdDish,allWeight,titleRest,description,festivalId } = e.target;
+  // отправляем данные по ресторану и фестивалю
+  const onSubmit = (e) =>{
+    e.preventDefault();
+    const { titleSets,adress,phone,link, setDescription,firstDish, secondDish,thirdDish,allWeight,titleRest,description,festivalId } = e.target;
+
 
   const body = {
     titleSets: titleSets.value,
