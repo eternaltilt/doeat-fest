@@ -63,25 +63,27 @@ const festival1 = () =>{
     <form onSubmit={onSubmit} action="">
     <div id="sets">
       <button onClick ={toLogout} className='button' type='button'>Выйти</button> <br />
-      <div>Форма данных фестиваля</div>
-      <input type="text"  id="titleSets" className="title" placeholder='title' autoComplete='off'/>
-      <input type="text" id='setDescription' className="setDescription" placeholder='setDescription' autoComplete='off' />
-      <input type="text" id='firstDish' className="firstDish" placeholder='firstDish' autoComplete='off' />
-      <input type="text" id='secondDish' className="secondDish" placeholder='secondDish' autoComplete='off' />
-      <input type="text" id='thirdDish' className="thirdDish" placeholder='thirdDish' autoComplete='off' />
-      <input type="text" id='allWeight' className="allWeight" placeholder='allWeight' autoComplete='off' />
+      <div style={{'color': 'white'}}>ФОРМА ДОБАВЛЕНИЯ СЕТА</div>
+      <input type="text"  id="titleSets" className="title" placeholder='название сета' autoComplete='off'/>
+      <input type="text" id='setDescription' className="setDescription" placeholder='описание сета' autoComplete='off' />
+      <input type="text" id='firstDish' className="firstDish" placeholder='первое блюдо' autoComplete='off' />
+      <input type="text" id='secondDish' className="secondDish" placeholder='второе блюдо' autoComplete='off' />
+      <input type="text" id='thirdDish' className="thirdDish" placeholder='третье блюдо' autoComplete='off' />
+      <input type="text" id='allWeight' className="allWeight" placeholder='общий вес' autoComplete='off' />
       {/* <input type="text" onClick={festival1} id='festivalId' className="festivalId" placeholder='festival'/> */}
       <select onClick={festival1} className="form-select" id="festivalId">
       {rezultat.map((el)=> (<option key={el.id} value={el.id}>{el.title}</option>) )}  
       </select>
 
       <div id="Resta">
-      <div>Форма данных ресторана</div>
-      <input type="text" id='titleRest' className="title" placeholder='name' autoComplete='off'/>
-      <input type="text" id='description' className="description" placeholder='description' autoComplete='off'/>
-      <input type="text" id='adress' className="adress" placeholder='adress' autoComplete='off'/>
-      <input type="text" id='link' className="link" placeholder='link' autoComplete='off'/>
-      <input type="text" id='phone' className="phone" placeholder='phone' autoComplete='off'/>
+      <div style={{'color': 'white'}} >ФОРМА ДОБАВЛЕНИЯ РЕСТОРАНА</div>
+      <input type="text" id='titleRest' className="title" placeholder='название ресторана' autoComplete='off'/>
+      <input type="text" id='description' className="description" placeholder='описание ресторана' autoComplete='off'/>
+      <input type="text" id='adress' className="adress" placeholder='адресс ресторана' autoComplete='off'/>
+      <input type="text" id='link' className="link" placeholder='ссылочка на ресторан' autoComplete='off'/>
+      <input type="text" id='phone' className="phone" placeholder='телефон ресторана' autoComplete='off'/>
+      <input type="text" id='worktime' className="time" placeholder='время работы ресторана' autoComplete='off'/>
+      <input type="text" id='worktime' className="time" placeholder='ТУТ ДОБАВЛЕНИЕ ФОТОГРАФИИ' autoComplete='off'/>
     </div>
       <button className='button' type="submit">Отправить</button>
     </div>

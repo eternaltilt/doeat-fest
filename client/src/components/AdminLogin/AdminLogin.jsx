@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import './AdminLogin';
 import { loginFetch } from '../../redux/thunk';
+import style from './AdminLogin.module.css';
 
 function AdminLogin() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const  {user}  = useSelector(state=>state.loginReducer)
   };
 
   return (
+    <section className={style.adminLogin}>
     <form onSubmit={loginAdmin} id="login">
       <input type="text" id="login" placeholder="login" required autoComplete='off' />
       <input type="password" id="password" placeholder="password" minLength={3} required autoComplete='off'/>
@@ -44,6 +46,7 @@ const  {user}  = useSelector(state=>state.loginReducer)
       {entrance?<div className='message'>Вы успешно вошли на сайт</div>:entrance}
       {error?<div className='message'>Ошибка! Неверный логин или пароль</div>:error}
     </form>
+    </section>
   );
 }
 
