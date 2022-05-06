@@ -39,10 +39,15 @@ const  {user}  = useSelector(state=>state.loginReducer)
 
   return (
     <section className={style.adminLogin}>
+      <h2 className={style.adminTitle}>Вход</h2> 
     <form onSubmit={loginAdmin} id="login">
-      <input type="text" id="login" placeholder="login" required autoComplete='off' />
-      <input type="password" id="password" placeholder="password" minLength={3} required autoComplete='off'/>
-      <button className='button' type="submit">Войти</button>
+      <div>
+      <input className={style.adminInput} type="text" id="login" placeholder="Логин" required autoComplete='off' />
+      </div>
+      <div>
+      <input className={style.adminInput} type="password" id="password" placeholder="Пароль" minLength={3} required autoComplete='off'/>
+      </div>
+      <button className={style.adminBtn} type="submit">Войти</button>
       {entrance?<div className='message'>Вы успешно вошли на сайт</div>:entrance}
       {error?<div className='message'>Ошибка! Неверный логин или пароль</div>:error}
     </form>
