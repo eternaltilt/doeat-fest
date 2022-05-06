@@ -31,9 +31,11 @@ function ManagerForm() {
     dispatch(fetchAddRequest(body))
   }
 
+
   const festival1 = () => {
     dispatch(festivalFetch())
   }
+  
 
   return (
     <div className={style.formContainer}>
