@@ -41,7 +41,7 @@ function ManagerForm() {
         <h2 className={style.title}>Заявка для представителя завезедия </h2>
       </div>
       <div className={style.rightContainer}>
-        <form onSubmit={onSubmit} action="">
+        <form onSubmit={onSubmit} action="" method='post'>
           <div>
             <input
               className={style.inputSize}
