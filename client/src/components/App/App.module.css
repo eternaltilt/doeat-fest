@@ -6,4 +6,5 @@
 body {
   background: #030102;
   flex-grow: 1;
+  height: 100%;
 }

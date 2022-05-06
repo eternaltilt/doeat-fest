@@ -1,4 +1,4 @@
-#login {
+/* #login {
   display: flex;
 }
 
@@ -10,4 +10,7 @@ input[type=password] {
   display: inline-block;
   border: none;
   background: #f1f1f1;
+} */
+
+.adminLogin {
 }
