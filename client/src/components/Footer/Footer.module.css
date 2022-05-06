@@ -3,22 +3,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border: 2px solid #482F21;
+  border-top: 2px solid #482f21;
   padding-top: 14px;
   color: white;
-  
-  /* position: relative;
-  height: 150px;
-  margin-top: -150px;
-  clear: both; */
-
+  margin: 40px 40px;
 }
-/* 
-.clearfix:after {content: ".";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;}
-.clearfix {display: inline-block;}
-* html .clearfix { height: 1%;}
-.clearfix {display: block;} */

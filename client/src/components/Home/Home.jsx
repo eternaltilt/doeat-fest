@@ -51,7 +51,12 @@ function Home() {
         </div>
     </section>
     <section className={style.news}> 
-      123
+      <h3 className={style.newsTitle}>Новости</h3>
+      <div className={style.cardsContainer}>
+        <div>
+          123
+        </div>
+      </div>
     </section>
     </>
   );
