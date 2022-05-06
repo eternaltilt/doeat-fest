@@ -4,5 +4,7 @@
 }
 
 body {
-  background: #030102
+  background: #030102;
+  display: flex;
+  flex-grow: 1;
 }

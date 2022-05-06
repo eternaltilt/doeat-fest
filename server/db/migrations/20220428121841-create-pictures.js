@@ -19,6 +19,18 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      first_dish_img: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      second_dish_img: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      third_dish_img: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

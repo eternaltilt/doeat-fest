@@ -21,6 +21,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    first_dish_img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    second_dish_img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    third_dish_img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Pictures',
