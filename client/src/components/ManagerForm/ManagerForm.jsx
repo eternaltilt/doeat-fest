@@ -40,7 +40,7 @@ function ManagerForm() {
   return (
     <div className={style.formContainer}>
       <div className={style.leftContainer}>
-        <h2 className={style.title}>Заявка для представителя завезедия </h2>
+        <h2 className={style.title}>Заявка для представителя заведения </h2>
       </div>
       <div className={style.rightContainer}>
         <form onSubmit={onSubmit} action="" method='post'>

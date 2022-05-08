@@ -6,7 +6,8 @@ const fileMiddleware = require('../middleware/uploadMiddleware');
 
 router.post('/', fileMiddleware.single('avatar'), async (req, res) => {
   try {
-    if(req.file) {
+    console.log(req.file);
+    if (req.file) {
       const {
         titleSets,
         adress,
@@ -20,6 +21,8 @@ router.post('/', fileMiddleware.single('avatar'), async (req, res) => {
         titleRest,
         description,
         festivalId,
+        imgRest,
+        worktime,
       } = req.body;
       //прверка на наличие ресторана в базе
       const restTitle = await RestaurantCard.findOne({
@@ -49,6 +52,8 @@ router.post('/', fileMiddleware.single('avatar'), async (req, res) => {
           adress,
           phone,
           link,
+          worktime,
+          imgRest,
         });
         const restSets = await RestaurantSet.create({
           title: titleSets,

@@ -1,14 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   fetchDelitSession,
   formSetFetch,
   festivalFetch,
   fetchAddFestival,
+  managerFetch
 } from '../../redux/thunk';
 import style from './FormSets.module.css';
+
 
 function FormSets() {
   const [img, setImg] = useState(null);
@@ -21,7 +23,6 @@ function FormSets() {
     localStorage.clear();
     navigate('/admin');
   };
-
   const rezultat = festival.fest ? festival.fest : [];
 
   // отправляем данные по ресторану и фестивалю
@@ -40,6 +41,8 @@ function FormSets() {
       titleRest,
       description,
       festivalId,
+      worktime,
+      imgRest,
     } = e.target;
 
     const body = {
@@ -55,6 +58,8 @@ function FormSets() {
       link: link.value,
       phone: phone.value,
       festivalId: festivalId.value,
+      worktime: worktime.value,
+      imgRest: imgRest.value
     };
     e.target.reset();
     dispatch(formSetFetch(body));
@@ -74,129 +79,133 @@ function FormSets() {
     e.target.reset();
     dispatch(fetchAddFestival(body));
   };
+
+
   // вытаскиваем все фестивали
   const festival1 = () => {
     dispatch(festivalFetch());
   };
 
+  // заявки от менеджеров
+  useEffect(()=>{
+    dispatch(managerFetch())
+  },[])
+  const { RestaurantManager } = useSelector((state) => state.applicationReducer);
+  const application = RestaurantManager.RestaurantManager1?RestaurantManager.RestaurantManager1:[];
+  
+  // удаление заявки p.s.не работает
+  const deleteManager = () =>{
+    console.log({id:application.id});
+    //  dispatch(delManager({id:application.id}))
+  }
+
+
   return (
     <>
-      <section className={style.mainForm}>
-        <form onSubmit={onSubmit} action="">
-          <div id="sets">
-            <button onClick={toLogout} className="button" type="button">
-              Выйти
-            </button>{' '}
-            <br />
-            <div>ФОРМА ДОБАВЛЕНИЯ СЕТА</div>
-            <input
-              type="text"
-              id="titleSets"
-              className="title"
-              placeholder="название сета"
-              autoComplete="off"
-            />
-            <input
-              type="text"
-              id="setDescription"
-              className="setDescription"
-              placeholder="описание сета"
-              autoComplete="off"
-            />
-            <input
-              type="text"
-              id="firstDish"
-              className="firstDish"
-              placeholder="первое блюдо"
-              autoComplete="off"
-            />
-            <input
-              type="text"
-              id="secondDish"
-              className="secondDish"
-              placeholder="второе блюдо"
-              autoComplete="off"
-            />
-            <input
-              type="text"
-              id="thirdDish"
-              className="thirdDish"
-              placeholder="третье блюдо"
-              autoComplete="off"
-            />
-            <input
-              type="text"
-              id="allWeight"
-              className="allWeight"
-              placeholder="общий вес"
-              autoComplete="off"
-            />
-            {/* <input type="text" onClick={festival1} id='festivalId' className="festivalId" placeholder='festival'/> */}
-            <select onClick={festival1} className="form-select" id="festivalId">
-              {rezultat.map((el) => (
-                <option key={el.id} value={el.id}>
-                  {el.title}
-                </option>
-              ))}
-            </select>
-            <div id="Resta">
-              <div>ФОРМА ДОБАВЛЕНИЯ РЕСТОРАНА</div>
-              <input
-                type="text"
-                id="titleRest"
-                className="title"
-                placeholder="название ресторана"
-                autoComplete="off"
-              />
-              <input
-                type="text"
-                id="description"
-                className="description"
-                placeholder="описание ресторана"
-                autoComplete="off"
-              />
-              <input
-                type="text"
-                id="adress"
-                className="adress"
-                placeholder="адресс ресторана"
-                autoComplete="off"
-              />
-              <input
-                type="text"
-                id="link"
-                className="link"
-                placeholder="ссылочка на ресторан"
-                autoComplete="off"
-              />
-              <input
-                type="text"
-                id="phone"
-                className="phone"
-                placeholder="телефон ресторана"
-                autoComplete="off"
-              />
-              <input
-                type="text"
-                id="worktime"
-                className="time"
-                placeholder="время работы ресторана"
-                autoComplete="off"
-              />
-              <input
-                type="text"
-                id="worktime"
-                className="time"
-                placeholder="ТУТ ДОБАВЛЕНИЕ ФОТОГРАФИИ"
-                autoComplete="off"
-              />
-            </div>
-            <button className="button" type="submit">
-              Отправить
+ <div>
+     <form className={style.form} onSubmit={onSubmit} action="">
+       <button onClick ={toLogout} className={style.formBtnExit} type='button'>Выйти</button> <br />
+       <div  className={style.title} >Добавить участника</div>
+     <div className={style.formContainer}  id="sets">
+      <div className={style.rightContainer} >
+       <input type="text"
+        id="titleSets"
+        className={style.inputSize} 
+        placeholder='Название сета' 
+        autoComplete="off"/>
+       <input type="text"
+        id='firstDish'
+        className={style.inputSize}
+        placeholder='1 блюдо'
+        autoComplete="off" />
+       <input type="text"
+        id='secondDish'
+        className={style.inputSize}
+        placeholder='2 блюдо'
+        autoComplete="off"/>
+       <input type="text"
+        id='thirdDish'
+        className={style.inputSize}
+        placeholder='3 блюдо'
+        autoComplete="off"/>
+       <input type="text"
+        id='setDescription'
+        className={style.inputSize}
+        placeholder='Описание сета'
+        autoComplete="off"/>
+       <input type="text"
+        id='allWeight'
+        className={style.inputSize}
+        placeholder='Вес'
+        autoComplete="off"/>
+       <select onClick={festival1}
+        className={style.inputSize}
+        placeholder='Фестиваль'
+        id="festivalId">
+       {rezultat.map((el)=> (<option key={el.id} value={el.id}>{el.title}</option>) )}  
+       </select>
+       </div>
+       <div id="Resta" className={style.leftContainer}>
+       <input type="text"
+        id='titleRest'
+        className={style.inputSize}
+        placeholder='Название заведения'
+        autoComplete="off" />
+       <input type="text"
+        id='adress'
+        className={style.inputSize}
+        placeholder='Адрес заведения'
+        autoComplete="off"/>
+       <input type="text"
+        id='phone'
+        className={style.inputSize}
+        placeholder='телефон'
+        autoComplete="off"/>
+       <input type="text"
+        id='description'
+        className={style.inputSize}
+        placeholder='Описание заведения'
+        autoComplete="off"/>
+       <input type="text"
+        id='link'
+        className={style.inputSize}
+        placeholder='ссылочка на ресторан'
+        autoComplete="off"/>
+       <input type="text"
+        id='worktime'
+        className={style.inputSize}
+        placeholder='время работы ресторана'
+        autoComplete="off"/>
+       <input type="text"
+        id='imgRest'
+        className={style.inputSize}
+        placeholder='ТУТ ДОБАВЛЕНИЕ ФОТОГРАФИИ'
+        autoComplete="off"/>
+       <button className={style.formBtn} type="submit">Отправить</button>
+       <button className={style.formBtn} type="submit">Добавить фото</button>
+     </div>
+     </div>
+     </form>
+    </div>
+
+
+      <h3 className={style.festFormTitle}>Заявки</h3>
+        <section className={style.Formapp}>
+         {application.map((el)=>(<ul className={style.manager} key={el.id}>
+           <li className={style.application}>{el.name}</li>
+           <li className={style.application}>{el.phone_number}</li>
+           <li className={style.application}>{el.email}</li>
+           <li className={style.application}>{el.restaurant_name}</li>
+           <li className={style.application}>{el.festival_id}</li>
+           <button onClick={deleteManager} className={style.delete} type="submit">
+           🗑
             </button>
-          </div>
-        </form>
-      </section>
+           </ul>))}
+         </section>
+       
+
+
+
       <h3 className={style.festFormTitle}>Создать фестиваль</h3>
       <section className={style.festForm}>
         <div className={style.festFormContainer}>
