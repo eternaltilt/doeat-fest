@@ -1,21 +1,26 @@
 const router = require('express').Router();
-const { restaurantManager } = require('../db/models');
+const { RestaurantManager } = require('../db/models');
 
 router.route('/')
   .post(async (req, res) => {
-    const {
+    try{
+      const {
       name,
       phone,
       email,
       restaurantName, 
       festivalId,
     } = req.body;
-    const newRequest = await restaurantManager.create({
+    const newRequest = await RestaurantManager.create({
       name: name,
       phone_number: phone,
       email: email,
       restaurant_name: restaurantName,
-      festival_ide: festivalId,
+      festival_id: festivalId,
     })
+    res.json({ newRequest })
+  } catch(error) {
+    console.log(error.message)
+  }
   })
 module.exports = router;

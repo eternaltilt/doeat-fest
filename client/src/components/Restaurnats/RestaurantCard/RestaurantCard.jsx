@@ -7,7 +7,9 @@ function RestaurantCard() {
   const { restaurants } = useSelector((state) => state.restaurants);
   const { sets } = useSelector((state) => state.sets);
   const { pictures } = useSelector((state) => state.pictures);
+
   const { id } = useParams();
+
   const restaurant = restaurants[0].filter((elm) => elm.id === Number(id));
   const set = sets[0].filter((elm) => elm.restaurantCard_id === Number(id));
   const pics = pictures[0].filter((elm) => elm.restaurantSet_id === set.id);
@@ -47,7 +49,7 @@ function RestaurantCard() {
         <div>
 
           <div>
-            
+
           </div>
           <div>
 

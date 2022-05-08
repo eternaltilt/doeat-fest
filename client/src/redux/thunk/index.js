@@ -2,7 +2,9 @@
 // import { addRequestAC } from '../ActionCreators/managerRequestAC';
 import { loginAC } from '../ActionCreators/loginAC';
 import { logoutAC } from '../ActionCreators/logoutAC';
-import { festivalAC } from '../ActionCreators/festivalAC';
+import { festivalAC, addFestivalAC } from '../ActionCreators/festivalAC';
+import { addRequestAC } from '../ActionCreators/managerRequestAC';
+import { managerAC } from '../ActionCreators/managerAC';
 
 export const loginFetch = (payload) => {
   return (dispatch) => {
@@ -60,7 +62,7 @@ export const festivalFetch = () => {
 };
 
 export const fetchAddRequest = (payload) => {
-  return () => {
+  return (dispatch) => {
     fetch(`${process.env.REACT_APP_BACK_BACK}/participate`, {
       method: 'POST',
       headers: {
@@ -68,5 +70,36 @@ export const fetchAddRequest = (payload) => {
       },
       body: JSON.stringify(payload),
     })
-  }
-}
+      .then((res) => res.json())
+      .then((data) => dispatch(addRequestAC(data)));
+  };
+};
+
+export const fetchAddFestival = (payload) => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/festival`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(addFestivalAC(data)));
+  };
+};
+
+// заявки от менеджеров
+export const managerFetch = () => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/manager`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(managerAC(data)))
+      .catch((err) => console.log(err.message));
+  };
+};

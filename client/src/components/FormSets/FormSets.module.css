@@ -74,3 +74,79 @@ input::-webkit-input-placeholder {
   background: black;
   color: #D9B8A5;
 }
+
+input::-webkit-input-placeholder {
+  color: #d9b8a5;
+}
+
+.delete {
+  background: black;
+  color: #D9B8A5;
+  border: none;
+  margin-left: 90%;
+}
+
+
+.Formapp {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  border: 2px solid #482F21;
+  margin: 1%;
+  padding: 1%;
+  color: white;
+}
+
+.manager {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border: 2px solid #482F21;
+  margin: 1%;
+  padding: 1%;
+  min-width: 40vh;
+}
+
+.application {
+  width: 20vh;
+  border-bottom: 2px solid #482F21;
+}
+
+input {
+  width: 610px;
+  height: 50px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  background: black;
+  border: 2px solid #482f21;
+  color: white;
+}
+.festForm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.festFormTitle {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: white;
+  margin-bottom: 30px;
+  margin-left: 40px;
+}
+
+/* .festInput {
+  width: 610px;
+  height: 50px;
+  margin-bottom: 16px;
+  padding-left: 20px;
+  background: black;
+  border: 2px solid #482f21;
+  color: white;
+} */
+
+.festFormContainer {
+  margin-left: 40px;
+}

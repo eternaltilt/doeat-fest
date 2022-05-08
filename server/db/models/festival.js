@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     finish_date: {
       type: DataTypes.STRING,
     },
+    festivalSetPrice: {
+      type: DataTypes.STRING,
+    }
   }, {
     sequelize,
     modelName: 'Festival',

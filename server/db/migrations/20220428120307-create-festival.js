@@ -19,6 +19,9 @@ module.exports = {
       finish_date: {
         type: Sequelize.STRING,
       },
+      festivalSetPrice: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
