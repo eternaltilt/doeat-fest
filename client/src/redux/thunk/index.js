@@ -64,7 +64,8 @@ export const festivalFetch = () => {
 
 export const fetchAddRequest = (payload) => {
   return (dispatch) => {
-    fetch(`${process.env.REACT_APP_BACK_BACK}/participate`, {
+    console.log(payload, 'payload');
+    fetch(`${process.env.REACT_APP_BACK_DB}/participate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,7 +73,8 @@ export const fetchAddRequest = (payload) => {
       body: JSON.stringify(payload),
     })
       .then((res) => res.json())
-      .then((data) => dispatch(addRequestAC(data)));
+      .then((data) => dispatch(addRequestAC(data)))
+      .catch((err) => console.log(err.message));
   };
 };
 

@@ -10,8 +10,7 @@ import style from './ManagerForm.module.css';
 
 function ManagerForm() {
   const {festival}= useSelector(state=>state.festivalReducer)
-  console.log(festival)
-
+ 
   const dispatch = useDispatch()
 
   // собираем данные и отправляем заявку
