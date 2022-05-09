@@ -73,6 +73,7 @@ const festival1 = () =>{
       <input type="text" id='secondDish' className="secondDish" placeholder='второе блюдо' autoComplete='off' />
       <input type="text" id='thirdDish' className="thirdDish" placeholder='третье блюдо' autoComplete='off' />
       <input type="text" id='allWeight' className="allWeight" placeholder='общий вес' autoComplete='off' />
+      <input type="file" onChange={e => setImg(e.target.files[0])}/>
       {/* <input type="text" onClick={festival1} id='festivalId' className="festivalId" placeholder='festival'/> */}
       <select onClick={festival1} className="form-select" id="festivalId">
       {rezultat.map((el)=> (<option key={el.id} value={el.id}>{el.title}</option>) )}  
