@@ -7,7 +7,8 @@ import {
   formSetFetch,
   festivalFetch,
   fetchAddFestival,
-  managerFetch
+  managerFetch,
+  delManager,
 } from '../../redux/thunk';
 import style from './FormSets.module.css';
 
@@ -23,7 +24,7 @@ function FormSets() {
     localStorage.clear();
     navigate('/admin');
   };
-  const rezultat = festival.fest ? festival.fest : [];
+  const rezultat = festival || [];
 
   // отправляем данные по ресторану и фестивалю
   const onSubmit = (e) => {
@@ -92,12 +93,11 @@ function FormSets() {
     dispatch(festivalFetch());
   },[])
   const { RestaurantManager } = useSelector((state) => state.applicationReducer);
-  const application = RestaurantManager.RestaurantManager1?RestaurantManager.RestaurantManager1:[];
-  
-  // удаление заявки p.s.не работает
-  const deleteManager = () =>{
-    console.log({id:application.id});
-    //  dispatch(delManager({id:application.id}))
+ 
+
+  // удаление заявки
+  const deleteManager = (id) =>{
+    dispatch(delManager(id))
   }
 
 
@@ -192,13 +192,13 @@ function FormSets() {
 
       <h3 className={style.festFormTitle}>Заявки</h3>
         <section className={style.Formapp}>
-         {application.map((el)=>(<ul className={style.manager} key={el.id}>
+         {RestaurantManager.map((el)=>(<ul className={style.manager} key={el.id}>
            <li className={style.application}>{el.name}</li>
            <li className={style.application}>{el.phone_number}</li>
            <li className={style.application}>{el.email}</li>
            <li className={style.application}>{el.restaurant_name}</li>
-           <li className={style.application}>{el.festival_id}</li>
-           <button onClick={deleteManager} className={style.delete} type="submit">
+           <li className={style.application}>{rezultat.map((res)=>res.id === el.festival_id)}</li>
+           <button onClick={()=>deleteManager(el.id)} className={style.delete} type="submit">
            🗑
             </button>
            </ul>))}
