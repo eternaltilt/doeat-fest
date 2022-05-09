@@ -82,13 +82,14 @@ function FormSets() {
 
 
   // вытаскиваем все фестивали
-  const festival1 = () => {
-    dispatch(festivalFetch());
-  };
+  // const festival1 = () => {
+  //   dispatch(festivalFetch());
+  // };
 
   // заявки от менеджеров
   useEffect(()=>{
     dispatch(managerFetch())
+    dispatch(festivalFetch());
   },[])
   const { RestaurantManager } = useSelector((state) => state.applicationReducer);
   const application = RestaurantManager.RestaurantManager1?RestaurantManager.RestaurantManager1:[];
@@ -138,7 +139,7 @@ function FormSets() {
         className={style.inputSize}
         placeholder='Вес'
         autoComplete="off"/>
-       <select onClick={festival1}
+       <select
         className={style.inputSize}
         placeholder='Фестиваль'
         id="festivalId">
@@ -159,7 +160,7 @@ function FormSets() {
        <input type="text"
         id='phone'
         className={style.inputSize}
-        placeholder='телефон'
+        placeholder='Телефон'
         autoComplete="off"/>
        <input type="text"
         id='description'

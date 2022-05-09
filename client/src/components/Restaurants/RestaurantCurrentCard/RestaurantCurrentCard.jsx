@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import style from './RestaurantCard.module.css';
+import style from './RestaurantCurrent.module.css';
 
 function RestaurantCard() {
   const { restaurants } = useSelector((state) => state.restaurants);
@@ -48,12 +48,8 @@ function RestaurantCard() {
 
         <div>
 
-          <div>
-
-          </div>
-          <div>
-
-          </div>
+          <div />
+          <div />
 
         </div>
 

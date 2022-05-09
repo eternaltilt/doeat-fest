@@ -1,107 +1,35 @@
-.hystmodal {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  overflow: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+.FestCardContainer {
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  border-bottom: 2px solid #482f21;
   align-items: center;
-  z-index: 99;
-
-  padding:30px 0;
-
-  /* background-color: black; */
-  border: 2px solid #482F21;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  height: 140px;
 }
 
-.hystmodal__wrap {
-  flex-shrink: 0;
-  flex-grow: 0;
-  width: 100%;
-  min-height: 100%;
-  margin: auto;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
+.FestCardDate {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  padding-top: 14px;
 }
 
-.hystmodal__window {
-  margin: 50px 0;
-  flex-shrink: 0;
-  flex-grow: 0;
-  background: #fff;
-  width: 600px;
-  max-width: 100%;
-  overflow: visible; 
-  transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;
-  transform: scale(0.9);
-  /* opacity: 0; */
+.FestCardTitle {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 48px;
+  color: #ffffff;
 }
-
-.hystmodal--active{
-  visibility: visible;
+.FestCardBtn {
+  /* margin-top:52px; */
+  width: 188px;
+  height: 49px;
+  /* margin-left: 206px; */
+  padding: 10px 47px;
+  border: 2px solid #482f21;
+  background: black;
+  color: #d9b8a5;
 }
-.hystmodal--active .hystmodal__window{
-  transform: scale(1);
-  opacity: 1;
-}
-
-.hystmodal__shadow{
-  position: fixed;
-  border:none;
-  display: block;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 98;
-  opacity: 0;
-  transition: opacity 0.15s ease;
-  background-color: black;
-}
-/* активная подложка */
-.hystmodal__shadow--show{
-  pointer-events: auto;
-  opacity: 0.6;
-}
-
-.hystmodal__opened {
-  position: fixed;
-  right: 0;
-  left: 0;
-  overflow: hidden;
-} 
-
-.background {
-  background-color: black;
-  border: 2px solid #482F21;
-  height: 250px;
-  width: 250px;
-  margin-left: 2px;
-  margin-right: 2px;
-  margin-top: 5px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.cardText {
-  color: white;
-}
-.img {
-  width: 405px;
-  height: 234px;  
-}
-
