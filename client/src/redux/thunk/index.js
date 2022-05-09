@@ -5,6 +5,7 @@ import { logoutAC } from '../ActionCreators/logoutAC';
 import { festivalAC, addFestivalAC } from '../ActionCreators/festivalAC';
 import { addRequestAC } from '../ActionCreators/managerRequestAC';
 import { managerAC } from '../ActionCreators/managerAC';
+import { delManagerAC } from '../ActionCreators/delManagerAC';
 
 export const loginFetch = (payload) => {
   return (dispatch) => {
@@ -100,6 +101,18 @@ export const managerFetch = () => {
     })
       .then((res) => res.json())
       .then((data) => dispatch(managerAC(data)))
+      .catch((err) => console.log(err.message));
+  };
+};
+
+// удаление заявки
+export const delManager = (payload) => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/manager/${payload}`, {
+      method: 'POST',
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(delManagerAC(data)))
       .catch((err) => console.log(err.message));
   };
 };
