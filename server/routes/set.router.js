@@ -4,6 +4,8 @@ const { RestaurantCard } = require("../db/models");
 const { Pictures } = require('../db/models');
 const fileMiddleware = require('../middleware/uploadMiddleware');
 
+//test
+
 router.post('/', fileMiddleware.any(), async (req, res) => {
   console.log('FILES ', req.files);
   try {
