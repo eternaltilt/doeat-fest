@@ -24,7 +24,7 @@ function FormSets() {
     localStorage.clear();
     navigate('/admin');
   };
-  const rezultat = festival.fest ? festival.fest : [];
+  const rezultat = festival || [];
 
   // отправляем данные по ресторану и фестивалю
   const onSubmit = (e) => {
