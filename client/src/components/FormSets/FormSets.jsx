@@ -44,7 +44,6 @@ function FormSets() {
       description,
       festivalId,
       worktime,
-      imgRest,
     } = e.target;
 
     const body = {
@@ -61,7 +60,6 @@ function FormSets() {
       phone: phone.value,
       festivalId: festivalId.value,
       worktime: worktime.value,
-      imgRest: imgRest.value
     };
     e.target.reset();
     dispatch(formSetFetch(body));
@@ -171,11 +169,6 @@ function FormSets() {
         id='worktime'
         className={style.inputSize}
         placeholder='время работы ресторана'
-        autoComplete="off"/>
-       <input type="text"
-        id='imgRest'
-        className={style.inputSize}
-        placeholder='ТУТ ДОБАВЛЕНИЕ ФОТОГРАФИИ'
         autoComplete="off"/>
        <button className={style.formBtn} type="submit">Отправить</button>
        <button className={style.formBtn} type="submit">Добавить фото</button>
