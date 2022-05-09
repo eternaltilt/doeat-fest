@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
@@ -5,21 +6,21 @@ import { useNavigate } from 'react-router-dom';
 import style from './RestaurantCard.module.css';
 
 // eslint-disable-next-line react/prop-types
-function FestCard({ id, name, photo, adress }) {
+function RestaurantCard({ restaurant }) {
   const navigate = useNavigate();
   return (
     <div>
-      <div className={style.background} onClick={() => navigate(`/restaurant/${id}`)}>
+      <div className={style.background} onClick={() => navigate()}>
         <div>
-          <img style={{ height: '200px', width: '100%' }} src={photo} alt="img" />
+          <img style={{ height: '200px', width: '100%' }} src={restaurant.img} alt="img" />
         </div>
         <div>
-          <span className={style.cardText}> {name} </span>
-          <p className={style.cardText}>Адрес: {adress}</p>
+          <span className={style.cardText}> {restaurant.title}</span>
+          <p className={style.cardText}>Адрес: {restaurant.adress} </p>
         </div>
       </div>
     </div>
   );
 }
 
-export default FestCard;
+export default RestaurantCard;

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom'
 import {  } from '../../../redux/ActionCreators/festivalAC'
 import { restaurantFetch } from '../../../redux/thunk';
-// import 
+import RestaurantCard from '../../Restaurants/RestaurantCard/RestaurantCard'
 import style from './CurrentFestCard.module.css';
 
 function CurrentFestCard() {
@@ -45,16 +45,7 @@ function CurrentFestCard() {
       </div>
       <div>
        {/* {festival.length && festival.map(el => <FestCard key={el.id} festival = {el}/>)} */}
-        {/* {fests.map((elm) => (
-          <FestCard
-            key={elm.id}
-            id={elm.id}
-            name={elm.name}
-            description={elm.description}
-            photo={elm.photo}
-            adress={elm.adress}
-          />
-        ))} */}
+       {restaurants.length && restaurants.map(el => <RestaurantCard key={el.id} restaurant = {el}/>)}
       </div>
     </div>
   );
