@@ -17,6 +17,9 @@
   text-decoration: none;
   color: white;
 }
+.logo:hover {
+  color: white;
+}
 
 .logoPos {
   padding-top: 24px;

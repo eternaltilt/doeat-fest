@@ -8,7 +8,8 @@ import AdminLogin from '../AdminLogin/AdminLogin';
 import Navbar from '../Navbar/Navbar';
 import Home from '../Home/Home';
 import ManagerForm from '../ManagerForm/ManagerForm';
-import Fests from '../Fests/Fests';
+import CurrentFestCard from '../Fests/CurrentFestCard/CurrentFestCard'
+import FestList from '../Fests/FestList/FestList';
 import Footer from '../Footer/Footer';
 import style from './App.module.css';
 
@@ -31,9 +32,10 @@ function App() {
           <Route path="/admin" element={<AdminLogin />} />
           {local?<Route path="/admin/panel" element={<FormSets />} />:<Route path="/admin/panel" element={<AdminLogin />} />}
           <Route path="/" element={<Home />} />
-          <Route path="/fests" element={<Fests />} />
-          
+          {/* <Route path="/fests" element={<Fests />} /> */}
           <Route path="/participate" element={<ManagerForm />} />
+          <Route path="/calendar" element={<FestList />} />
+          <Route path="/calendar/:id" element={<CurrentFestCard/>} />
         </Routes>
        <Footer />
       </BrowserRouter>

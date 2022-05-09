@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
@@ -10,11 +10,12 @@ import style from './ManagerForm.module.css';
 
 function ManagerForm() {
   const {festival}= useSelector(state=>state.festivalReducer)
+  console.log(festival)
 
   const dispatch = useDispatch()
 
   // собираем данные и отправляем заявку
-  const result = festival.fest?festival.fest:[];
+  const result = festival || [];
   const onSubmit = (event) => {
     event.preventDefault();
 
@@ -32,9 +33,13 @@ function ManagerForm() {
   }
 
 
-  const festival1 = () => {
-    dispatch(festivalFetch())
-  }
+  // const festival1 = () => {
+  //   dispatch(festivalFetch())
+  // }
+
+  useEffect(() => {
+    dispatch(festivalFetch());
+  },[dispatch]) 
   
 
   return (
@@ -81,7 +86,7 @@ function ManagerForm() {
             />
           </div>
           <div>
-            <select onClick={festival1} className={style.inputSize} id="festivalId">
+            <select className={style.inputSize} id="festivalId">
              {result.map((el)=> (<option key={el.id} value={el.id}>{el.title}</option>) )}
              </select>
           </div>

@@ -1,23 +1,17 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import { useNavigate, useParams } from 'react-router-dom';
 import style from './FestCard.module.css';
 
-// eslint-disable-next-line react/prop-types
-function FestCard({ id, name, photo, adress }) {
-  const navigate = useNavigate();
+function FestCard({festival}) {
+  // const navigate = useNavigate()
+  // const { id } = useParams()
   return (
-    <div>
-      <div className={style.background} onClick={() => navigate(`/restaurant/${id}`)}>
-        <div>
-          <img style={{ height: '200px', width: '100%' }} src={photo} alt="img" />
-        </div>
-        <div>
-          <span className={style.cardText}> {name} </span>
-          <p className={style.cardText}>Адрес: {adress}</p>
-        </div>
-      </div>
+    <div className={style.FestCardContainer}>
+      <p className={style.FestCardDate}>{festival.start_date.split('.').reverse().join('.')} - {festival.finish_date.split('.').reverse().join('.')} &nbsp; </p>
+      <h2 className={style.FestCardTitle}>{festival.title}</h2>
+      <Link to={`/calendar/${festival.id}`}><button className={style.FestCardBtn} type="submit">Кнопка</button></Link>
     </div>
   );
 }
