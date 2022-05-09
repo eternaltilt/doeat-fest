@@ -8,7 +8,6 @@ const logoutRouter = require("./routes/logout.router");
 const setsRouter = require("./routes/set.router");
 const festivalRouter = require("./routes/festival.router");
 const managerFormRouter = require("./routes/managerForm.route");
-const pictureUploadRouter = require("./routes/picturesUpload.routes");
 const managerRouter = require("./routes/managerRouter.routes");
 const path = require("path");
 
@@ -16,9 +15,6 @@ const config = require("./config/config");
 
 // config
 config(app);
-
-app.use(express.json({ extended: true }));
-app.use("/pictures", express.static(path.join(__dirname, "pictures")));
 
 // routing
 
@@ -28,5 +24,4 @@ app.use("/sets", setsRouter);
 app.use("/logout", logoutRouter);
 app.use("/festival", festivalRouter);
 app.use("/participate", managerFormRouter);
-app.use("/uploadphoto", pictureUploadRouter);
 app.listen(port, () => console.log(`***Server started at ${port} port ***`));

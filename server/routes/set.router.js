@@ -4,7 +4,8 @@ const { RestaurantCard } = require("../db/models");
 const { Pictures } = require('../db/models');
 const fileMiddleware = require('../middleware/uploadMiddleware');
 
-router.post('/', fileMiddleware.single('avatar'), async (req, res) => {
+router.post('/', fileMiddleware.any(), async (req, res) => {
+  console.log('FILES ', req.files);
   try {
     console.log(req.file);
     if (req.file) {
@@ -72,7 +73,7 @@ router.post('/', fileMiddleware.single('avatar'), async (req, res) => {
       }
     }
   } catch (error) {
-    
+
   }
   // const {
   //   titleSets,
