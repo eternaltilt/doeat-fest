@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -12,9 +14,9 @@ function Navbar() {
 
   // ссылки в меню
   const items = [
-    { value: 'Главная', href: '/main' },
-    { value: 'Услуги', href: '/service' },
-    { value: 'Что-то', href: '/shop' },
+    { value: 'Главная', href: '/' },
+    { value: 'О нас', href: '/info' },
+    { value: 'Участники', href: '/fests' },
   ];
   return (
     <nav className={style.navContainer}>
@@ -46,7 +48,7 @@ function Navbar() {
         <div className={style.burgerBtn} onClick={() => setMenuActive(!menuActive)} >
           <span />
         </div>
-        <Menu active={menuActive} setActive={setMenuActive} header={'Меню'} items={items} />
+        <Menu active={menuActive} setActive={setMenuActive} header="Меню" items={items} />
       </div>
     </nav>
   );

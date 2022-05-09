@@ -4,6 +4,7 @@ import { loginAC } from '../ActionCreators/loginAC';
 import { logoutAC } from '../ActionCreators/logoutAC';
 import { festivalAC, addFestivalAC } from '../ActionCreators/festivalAC';
 import { addRequestAC } from '../ActionCreators/managerRequestAC';
+import { managerAC } from '../ActionCreators/managerAC';
 
 export const loginFetch = (payload) => {
   return (dispatch) => {
@@ -69,10 +70,10 @@ export const fetchAddRequest = (payload) => {
       },
       body: JSON.stringify(payload),
     })
-    .then((res) => res.json())
-    .then((data) => dispatch(addRequestAC(data)))
-  }
-}
+      .then((res) => res.json())
+      .then((data) => dispatch(addRequestAC(data)));
+  };
+};
 
 export const fetchAddFestival = (payload) => {
   return (dispatch) => {
@@ -84,6 +85,21 @@ export const fetchAddFestival = (payload) => {
       body: JSON.stringify(payload),
     })
       .then((res) => res.json())
-      .then((data) => dispatch(addFestivalAC(data)))
-  }
-}
+      .then((data) => dispatch(addFestivalAC(data)));
+  };
+};
+
+// заявки от менеджеров
+export const managerFetch = () => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/manager`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(managerAC(data)))
+      .catch((err) => console.log(err.message));
+  };
+};

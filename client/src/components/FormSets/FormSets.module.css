@@ -1,0 +1,152 @@
+.form {
+  padding: 1%;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  border: 2px solid #482F21;
+  margin-top: 5%;
+}
+
+.title {
+  position: absolute;
+  width: 241px;
+  height: 29px;
+  left: 39px;
+  top: 125px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+}
+
+.leftContainer {
+  margin: 0 auto;
+  padding: 1%;
+}
+
+.rightContainer {
+  margin: 0 auto;
+  padding: 1%;
+
+}
+
+.inputSize {
+  width: 600px;
+  height: 40px;
+  margin-top: 16px;
+  height: 57px;
+  border: 1px solid #482F21;
+  background: black;
+  font-weight: 400;
+  padding-left: 20px;
+  color: white;
+}
+
+.formBtn {
+  margin-top: 100px;
+  width: 215px;
+  height: 49px;
+  margin-left: 10%;
+  padding: 10px 47px;
+  border: 2px solid #482F21;
+  background: black;
+  color: #D9B8A5;
+}
+
+input::-webkit-input-placeholder {
+  color: #D9B8A5;
+}
+
+.formBtnExit {
+  margin-top: 10px;
+  position: absolute;
+  width: 188px;
+  height: 49px;
+  margin-left: 45%;
+  padding: 10px 47px;
+  border: 2px solid #482F21;
+  background: black;
+  color: #D9B8A5;
+}
+
+input::-webkit-input-placeholder {
+  color: #d9b8a5;
+}
+
+.delete {
+  background: black;
+  color: #D9B8A5;
+  border: none;
+  margin-left: 90%;
+}
+
+
+.Formapp {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  border: 2px solid #482F21;
+  margin: 1%;
+  padding: 1%;
+  color: white;
+}
+
+.manager {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border: 2px solid #482F21;
+  margin: 1%;
+  padding: 1%;
+  min-width: 40vh;
+}
+
+.application {
+  width: 20vh;
+  border-bottom: 2px solid #482F21;
+}
+
+input {
+  width: 610px;
+  height: 50px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  background: black;
+  border: 2px solid #482f21;
+  color: white;
+}
+.festForm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.festFormTitle {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: white;
+  margin-bottom: 30px;
+  margin-left: 40px;
+}
+
+/* .festInput {
+  width: 610px;
+  height: 50px;
+  margin-bottom: 16px;
+  padding-left: 20px;
+  background: black;
+  border: 2px solid #482f21;
+  color: white;
+} */
+
+.festFormContainer {
+  margin-left: 40px;
+}
