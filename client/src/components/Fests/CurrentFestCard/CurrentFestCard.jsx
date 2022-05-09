@@ -2,19 +2,25 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom'
-import { initFestsAC } from '../../../redux/ActionCreators/festsAC';
-import FestCard from '../../Restaurants/RestaurantCard/RestaurantCard';
+import {  } from '../../../redux/ActionCreators/festivalAC'
+import { restaurantFetch } from '../../../redux/thunk';
+// import 
 import style from './CurrentFestCard.module.css';
 
-function Fests() {
+function CurrentFestCard() {
   
+  const dispatch = useDispatch();
   const { festival } = useSelector((state) => state.festivalReducer);
-  console.log(festival)
-  // const dispatch = useDispatch();
+  const { restaurants } = useSelector((state) => state.restaurantReducer);
   const { id } = useParams()
-  console.log(id)
   const currentFestCard = festival.find(el => el.id === +id)
-  console.log(currentFestCard)
+
+  useEffect(() => {
+    dispatch(restaurantFetch());
+  },[dispatch]) 
+
+
+
   return (
     <div className={style.background}>
       <div className={style.header}>
@@ -26,7 +32,7 @@ function Fests() {
           </p>
         </div>
         <div className={style.headerRight}>
-          <h5 className={style.text}>Set price: {currentFestCard.festivalSetPrice}</h5>
+          <h5 className={style.text}>Стоимость сета: {currentFestCard.festivalSetPrice}&#8381; </h5>
           <div className={style.buttons}>
             <button className={style.buttonLeft} type="submit">
               Список
@@ -37,14 +43,8 @@ function Fests() {
           </div>
         </div>
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-        }}
-      >
+      <div>
+       {/* {festival.length && festival.map(el => <FestCard key={el.id} festival = {el}/>)} */}
         {/* {fests.map((elm) => (
           <FestCard
             key={elm.id}
@@ -60,4 +60,4 @@ function Fests() {
   );
 }
 
-export default Fests;
+export default CurrentFestCard;

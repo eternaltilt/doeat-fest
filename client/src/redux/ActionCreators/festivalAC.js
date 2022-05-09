@@ -1,8 +1,8 @@
-import { FESTIVAL, ADD_FESTIVAL } from '../ActionTypes/festivalAT';
+import { INIT_FESTIVAL, ADD_FESTIVAL } from '../ActionTypes/festivalAT';
 
 export function festivalAC(payload) {
   return {
-    type: FESTIVAL, // ИСПРАВИТЬ НА ИНИТ 
+    type: INIT_FESTIVAL,
     payload,
   };
 }
