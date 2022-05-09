@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 // import { addRequestAC } from '../ActionCreators/managerRequestAC';
 import { loginAC } from '../ActionCreators/loginAC';
@@ -6,6 +7,8 @@ import { festivalAC, addFestivalAC } from '../ActionCreators/festivalAC';
 import { addRequestAC } from '../ActionCreators/managerRequestAC';
 import { managerAC } from '../ActionCreators/managerAC';
 import { delManagerAC } from '../ActionCreators/delManagerAC';
+import { initRestaurantAC } from '../ActionCreators/restaurantAC';
+
 
 export const loginFetch = (payload) => {
   return (dispatch) => {
@@ -61,6 +64,21 @@ export const festivalFetch = () => {
       .catch((err) => console.log(err.message));
   };
 };
+
+export const restaurantFetch = () => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/restaurantCards`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(initRestaurantAC(data)))
+      .catch((err) => console.log(err.message));
+  };
+}
+ 
 
 export const fetchAddRequest = (payload) => {
   return (dispatch) => {

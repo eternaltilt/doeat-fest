@@ -8,10 +8,6 @@ import style from './FestList.module.css';
 function FestList() {
   const dispatch = useDispatch();
   const { festival } = useSelector((state) => state.festivalReducer);
-  console.log(festival)
-  // const festival1 = () => {
-  //   dispatch(festivalFetch());
-  // };
  
   useEffect(() => {
     dispatch(festivalFetch());

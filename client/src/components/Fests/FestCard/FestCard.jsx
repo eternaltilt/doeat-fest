@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import style from './FestCard.module.css';
 
 function FestCard({festival}) {
-  // const navigate = useNavigate()
-  // const { id } = useParams()
   return (
     <div className={style.FestCardContainer}>
       <p className={style.FestCardDate}>{festival.start_date.split('.').reverse().join('.')} - {festival.finish_date.split('.').reverse().join('.')} &nbsp; </p>

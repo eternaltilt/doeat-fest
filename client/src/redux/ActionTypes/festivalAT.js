@@ -1,2 +1,2 @@
-export const FESTIVAL = 'FESTIVAL';
+export const INIT_FESTIVAL = 'INIT_FESTIVAL';
 export const ADD_FESTIVAL = 'ADD_FESTIVAL';

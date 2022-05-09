@@ -22,7 +22,7 @@ router.route("/")
     finish_date: festivalEnd,
     festivalSetPrice: festivalSetPrice,
   })
-  res.json({ newFestival });
+  res.json(newFestival);
 } catch(error) {
   console.log(error.message)
 }
