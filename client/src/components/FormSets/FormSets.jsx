@@ -26,6 +26,7 @@ function FormSets() {
   };
   const rezultat = festival || [];
 
+
   // отправляем данные по ресторану и фестивалю
   const onSubmit = (e) => {
     e.preventDefault();
@@ -83,23 +84,17 @@ function FormSets() {
 
 
   // вытаскиваем все фестивали
-  // const festival1 = () => {
-  //   dispatch(festivalFetch());
-  // };
-
   // заявки от менеджеров
   useEffect(()=>{
     dispatch(managerFetch())
     dispatch(festivalFetch());
   },[])
   const { RestaurantManager } = useSelector((state) => state.applicationReducer);
- 
 
   // удаление заявки
   const deleteManager = (id) =>{
     dispatch(delManager(id))
-  }
-
+  };
 
   return (
     <>
@@ -197,7 +192,7 @@ function FormSets() {
            <li className={style.application}>{el.phone_number}</li>
            <li className={style.application}>{el.email}</li>
            <li className={style.application}>{el.restaurant_name}</li>
-           <li className={style.application}>{rezultat.map((res)=>res.id === el.festival_id)}</li>
+           <li className={style.application}>{rezultat.map((res) => +res.id === +el.festival_id && res.title) }</li>
            <button onClick={()=>deleteManager(el.id)} className={style.delete} type="submit">
            🗑
             </button>
