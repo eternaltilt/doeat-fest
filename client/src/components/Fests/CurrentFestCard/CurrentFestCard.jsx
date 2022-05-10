@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom'
-import { restaurantFetch, restaurantSetFetch } from '../../../redux/thunk';
+import { restaurantFetch, restaurantSetFetch, restaurantSetIdFetch } from '../../../redux/thunk';
 import RestaurantCard from '../../Restaurants/RestaurantCard/RestaurantCard';
 import style from './CurrentFestCard.module.css';
 
@@ -11,11 +11,18 @@ function CurrentFestCard() {
   const dispatch = useDispatch();
   const { festival } = useSelector((state) => state.festivalReducer);
   const { restaurants } = useSelector((state) => state.restaurantReducer);
+  const { sets } = useSelector((state) => state.restaurantSetReducer);
   const { id } = useParams()
   const currentFestCard = festival.find(el => el.id === +id)
+  console.log('КАРРЕНТ ФЕСТИВАЛЬ КАРД' , currentFestCard)
+  const currentSet = sets.filter(el => el.festival_id ===currentFestCard.id)
+
+  console.log('SETS =>', currentSet)
+ 
 
   useEffect(() => {
     dispatch(restaurantFetch());
+    dispatch(restaurantSetFetch())
   },[dispatch]) 
 
   return (
@@ -41,8 +48,7 @@ function CurrentFestCard() {
         </div>
       </div>
       <div>
-       {/* {festival.length && festival.map(el => <FestCard key={el.id} festival = {el}/>)} */}
-       {restaurants.length && restaurants.map(el => <RestaurantCard key={el.id} restaurant = {el} festId ={id}/>)}
+       {currentSet.length && currentSet.map(el => <RestaurantCard key={el.id} restaurant = {el} festId ={id}/>)}
       </div>
     </div>
   );

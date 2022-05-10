@@ -2,9 +2,8 @@ const router = require("express").Router();
 const { RestaurantCard } = require("../db/models");
 
 
-router.route("/")
-.get(async (req, res) => {
-  console.log('123')
+router
+.get(('/'), async (req, res) => {
   const restaurant = await RestaurantCard.findAll();
   res.json( restaurant );
 })

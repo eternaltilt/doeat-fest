@@ -7,7 +7,9 @@ const fileMiddleware = require('../middleware/uploadMiddleware');
 //test
 router.route('/')
 .get(async (req, res) => {
-  const set = await RestaurantSet.findAll();
+  const set = await RestaurantSet.findAll({include: {
+    model: RestaurantCard
+  }});
   res.json( set )
 })
 .post(fileMiddleware.any(), async (req, res) => {
