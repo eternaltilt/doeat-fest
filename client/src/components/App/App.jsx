@@ -28,7 +28,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-      <Route path='/map' element={<Map/>}/>
+          <Route path="/map" element={<Map />} />
           <Route path="/admin" element={<AdminLogin />} />
           {local ? (
             <Route path="/admin/panel" element={<FormSets />} />

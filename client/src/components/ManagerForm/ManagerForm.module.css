@@ -1,14 +1,15 @@
 .formContainer {
   display: flex;
   flex-direction: column;
-  margin-top:67px;
+  margin-top: 67px;
+  min-height: 80vh;
 }
 
 .title {
   font-weight: 500;
   font-size: 28px;
   line-height: 34px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .leftContainer {
@@ -17,31 +18,33 @@
 
 .rightContainer {
   margin: 0 auto;
-  margin-top:47px;
+  margin-top: 47px;
 }
 
 .inputSize {
-  width:600px;
+  width: 600px;
   height: 40px;
   margin-top: 16px;
   height: 57px;
-  border: 2px solid #482F21;
+  border: 2px solid #482f21;
   background: black;
   font-weight: 400;
-  padding-left:20px;
+  padding-left: 20px;
   color: white;
+  -webkit-box-shadow: 0 0 0 50px rgb(0, 0, 0) inset; /* Change the color to your own background color */
+  -webkit-text-fill-color: #d9b8a5;
 }
 
 .formBtn {
-  margin-top:52px;
+  margin-top: 52px;
   width: 188px;
   height: 49px;
   margin-left: 206px;
   padding: 10px 47px;
-  border: 2px solid #482F21;
+  border: 2px solid #482f21;
   background: black;
-  color: #D9B8A5;
+  color: #d9b8a5;
 }
-input::-webkit-input-placeholder { color: #D9B8A5; }
-
- 
+input::-webkit-input-placeholder {
+  color: #d9b8a5;
+}

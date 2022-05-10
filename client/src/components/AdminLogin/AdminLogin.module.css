@@ -16,6 +16,7 @@ input[type=password] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 75vh;
 }
 
 .adminTitle {
