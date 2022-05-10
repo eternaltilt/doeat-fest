@@ -1,62 +1,42 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import style from './RestaurantCurrent.module.css';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
+import { festivalFetch, restaurantFetch, restaurantSetFetch } from '../../../redux/thunk';
+import style from './RestaurantCurrentCard.module.css';
 
-function RestaurantCard() {
-  const { restaurants } = useSelector((state) => state.restaurants);
-  const { sets } = useSelector((state) => state.sets);
-  const { pictures } = useSelector((state) => state.pictures);
+function RestaurantCurrentCard() {
+  const dispatch = useDispatch();
+  const { restId } = useParams();
 
-  const { id } = useParams();
+  const { restaurants } = useSelector((state) => state.restaurantReducer);
+  const { sets } = useSelector((state) => state.restaurantSetReducer);
+  const { festival } = useSelector((state) => state.festivalReducer)
+  const currentFest = festival.find((el) => el.id === +restId)
+  const currentRest = restaurants.find((el) => el.id === +restId);
+  const currentSet = sets.find((el) => el.id === +currentRest.id)
+  
+  // console.log('СЕТЫ ИЗ СТЕЙТА =>' , sets)
+  // console.log('КАРРЕНТ ФЕСТ => ', currentFest)
+  // console.log('КАРРЕНТ РЕСТ => ', currentRest)
+  // console.log('КАРРЕНТ СЕТ => ', currentSet)
 
-  const restaurant = restaurants[0].filter((elm) => elm.id === Number(id));
-  const set = sets[0].filter((elm) => elm.restaurantCard_id === Number(id));
-  const pics = pictures[0].filter((elm) => elm.restaurantSet_id === set.id);
+
+  useEffect(() => {
+    dispatch(restaurantFetch());
+    dispatch(restaurantSetFetch());
+    dispatch(festivalFetch());
+  }, [dispatch]);
+
   return (
-    <div>
-      <div>
-        <h3>{restaurant.title}</h3>
-        <p>Стоимость сета: {set.price}</p>
+    <section className={style.currentRestContainer}>
+      <div className={style.currentRestInfo}>
+        <h2 className={style.currentRestTitle}>{currentRest.title}</h2>
+        <p className={style.currentRestText}>{currentRest.description}</p>
+        <p className={style.currentRestPrice}>Стоимость сета: {currentFest.festivalSetPrice}&#8381;</p>
       </div>
-
-      <div>
-        <img src={restaurant.picture} alt="" />
-      </div>
-
-      <div>
-
-        <div>
-
-          <div>
-            <img src={pics.first_dish} alt="1picDish" />
-            <h4>1 блюдо</h4>
-            <p>{sets.first_dish}</p>
-          </div>
-          <div>
-            <img src={pics.second_dish} alt="2picDish" />
-            <h4>2 блюдо</h4>
-            <p>{sets.second_dish}</p>
-          </div>
-          <div>
-            <img src={pics.third_dish} alt="3picDish" />
-            <h4>3 блюдо</h4>
-            <p>{sets.third_dish}</p>
-          </div>
-
-        </div>
-
-        <div>
-
-          <div />
-          <div />
-
-        </div>
-
-      </div>
-    </div>
+    </section>
   );
 }
 
-export default RestaurantCard;
+export default RestaurantCurrentCard;

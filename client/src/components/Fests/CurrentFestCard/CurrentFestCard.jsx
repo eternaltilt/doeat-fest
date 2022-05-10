@@ -2,9 +2,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom'
-import {  } from '../../../redux/ActionCreators/festivalAC'
-import { restaurantFetch } from '../../../redux/thunk';
-import RestaurantCard from '../../Restaurants/RestaurantCard/RestaurantCard'
+import { restaurantFetch, restaurantSetFetch } from '../../../redux/thunk';
+import RestaurantCard from '../../Restaurants/RestaurantCard/RestaurantCard';
 import style from './CurrentFestCard.module.css';
 
 function CurrentFestCard() {
@@ -18,8 +17,6 @@ function CurrentFestCard() {
   useEffect(() => {
     dispatch(restaurantFetch());
   },[dispatch]) 
-
-
 
   return (
     <div className={style.background}>
@@ -45,7 +42,7 @@ function CurrentFestCard() {
       </div>
       <div>
        {/* {festival.length && festival.map(el => <FestCard key={el.id} festival = {el}/>)} */}
-       {restaurants.length && restaurants.map(el => <RestaurantCard key={el.id} restaurant = {el}/>)}
+       {restaurants.length && restaurants.map(el => <RestaurantCard key={el.id} restaurant = {el} festId ={id}/>)}
       </div>
     </div>
   );
