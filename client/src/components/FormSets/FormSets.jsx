@@ -2,6 +2,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useEffect, useState } from 'react';
+import { axiosImg } from './axios/upload';
+
 import {
   fetchDelitSession,
   formSetFetch,
@@ -14,7 +16,19 @@ import style from './FormSets.module.css';
 
 
 function FormSets() {
-  const [img, setImg] = useState(null);
+  const [image1, setImage1] = useState({ selectedFile: null });
+  const [image2, setImage2] = useState({ selectedFile: null });
+  const [image3, setImage3] = useState({ selectedFile: null });
+  const [imageMenu, setImageMenu] = useState({ selectedFile: null });
+  const [imageRestaurant, setImageRestaurant] = useState({ selectedFile: null });
+  // const [url1, setUrl1] = useState('');
+  // const [url2, setUrl2] = useState('');
+  // const [url3, setUrl3] = useState('');
+  // const [urlMenu, setUrlMenu] = useState('');
+  // const [urlRestaurant, setUrlRestaurant] = useState('');
+  // const [load, setLoad] = useState('');
+  // const [showUpload, setShowUpload] = useState(false);
+
   const { festival } = useSelector((state) => state.festivalReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,9 +41,119 @@ function FormSets() {
   const rezultat = festival || [];
 
 
+  // const config = {
+  //   onUploadProgress (progressEvent) {
+  //     const percentCompleted = Math.round(
+  //       (progressEvent.loaded * 100) / progressEvent.total
+  //     );
+  //     setLoad(`Загружено: ${  percentCompleted  }%`);
+  //   },
+  // };
+  const fileSelectedHandler1 = (e) => {
+      setImage1({
+        selectedFile: e.target.files[0],
+      });
+    };
+
+  const fileUploader1 = async () => {
+    const pictureName = Math.floor(Math.random() * (99999 - 1) + 1);
+    const pictureName1 = Math.floor(Math.random() * (99999 - 1) + 1);
+    const body = new FormData();
+    body.set('key', '96cea888424c27c83b9632fbdfdf9da2');
+    body.set('name', `${pictureName}${pictureName1}`);
+    body.append('image', image1.selectedFile);
+    const data = await axiosImg.post('upload', body);
+    return data.data.data.url;
+    // setUrl1(data.data.data.url);
+    // console.log('URL1 ', url1);
+    // console.log('DATA 1 !!! ', data.data.data.url);
+    // setShowUpload(false);
+  };
+
+  const fileSelectedHandler2 = (e) => {
+    setImage2({
+      selectedFile: e.target.files[0],
+    });
+  };
+
+  const fileUploader2 = async () => {
+    const pictureName = Math.floor(Math.random() * (99999 - 1) + 1);
+    const pictureName1 = Math.floor(Math.random() * (99999 - 1) + 1);
+    const body = new FormData();
+    body.set('key', '96cea888424c27c83b9632fbdfdf9da2');
+    body.set('name', `${pictureName}${pictureName1}`);
+    body.append('image', image2.selectedFile);
+    const data = await axiosImg.post('upload', body);
+    return data.data.data.url;
+    // setShowUpload(false);
+  };
+
+  const fileSelectedHandler3 = (e) => {
+    setImage3({
+      selectedFile: e.target.files[0],
+    });
+  };
+
+  const fileUploader3 = async () => {
+    const pictureName = Math.floor(Math.random() * (99999 - 1) + 1);
+    const pictureName1 = Math.floor(Math.random() * (99999 - 1) + 1);
+    const body = new FormData();
+    body.set('key', '96cea888424c27c83b9632fbdfdf9da2');
+    body.set('name', `${pictureName}${pictureName1}`);
+    body.append('image', image3.selectedFile);
+    const data = await axiosImg.post('upload', body);
+    return data.data.data.url;
+    
+    // setShowUpload(false);
+  };
+  
+  const fileSelectedHandlerMenu = (e) => {
+    setImageMenu({
+      selectedFile: e.target.files[0],
+    });
+  };
+
+  const fileUploaderMenu = async () => {
+    const pictureName = Math.floor(Math.random() * (99999 - 1) + 1);
+    const pictureName1 = Math.floor(Math.random() * (99999 - 1) + 1);
+    const body = new FormData();
+    body.set('key', '96cea888424c27c83b9632fbdfdf9da2');
+    body.set('name', `${pictureName}${pictureName1}`);
+    body.append('image', imageMenu.selectedFile);
+    const data = await axiosImg.post('upload', body);
+    return data.data.data.url;
+    // setShowUpload(false);
+  };
+
+  const fileSelectedHandlerRestaurant = (e) => {
+    setImageRestaurant({
+      selectedFile: e.target.files[0],
+    });
+  };
+
+  const fileUploaderRestaurant = async () => {
+    const pictureName = Math.floor(Math.random() * (99999 - 1) + 1);
+    const pictureName1 = Math.floor(Math.random() * (99999 - 1) + 1);
+    const body = new FormData();
+    body.set('key', '96cea888424c27c83b9632fbdfdf9da2');
+    body.set('name', `${pictureName}${pictureName1}`);
+    body.append('image', imageRestaurant.selectedFile);
+    const data = await axiosImg.post('upload', body);
+    return data.data.data.url;
+    // setShowUpload(false);
+  };
   // отправляем данные по ресторану и фестивалю
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+
+    const url1 = await fileUploader1();
+    const url2 = await fileUploader2();
+    const url3 = await fileUploader3();
+    const urlMenu = await fileUploaderMenu();
+    const urlRestaurant = await fileUploaderRestaurant();
+    console.log('URLS! ', url1, url2, url3, urlMenu, urlRestaurant);
+    // console.log(e.target.files[0]);
+
     const {
       titleSets,
       adress,
@@ -60,6 +184,11 @@ function FormSets() {
       phone: phone.value,
       festivalId: festivalId.value,
       worktime: worktime.value,
+      url1,
+      url2,
+      url3,
+      urlMenu,
+      urlRestaurant,
     };
     e.target.reset();
     dispatch(formSetFetch(body));
@@ -170,6 +299,22 @@ function FormSets() {
         className={style.inputSize}
         placeholder='время работы ресторана'
         autoComplete="off"/>
+
+        <div>
+          <input id='imgid1' type="file" className={style.inputSize} onChange={fileSelectedHandler1}/>
+        </div>
+        <div>
+          <input id='imgid2' type="file" className={style.inputSize} onChange={fileSelectedHandler2}/>
+        </div>
+        <div>
+          <input id='imgid3' type="file" className={style.inputSize} onChange={fileSelectedHandler3}/>
+        </div>
+        <div>
+          <input id='imgidMenu' type="file" className={style.inputSize} onChange={fileSelectedHandlerMenu}/>
+        </div>
+        <div>
+          <input id='imgidRestaurant' type="file" className={style.inputSize} onChange={fileSelectedHandlerRestaurant}/>
+        </div>
        <button className={style.formBtn} type="submit">Отправить</button>
        <button className={style.formBtn} type="submit">Добавить фото</button>
      </div>

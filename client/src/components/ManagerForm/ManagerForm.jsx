@@ -89,6 +89,7 @@ function ManagerForm() {
              {result.map((el)=> (<option key={el.id} value={el.id}>{el.title}</option>) )}
              </select>
           </div>
+
           <div>
             <button className={style.formBtn} type="submit" id="formBtn">
               Отправить
