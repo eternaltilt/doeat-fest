@@ -1,4 +1,4 @@
-import { INIT_RESTAURANT_SET, ADD_RESTAURANT_SET} from '../ActionTypes/restaurantSetAT';
+import { INIT_RESTAURANT_SET, ADD_RESTAURANT_SET, FIND_RESTAURANT_SET} from '../ActionTypes/restaurantSetAT';
 
 export function initRestaurantSetAC(payload) {
   return {
@@ -12,4 +12,11 @@ export function addRestaurantSetAC(payload) {
     type: ADD_RESTAURANT_SET,
     payload,
   };
+}
+
+export function findRestaurantSetAC(payload) {
+  return {
+    type:  FIND_RESTAURANT_SET,
+    payload,
+  }
 }

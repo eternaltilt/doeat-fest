@@ -16,11 +16,11 @@ function RestaurantCard({ restaurant, festId }) {
     <div>
       <div className={style.background} onClick={() =>  navigate(`/calendar/${festId}/${restaurant.id}`)}>
         <div>
-          <img style={{ height: '200px', width: '100%' }} src={restaurant.img} alt="img" />
+          <img style={{ height: '200px', width: '100%' }} src={restaurant.RestaurantCard.img} alt="img" />
         </div>
         <div>
-          <span className={style.cardText}> {restaurant.title}</span>
-          <p className={style.cardText}>Адрес: {restaurant.adress} </p>
+          <span className={style.cardText}> {restaurant.RestaurantCard.title}</span>
+          <p className={style.cardText}>Адрес: {restaurant.RestaurantCard.adress} </p>
         </div>
       </div>
     </div>

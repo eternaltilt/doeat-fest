@@ -8,7 +8,7 @@ import { addRequestAC } from '../ActionCreators/managerRequestAC';
 import { managerAC } from '../ActionCreators/managerAC';
 import { delManagerAC } from '../ActionCreators/delManagerAC';
 import { initRestaurantAC } from '../ActionCreators/restaurantAC';
-import { initRestaurantSetAC} from '../ActionCreators/restaurantSetAC'
+import { findRestaurantSetAC, initRestaurantSetAC} from '../ActionCreators/restaurantSetAC'
 
 
 export const loginFetch = (payload) => {
@@ -93,6 +93,20 @@ export const restaurantSetFetch = () => {
       .catch((err) => console.log(err.message));
   };
 }
+
+// export const restaurantSetIdFetch = () => {
+//   return (dispatch) => {
+//     fetch(`${process.env.REACT_APP_BACK_DB}/restaurantCards`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     })
+//       .then((res) => res.json())
+//       .then((data) => dispatch(findRestaurantSetAC(data)))
+//       .catch((err) => console.log(err.message));
+//   };
+// }
 
 export const fetchAddRequest = (payload) => {
   return (dispatch) => {
