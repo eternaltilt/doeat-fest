@@ -14,7 +14,7 @@ router.route('/')
   }});
   res.json( set )
 })
-.post('/', async (req, res) => {
+.post(async (req, res) => {
   const {
     titleSets,
     adress,

@@ -14,7 +14,7 @@ function RestaurantCard({ restaurant, festId }) {
 
   return (
     <div>
-      <div className={style.background} onClick={() =>  navigate(`/calendar/${festId}/${restaurant.id}`)}>
+      <div className={style.background} onClick={() =>  navigate(`/calendar/${festId}/${restaurant.RestaurantCard.id}`)}>
         <div>
           <img style={{ height: '200px', width: '100%' }} src={restaurant.RestaurantCard.img} alt="img" />
         </div>

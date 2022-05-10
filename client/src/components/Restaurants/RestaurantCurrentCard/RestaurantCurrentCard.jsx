@@ -8,18 +8,19 @@ import style from './RestaurantCurrentCard.module.css';
 function RestaurantCurrentCard() {
   const dispatch = useDispatch();
   const { restId } = useParams();
-
+ console.log(restId)
   const { restaurants } = useSelector((state) => state.restaurantReducer);
   const { sets } = useSelector((state) => state.restaurantSetReducer);
   const { festival } = useSelector((state) => state.festivalReducer)
+  console.log(festival)
   const currentFest = festival.find((el) => el.id === +restId)
   const currentRest = restaurants.find((el) => el.id === +restId);
-  const currentSet = sets.find((el) => el.id === +currentRest.id)
+  const currentSet = sets.filter((el) => el.id === +currentRest.id)
   
-  // console.log('СЕТЫ ИЗ СТЕЙТА =>' , sets)
-  // console.log('КАРРЕНТ ФЕСТ => ', currentFest)
-  // console.log('КАРРЕНТ РЕСТ => ', currentRest)
-  // console.log('КАРРЕНТ СЕТ => ', currentSet)
+  console.log('СЕТЫ ИЗ СТЕЙТА =>' , sets)
+  console.log('КАРРЕНТ ФЕСТ => ', currentFest)
+  console.log('КАРРЕНТ РЕСТ => ', currentRest)
+  console.log('КАРРЕНТ СЕТ => ', currentSet)
 
 
   useEffect(() => {
