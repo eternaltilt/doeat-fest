@@ -34,6 +34,7 @@
         "default-param-last": "off",
         "prettier/prettier": "off",
         "react/jsx-props-no-spreading": "off",
+        "array-callback-return": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }]
     }
 }

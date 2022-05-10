@@ -1,77 +1,79 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { restaurantFetch } from '../../redux/thunk';
+
 
 function Map() {
+  // const [ myMap, setmyMap ]= useState('')
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(restaurantFetch())
+  },[dispatch])
   let myMap;
+  
+  const {restaurants} = useSelector(state=>state.restaurantReducer);
+
   const initMap = () => {
     window.ymaps.ready( () => {
-      myMap = new window.ymaps.Map(
+     myMap = new window.ymaps.Map(
         'map',
         {
           center: [59.92, 30.33],
           zoom: 12,
+          controls: [
+            'zoomControl',
+            'searchControl',
+            'fullscreenControl',
+            'routeButtonControl',
+          ],
         },
         {
           searchControlProvider: 'yandex#search',
         }
       );
-
-      const MyIconContentLayout = window.ymaps.templateLayoutFactory.createClass(
-        '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-      );
-
-      const myPlacemark = new window.ymaps.Placemark(
-        [59.92, 30.35],
-        {
-          hintContent: 'Собственный значок метки',
-          balloonContent: 'Это красивая метка',
-        },
-        {
-          // Опции.
-          // Необходимо указать данный тип макета.
-          // iconLayout: 'default#image',
-          // Своё изображение иконки метки.
-          iconImageHref: '/home/egor/elbrus/doeat-fest/client/public/img/geometka.png',
-          // Размеры метки.
-          iconImageSize: [30, 42],
-          // Смещение левого верхнего угла иконки относительно
-          // её "ножки" (точки привязки).
-          iconImageOffset: [-5, -38],
-        }
-      );
+     
+        restaurants.map((rest) => {
+          window.ymaps
+            .geocode(rest.adress, {
+              // boundedBy: myMap.getBounds(),
+            })
+            .then( (res)=> {
+              const firstGeoObj = res.geoObjects.get(0);
+              const coords = firstGeoObj.geometry.getCoordinates();
+  
+              const myPlacemark = new window.ymaps.Placemark(
+                coords,
+                {
+                    hintContent: rest.title,
+                    balloonContentHeader: `${rest.title}`,
+                    balloonContentBody: `${rest.description} `,
+                    // balloonContentBody: `<img src="${event.event_picture}" alt="event_pic" height="170">`,
+                    balloonContentFooter: `<br> ${rest.work_time }<br><a href="/calendar/${rest.id}">Посмотреть подробнее</a>`,
+                  },
+                {
+                  iconImageHref: '/home/egor/elbrus/doeat-fest/client/public/img/geometka.png',
+                  iconImageSize: [30, 42],
+                  iconImageOffset: [-5, -38],
+                }
+              );
+                myMap.geoObjects.add(myPlacemark);
+              })
+              return (rest)
+        });
       
-      const myPlacemarkWithContent = new window.ymaps.Placemark(
-        [59.93, 30.33],
-        {
-          hintContent: 'Собственный значок метки с контентом',
-          balloonContent: 'А эта — новогодняя',
-          iconContent: '12',
-        },
-        {
-          // Опции.
-          // Необходимо указать данный тип макета.
-          // iconLayout: 'default#imageWithContent',
-          // Своё изображение иконки метки.
-          iconImageHref: 'images/ball.png',
-          // Размеры метки.
-          iconImageSize: [48, 48],
-          // Смещение левого верхнего угла иконки относительно
-          // её "ножки" (точки привязки).
-          iconImageOffset: [-24, -24],
-          // Смещение слоя с содержимым относительно слоя с картинкой.
-          iconContentOffset: [15, 15],
-          // Макет содержимого.
-          iconContentLayout: MyIconContentLayout,
-        }
-        );
-        
-        myMap.geoObjects.add(myPlacemark).add(myPlacemarkWithContent);
+   
       });
     };
-    useEffect(() => {
+
+  
+
+  useEffect(() => {
       initMap();
       return ()=> myMap.destroy()
-    }, []);
-  return <div id="map" style={{ width:"90%", height:"1000px", marginLeft:"5%" }}>fd</div>;
+    }, [myMap,restaurants]);
+
+
+  return <div id="map" style={{ width:"90%", height:'600px', marginLeft:"5%" }}>.</div>;
 }
 
 export default Map;
