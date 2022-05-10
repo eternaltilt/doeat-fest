@@ -8,6 +8,7 @@ import { addRequestAC } from '../ActionCreators/managerRequestAC';
 import { managerAC } from '../ActionCreators/managerAC';
 import { delManagerAC } from '../ActionCreators/delManagerAC';
 import { initRestaurantAC } from '../ActionCreators/restaurantAC';
+import { initRestaurantSetAC} from '../ActionCreators/restaurantSetAC'
 
 
 export const loginFetch = (payload) => {
@@ -79,6 +80,19 @@ export const restaurantFetch = () => {
   };
 }
  
+export const restaurantSetFetch = () => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/sets`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(initRestaurantSetAC(data)))
+      .catch((err) => console.log(err.message));
+  };
+}
 
 export const fetchAddRequest = (payload) => {
   return (dispatch) => {

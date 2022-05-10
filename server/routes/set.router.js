@@ -5,8 +5,12 @@ const { Pictures } = require('../db/models');
 const fileMiddleware = require('../middleware/uploadMiddleware');
 
 //test
-
-router.post('/', fileMiddleware.any(), async (req, res) => {
+router.route('/')
+.get(async (req, res) => {
+  const set = await RestaurantSet.findAll();
+  res.json( set )
+})
+.post(fileMiddleware.any(), async (req, res) => {
   // console.log('FILES ', req.files);
   // try {
   //   console.log(req.file);
