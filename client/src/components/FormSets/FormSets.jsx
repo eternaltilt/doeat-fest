@@ -9,7 +9,8 @@ import {
   formSetFetch,
   festivalFetch,
   fetchAddFestival,
-  managerFetch
+  managerFetch,
+  delManager,
 } from '../../redux/thunk';
 import style from './FormSets.module.css';
 
@@ -37,7 +38,8 @@ function FormSets() {
     localStorage.clear();
     navigate('/admin');
   };
-  const rezultat = festival.fest ? festival.fest : [];
+  const rezultat = festival || [];
+
 
   // const config = {
   //   onUploadProgress (progressEvent) {
@@ -188,7 +190,6 @@ function FormSets() {
       urlMenu,
       urlRestaurant,
     };
-    console.log('BODY ', body);
     e.target.reset();
     dispatch(formSetFetch(body));
   };
@@ -210,23 +211,17 @@ function FormSets() {
 
 
   // вытаскиваем все фестивали
-  const festival1 = () => {
-    dispatch(festivalFetch());
-  };
-
   // заявки от менеджеров
   useEffect(()=>{
     dispatch(managerFetch())
+    dispatch(festivalFetch());
   },[])
   const { RestaurantManager } = useSelector((state) => state.applicationReducer);
-  const application = RestaurantManager.RestaurantManager1?RestaurantManager.RestaurantManager1:[];
-  
-  // удаление заявки p.s.не работает
-  const deleteManager = () =>{
-    console.log({id:application.id});
-    //  dispatch(delManager({id:application.id}))
-  }
 
+  // удаление заявки
+  const deleteManager = (id) =>{
+    dispatch(delManager(id))
+  };
 
   return (
     <>
@@ -266,7 +261,7 @@ function FormSets() {
         className={style.inputSize}
         placeholder='Вес'
         autoComplete="off"/>
-       <select onClick={festival1}
+       <select
         className={style.inputSize}
         placeholder='Фестиваль'
         id="festivalId">
@@ -287,7 +282,7 @@ function FormSets() {
        <input type="text"
         id='phone'
         className={style.inputSize}
-        placeholder='телефон'
+        placeholder='Телефон'
         autoComplete="off"/>
        <input type="text"
         id='description'
@@ -320,7 +315,6 @@ function FormSets() {
         <div>
           <input id='imgidRestaurant' type="file" className={style.inputSize} onChange={fileSelectedHandlerRestaurant}/>
         </div>
-
        <button className={style.formBtn} type="submit">Отправить</button>
        <button className={style.formBtn} type="submit">Добавить фото</button>
      </div>
@@ -331,13 +325,13 @@ function FormSets() {
 
       <h3 className={style.festFormTitle}>Заявки</h3>
         <section className={style.Formapp}>
-         {application.map((el)=>(<ul className={style.manager} key={el.id}>
+         {RestaurantManager.map((el)=>(<ul className={style.manager} key={el.id}>
            <li className={style.application}>{el.name}</li>
            <li className={style.application}>{el.phone_number}</li>
            <li className={style.application}>{el.email}</li>
            <li className={style.application}>{el.restaurant_name}</li>
-           <li className={style.application}>{el.festival_id}</li>
-           <button onClick={deleteManager} className={style.delete} type="submit">
+           <li className={style.application}>{rezultat.map((res) => +res.id === +el.festival_id && res.title) }</li>
+           <button onClick={()=>deleteManager(el.id)} className={style.delete} type="submit">
            🗑
             </button>
            </ul>))}

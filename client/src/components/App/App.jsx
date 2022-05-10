@@ -7,35 +7,42 @@ import FormSets from '../FormSets/FormSets';
 import AdminLogin from '../AdminLogin/AdminLogin';
 import Navbar from '../Navbar/Navbar';
 import Home from '../Home/Home';
+import Map from '../Map/Map';
 import ManagerForm from '../ManagerForm/ManagerForm';
-import Fests from '../Fests/Fests';
+import CurrentFestCard from '../Fests/CurrentFestCard/CurrentFestCard';
+import RestaurantCurrentCard from '../Restaurants/RestaurantCurrentCard/RestaurantCurrentCard';
+import FestList from '../Fests/FestList/FestList';
 import Footer from '../Footer/Footer';
 import style from './App.module.css';
 
-
-
-
 function App() {
   // проверка на наличие ключа в localStorage
-  const [local, setLocal]= useState(false)
-  useEffect(()=>{
-    if(localStorage.getItem('Admin') === 'anna') {
-      setLocal(true)
+  const [local, setLocal] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem('Admin') === 'anna') {
+      setLocal(true);
     }
-  },[])
+  }, []);
   return (
     <Provider store={store}>
       <BrowserRouter>
-      <Navbar />
+        <Navbar />
         <Routes>
+      <Route path='/map' element={<Map/>}/>
           <Route path="/admin" element={<AdminLogin />} />
-          {local?<Route path="/admin/panel" element={<FormSets />} />:<Route path="/admin/panel" element={<AdminLogin />} />}
+          {local ? (
+            <Route path="/admin/panel" element={<FormSets />} />
+          ) : (
+            <Route path="/admin/panel" element={<AdminLogin />} />
+          )}
           <Route path="/" element={<Home />} />
-          <Route path="/fests" element={<Fests />} />
-          
+          {/* <Route path="/fests" element={<Fests />} /> */}
           <Route path="/participate" element={<ManagerForm />} />
+          <Route path="/calendar" element={<FestList />} />
+          <Route path="/calendar/:id" element={<CurrentFestCard />} />
+          <Route path="/calendar/:id/:restId" element={<RestaurantCurrentCard />} />
         </Routes>
-       <Footer />
+        <Footer />
       </BrowserRouter>
     </Provider>
   );

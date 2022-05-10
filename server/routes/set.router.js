@@ -7,8 +7,14 @@ const path = require('path');
 // const fileMiddleware = require('../middleware/uploadMiddleware');
 
 //test
-
-router.post('/', async (req, res) => {
+router.route('/')
+.get(async (req, res) => {
+  const set = await RestaurantSet.findAll({include: {
+    model: RestaurantCard
+  }});
+  res.json( set )
+})
+.post('/', async (req, res) => {
   const {
     titleSets,
     adress,
@@ -29,25 +35,6 @@ router.post('/', async (req, res) => {
     urlMenu,
     urlRestaurant,
   } = req.body;
-  console.log('URLS! ', 
-  titleSets,
-  adress,
-  phone,
-  link,
-  setDescription,
-  firstDish,
-  secondDish,
-  thirdDish,
-  allWeight,
-  titleRest,
-  description,
-  festivalId,
-  worktime,
-  url1,
-  url2,
-  url3,
-  urlMenu,
-  urlRestaurant);
   //прверка на наличие ресторана в базе
   const restTitle = await RestaurantCard.findOne({
     where: { title: titleRest },
@@ -65,7 +52,6 @@ router.post('/', async (req, res) => {
       festival_id: festivalId,
     });
     const restSetId = restSets.id;
-    console.log('URLS@2!!!!!!!\n', urlMenu);
     const pics = await Pictures.create({
       restaurantSet_id: restSetId,
       img_menu: urlMenu,
@@ -83,6 +69,9 @@ router.post('/', async (req, res) => {
       link,
       phone,
       img: urlRestaurant,
+      work_time: worktime,
+      phone,
+      link,
       work_time: worktime,
     });
     const restSets = await RestaurantSet.create({

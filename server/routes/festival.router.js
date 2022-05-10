@@ -4,7 +4,7 @@ const { Festival } = require("../db/models");
 router.route("/")
 .get(async (req, res) => {
   const fest = await Festival.findAll();
-  res.json({ fest });
+  res.json( fest );
 })
 .post(async (req, res) => {
   try{
@@ -22,7 +22,7 @@ router.route("/")
     finish_date: festivalEnd,
     festivalSetPrice: festivalSetPrice,
   })
-  res.json({ newFestival });
+  res.json(newFestival);
 } catch(error) {
   console.log(error.message)
 }
