@@ -64,10 +64,6 @@ function FormSets() {
     body.append('image', image1.selectedFile);
     const data = await axiosImg.post('upload', body);
     return data.data.data.url;
-    // setUrl1(data.data.data.url);
-    // console.log('URL1 ', url1);
-    // console.log('DATA 1 !!! ', data.data.data.url);
-    // setShowUpload(false);
   };
 
   const fileSelectedHandler2 = (e) => {
@@ -85,7 +81,6 @@ function FormSets() {
     body.append('image', image2.selectedFile);
     const data = await axiosImg.post('upload', body);
     return data.data.data.url;
-    // setShowUpload(false);
   };
 
   const fileSelectedHandler3 = (e) => {
@@ -122,7 +117,6 @@ function FormSets() {
     body.append('image', imageMenu.selectedFile);
     const data = await axiosImg.post('upload', body);
     return data.data.data.url;
-    // setShowUpload(false);
   };
 
   const fileSelectedHandlerRestaurant = (e) => {
@@ -140,7 +134,6 @@ function FormSets() {
     body.append('image', imageRestaurant.selectedFile);
     const data = await axiosImg.post('upload', body);
     return data.data.data.url;
-    // setShowUpload(false);
   };
   // отправляем данные по ресторану и фестивалю
   const onSubmit = async (e) => {
@@ -151,9 +144,6 @@ function FormSets() {
     const url3 = await fileUploader3();
     const urlMenu = await fileUploaderMenu();
     const urlRestaurant = await fileUploaderRestaurant();
-    console.log('URLS! ', url1, url2, url3, urlMenu, urlRestaurant);
-    // console.log(e.target.files[0]);
-
     const {
       titleSets,
       adress,
@@ -225,7 +215,7 @@ function FormSets() {
 
   return (
     <>
- <div>
+ <div className={style.FormSetContainer}>
      <form className={style.form} onSubmit={onSubmit} action="">
        <button onClick ={toLogout} className={style.formBtnExit} type='button'>Выйти</button> <br />
        <div  className={style.title} >Добавить участника</div>
@@ -316,13 +306,10 @@ function FormSets() {
           <input id='imgidRestaurant' type="file" className={style.inputSize} onChange={fileSelectedHandlerRestaurant}/>
         </div>
        <button className={style.formBtn} type="submit">Отправить</button>
-       <button className={style.formBtn} type="submit">Добавить фото</button>
      </div>
      </div>
      </form>
     </div>
-
-
       <h3 className={style.festFormTitle}>Заявки</h3>
         <section className={style.Formapp}>
          {RestaurantManager.map((el)=>(<ul className={style.manager} key={el.id}>
@@ -364,6 +351,7 @@ function FormSets() {
             </div>
             <div>
               <input
+                className={style.inputDate}
                 type="date"
                 id="festivalStart"
                 name="festivalStart"
@@ -373,6 +361,7 @@ function FormSets() {
             </div>
             <div>
               <input
+              className={style.inputDate}
                 type="date"
                 id="festivalEnd"
                 name="festivalEnd"
@@ -389,7 +378,7 @@ function FormSets() {
                 autoComplete="off"
               />
             </div>
-            <button type="submit">Сохранить</button>
+            <button className={style.festivalBtn}type="submit">Сохранить</button>
           </form>
         </div>
         

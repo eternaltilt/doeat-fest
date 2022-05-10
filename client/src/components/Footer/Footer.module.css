@@ -6,6 +6,8 @@
   border-top: 2px solid #482f21;
   padding-top: 14px;
   color: white;
-  margin: 40px 40px;
   flex-grow: 0;
+  margin-left: 40px;
+  margin-right: 40px;
+  height: 179px;
 }

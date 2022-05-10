@@ -47,7 +47,7 @@ function CurrentFestCard() {
           </div>
         </div>
       </div>
-      <div>
+      <div className={style.cardsContainer}>
        {currentSet.length && currentSet.map(el => <RestaurantCard key={el.id} restaurant = {el} festId ={id}/>)}
       </div>
     </div>
