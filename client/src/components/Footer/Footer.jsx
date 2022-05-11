@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import style from './Footer.module.css';
 
 function Footer() {
@@ -7,8 +9,8 @@ function Footer() {
       <h3>DoEat fest</h3>
 
       <div>
-        <p>О нас</p>
-        <p>Новости</p>
+        <p><Link to="/info">О нас</Link></p>
+        <p><Link to="/news">Новости</Link></p>
         <p>Участники</p>
       </div>
 

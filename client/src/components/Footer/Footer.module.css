@@ -11,3 +11,12 @@
   margin-right: 40px;
   height: 179px;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: white;
+}

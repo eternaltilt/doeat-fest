@@ -28,13 +28,8 @@ function RestaurantCurrentCard() {
   const currentRest = restaurants.find((el) => el.id === +restId);
   const currentSet = sets.filter((el) => el.id === +currentRest.id);
   const currentComments = comments.filter(comm => comm.restaurantCard_id === currentRest.id);
-  console.log(currentRest)
 
   useEffect(() => {
-    dispatch(restaurantFetch());
-    dispatch(restaurantSetFetch());
-    dispatch(restaurantCommentsFetch());
-    dispatch(festivalFetch());
     dispatch(picturesFetch(currentSet[0].id))
   }, [dispatch]);
 
@@ -163,15 +158,15 @@ function RestaurantCurrentCard() {
     <div>
       <p className={style.mapTitle}>Карта</p>
       <div style={{'width':'861px', 'height':'653px'}}>
-        <Map />
+        {/* <Map /> */}
       </div>
     </div>
   </div>
     </section>
     <section className={style.commentsContainer}>
       <form action="" onSubmit={addComment}>
-        <input type="text" id='username' placeholder='Введите ваше имя'/>
-        <input type="text" id='text' placeholder='Введите ваш отзыв о ресторане'/>
+        <input type="text" id='username' placeholder='Введите ваше имя' autoComplete='off'/>
+        <input type="text" id='text' placeholder='Введите ваш отзыв о ресторане' autoComplete='off'/>
         <input type="submit" />
       </form>
       <p>{commentStatus}</p>
