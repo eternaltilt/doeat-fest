@@ -36,7 +36,7 @@ function Navbar() {
         <Link to="/calendar">
           <div className={style.navCalendarPos}>
             <button className={style.navCalendar} type="submit">
-              <img src="svg/Calendar.svg" alt="calendar" />
+              <img src="/svg/Calendar.svg" alt="calendar" />
             </button>
           </div>
         </Link>
