@@ -8,7 +8,7 @@ import { addRequestAC } from '../ActionCreators/managerRequestAC';
 import { managerAC } from '../ActionCreators/managerAC';
 import { delManagerAC } from '../ActionCreators/delManagerAC';
 import { initRestaurantAC, initRestaurantCommentsAC } from '../ActionCreators/restaurantAC';
-import { findRestaurantSetAC, initRestaurantSetAC} from '../ActionCreators/restaurantSetAC'
+import { findRestaurantSetAC, initRestaurantSetAC} from '../ActionCreators/restaurantSetAC';
 
 
 export const loginFetch = (payload) => {
@@ -111,6 +111,18 @@ export const restaurantCommentsFetch = () => {
 export const submitCommentFetch = (payload) => {
   return () => {
     fetch(`${process.env.REACT_APP_BACK_DB}/comments`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+  };
+};
+
+export const confirmDeclineRestaurantCommentFetch = (payload) => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/comments/confirmdecline`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

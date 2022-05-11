@@ -4,7 +4,6 @@ const { RestaurantComments } = require('../db/models');
 router
   .get('/', async (req, res) => {
     const comments = await RestaurantComments.findAll();
-    console.log('COMMS ', comments);
     res.json(comments);
   })
   .post('/', async (req, res) => {
@@ -20,6 +19,22 @@ router
       status: false,
     })
     res.json(newComment);
+  })
+  .post('/confirmdecline', async (req, res) => {
+    const {
+      id,
+      isConfirmed,
+    } = req.body;
+    if (isConfirmed) {
+      const currComment = RestaurantComments.update(
+        { status: true },
+        { where: { id } },
+      );
+    } else {
+      RestaurantComments.destroy({
+        where: { id },
+      });
+    }
   });
 
 module.exports = router;
