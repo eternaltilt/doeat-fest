@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { festivalFetch, restaurantFetch, restaurantSetFetch, restaurantCommentsFetch, submitCommentFetch } from '../../../redux/thunk';
+import { festivalFetch, restaurantFetch, restaurantSetFetch, restaurantCommentsFetch, submitCommentFetch, picturesFetch } from '../../../redux/thunk';
 import style from './RestaurantCurrentCard.module.css';
 import Comment  from '../../Comment/Comment';
 
@@ -19,6 +19,7 @@ function RestaurantCurrentCard() {
   const currentRest = restaurants.find((el) => el.id === +restId);
   const currentSet = sets.filter((el) => el.id === +currentRest.id);
   const currentComments = comments.filter(comm => comm.restaurantCard_id === currentRest.id);
+  console.log(currentSet[0].id)
   // const currentFest = festival.find((el) => el.id === +id)
   // const currentRest = restaurants.find((el) => el.id === +restId);
   // const currentSet = sets.filter((el) => el.id === +currentRest.id)
@@ -28,6 +29,7 @@ function RestaurantCurrentCard() {
     dispatch(restaurantSetFetch());
     dispatch(restaurantCommentsFetch());
     dispatch(festivalFetch());
+    dispatch(picturesFetch(currentSet[0].id))
   }, [dispatch]);
 
   const addComment = (e) => {
@@ -46,12 +48,16 @@ function RestaurantCurrentCard() {
   }
 
   return (
+    <>
     <section className={style.currentRestContainer}>
       <div className={style.currentRestInfo}>
         <h2 className={style.currentRestTitle}>{currentRest.title}</h2>
         <p className={style.currentRestText}>{currentRest.description}</p>
         <p className={style.currentRestPrice}>Стоимость сета: {currentFest?.festivalSetPrice}&#8381;</p>
       </div>
+    <img src="/" alt='img'/> 
+    </section>
+    <section className={style.commentsContainer}>
       <form action="" onSubmit={addComment}>
         <input type="text" id='username' placeholder='Введите ваше имя'/>
         <input type="text" id='text' placeholder='Введите ваш отзыв о ресторане'/>
@@ -61,6 +67,7 @@ function RestaurantCurrentCard() {
         { currentComments.map((comment) => comment.status && <Comment username={comment.username} text={comment.text} status={comment.status} /> ) }
       </div>
     </section>
+    </>
   );
 }
 
