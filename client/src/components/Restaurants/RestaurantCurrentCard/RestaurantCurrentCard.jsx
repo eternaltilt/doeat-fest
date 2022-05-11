@@ -13,7 +13,8 @@ function RestaurantCurrentCard() {
   const { sets } = useSelector((state) => state.restaurantSetReducer);
   const { festival } = useSelector((state) => state.festivalReducer)
   const { comments } = useSelector((state) => state.restaurantReducer);
- 
+  console.log(restaurants,'restaurants');
+  console.log(restId,'restId');
 
   const currentFest = festival.find((el) => el.id === +restId);
   const currentRest = restaurants.find((el) => el.id === +restId);
