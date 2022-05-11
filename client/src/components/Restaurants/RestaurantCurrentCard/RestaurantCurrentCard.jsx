@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
@@ -14,6 +14,7 @@ import { festivalFetch, restaurantFetch, restaurantSetFetch, restaurantCommentsF
 
 function RestaurantCurrentCard() {
   const dispatch = useDispatch();
+  const [commentStatus, setCommentStatus] = useState('');
   const { restId, id } = useParams();
   const { restaurants } = useSelector((state) => state.restaurantReducer);
   const { sets } = useSelector((state) => state.restaurantSetReducer);
@@ -38,18 +39,29 @@ function RestaurantCurrentCard() {
   }, [dispatch]);
 
   const addComment = (e) => {
+
     e.preventDefault();
     const {
       username,
       text,
     } = e.target;
-    const body = {
-      username: username.value,
-      text: text.value,
-      restaurantCard_id: currentRest.id,
+    console.log('USERNAME ', username);
+    console.log('TEXT ', text);
+    if (username.value === '' && text.value === '') {
+      setCommentStatus('Введите имя и комментарий!');
+    } else if (username.value === '') {
+      setCommentStatus('Введите имя!');
+    } else if (text.value === '') {
+      setCommentStatus('Введите комментарий!');
+    } else {
+      const body = {
+        username: username.value,
+        text: text.value,
+        restaurantCard_id: currentRest.id,
+      }
+      e.target.reset();
+      dispatch(submitCommentFetch(body));
     }
-    e.target.reset();
-    dispatch(submitCommentFetch(body));
   }
 
   return (
@@ -162,6 +174,7 @@ function RestaurantCurrentCard() {
         <input type="text" id='text' placeholder='Введите ваш отзыв о ресторане'/>
         <input type="submit" />
       </form>
+      <p>{commentStatus}</p>
       <div>
         { currentComments.map((comment) => comment.status && <Comment username={comment.username} text={comment.text} status={comment.status} /> ) }
       </div>
