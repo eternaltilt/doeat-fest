@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -148,6 +149,9 @@ function FormSets() {
       description,
       festivalId,
       worktime,
+      firstDishDescription,
+      secondDishDescription,
+      thirdDishDescription,
     } = e.target;
 
     const body = {
@@ -156,6 +160,9 @@ function FormSets() {
       firstDish: firstDish.value,
       secondDish: secondDish.value,
       thirdDish: thirdDish.value,
+      firstDishDescription:firstDishDescription.value,
+      secondDishDescription: secondDishDescription.value,
+      thirdDishDescription: thirdDishDescription.value,
       allWeight: allWeight.value,
       titleRest: titleRest.value,
       description: description.value,
@@ -257,16 +264,31 @@ function FormSets() {
         className={style.inputSize}
         placeholder='1 блюдо'
         autoComplete="off" />
+         <input type="text"
+        id='firstDishDescription'
+        className={style.inputSize}
+        placeholder='Описание блюда'
+        autoComplete="off" />
        <input type="text"
         id='secondDish'
         className={style.inputSize}
         placeholder='2 блюдо'
         autoComplete="off"/>
+         <input type="text"
+        id='secondDishDescription'
+        className={style.inputSize}
+        placeholder='Описание блюда'
+        autoComplete="off" />
        <input type="text"
         id='thirdDish'
         className={style.inputSize}
         placeholder='3 блюдо'
         autoComplete="off"/>
+         <input type="text"
+        id='thirdDishDescription'
+        className={style.inputSize}
+        placeholder='Описание блюда'
+        autoComplete="off" />
        <input type="text"
         id='setDescription'
         className={style.inputSize}
@@ -317,18 +339,23 @@ function FormSets() {
         autoComplete="off"/>
 
         <div>
+          <label style={{'padding-left':'10px'}} htmlFor="imgid1">1 блюдо</label> 
           <input id='imgid1' type="file" className={style.inputDownload} onChange={fileSelectedHandler1}/>
         </div>
         <div>
+        <label style={{'padding-left':'10px'}} htmlFor="imgid2">2 блюдо</label> 
           <input id='imgid2' type="file" className={style.inputDownload} onChange={fileSelectedHandler2}/>
         </div>
         <div>
+        <label style={{'padding-left':'10px'}} htmlFor="imgid3">3 блюдо</label> 
           <input id='imgid3' type="file" className={style.inputDownload} onChange={fileSelectedHandler3}/>
         </div>
         <div>
+        <label style={{'padding-left':'10px'}} htmlFor="imgidMenu">Фотография сета</label> 
           <input id='imgidMenu' type="file" className={style.inputDownload} onChange={fileSelectedHandlerMenu}/>
         </div>
         <div>
+        <label style={{'padding-left':'10px'}} htmlFor="imgidRestaurant">Фотография ресторана</label> 
           <input id='imgidRestaurant' type="file" className={style.inputDownload} onChange={fileSelectedHandlerRestaurant}/>
         </div>
        <button onClick={application} className={style.formBtn} type="submit">Отправить</button>

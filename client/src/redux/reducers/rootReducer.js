@@ -5,6 +5,7 @@ import { managerReducer } from './managerReducer';
 import { applicationReducer } from './applicationReducer';
 import { restaurantReducer } from './restaurantReducer';
 import { restaurantSetReducer } from './restaurantSetReducer';
+import { picturesReducer } from './picturesReducer';
 
 export const rootReducer = combineReducers({
   loginReducer,
@@ -13,4 +14,5 @@ export const rootReducer = combineReducers({
   applicationReducer,
   restaurantReducer,
   restaurantSetReducer,
+  picturesReducer,
 });

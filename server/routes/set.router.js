@@ -34,7 +34,11 @@ router.route('/')
     url3,
     urlMenu,
     urlRestaurant,
+    firstDishDescription,
+    secondDishDescription,
+    thirdDishDescription,
   } = req.body;
+  console.log(req.body)
   //прверка на наличие ресторана в базе
   const restTitle = await RestaurantCard.findOne({
     where: { title: titleRest },
@@ -50,6 +54,9 @@ router.route('/')
       all_weight: allWeight,
       restaurantCard_id: restTitle.id,
       festival_id: festivalId,
+      first_dish_description: firstDishDescription,
+      second_dish_description: secondDishDescription,
+      third_dish_description: thirdDishDescription,
     });
     const restSetId = restSets.id;
     const pics = await Pictures.create({
@@ -83,6 +90,9 @@ router.route('/')
       all_weight: allWeight,
       restaurantCard_id: restCard.id,
       festival_id: festivalId,
+      first_dish_description: firstDishDescription,
+      second_dish_description: secondDishDescription,
+      third_dish_description: thirdDishDescription,
     });
     const restSetId = restSets.id;
     const pics = await Pictures.create({

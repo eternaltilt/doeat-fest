@@ -47,6 +47,18 @@ module.exports = {
           key: 'id',
         },
       },
+      first_dish_description: {
+        type: Sequelize.TEXT,
+        allowNull:false,
+      },
+      second_dish_description: {
+        type: Sequelize.TEXT,
+        allowNull:false,
+      },
+      third_dish_description: {
+        type: Sequelize.TEXT,
+        allowNull:false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
