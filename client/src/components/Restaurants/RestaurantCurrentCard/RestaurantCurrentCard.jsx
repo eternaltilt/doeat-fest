@@ -15,6 +15,7 @@ import { festivalFetch, restaurantFetch, restaurantSetFetch, restaurantCommentsF
 function RestaurantCurrentCard() {
   const dispatch = useDispatch();
   const [ stateMap, setState ] = useState(true)
+  const [commentStatus, setCommentStatus] = useState('');
   const { restId, id } = useParams();
   const { restaurants } = useSelector((state) => state.restaurantReducer);
   const { sets } = useSelector((state) => state.restaurantSetReducer);
@@ -31,26 +32,33 @@ function RestaurantCurrentCard() {
   const arrRest = [currentRest]
 
   useEffect(() => {
-    dispatch(restaurantFetch());
-    dispatch(restaurantSetFetch());
-    dispatch(restaurantCommentsFetch());
-    dispatch(festivalFetch());
     dispatch(picturesFetch(currentSet[0].id))
   }, [dispatch]);
 
   const addComment = (e) => {
+
     e.preventDefault();
     const {
       username,
       text,
     } = e.target;
-    const body = {
-      username: username.value,
-      text: text.value,
-      restaurantCard_id: currentRest.id,
+    console.log('USERNAME ', username);
+    console.log('TEXT ', text);
+    if (username.value === '' && text.value === '') {
+      setCommentStatus('Введите имя и комментарий!');
+    } else if (username.value === '') {
+      setCommentStatus('Введите имя!');
+    } else if (text.value === '') {
+      setCommentStatus('Введите комментарий!');
+    } else {
+      const body = {
+        username: username.value,
+        text: text.value,
+        restaurantCard_id: currentRest.id,
+      }
+      e.target.reset();
+      dispatch(submitCommentFetch(body));
     }
-    e.target.reset();
-    dispatch(submitCommentFetch(body));
   }
 
   // map
@@ -216,18 +224,19 @@ function RestaurantCurrentCard() {
     </div>
     <div>
       <p className={style.mapTitle}>Карта</p>
-      <div style={{'width':'861px', 'height':'653px'}}>
       <div style={{'width':'861px', 'height':'653px'}} id="map" />
+        {/* <Map /> */}
       </div>
     </div>
   </div>
     </section>
     <section className={style.commentsContainer}>
       <form action="" onSubmit={addComment}>
-        <input type="text" id='username' placeholder='Введите ваше имя'/>
-        <input type="text" id='text' placeholder='Введите ваш отзыв о ресторане'/>
+        <input type="text" id='username' placeholder='Введите ваше имя' autoComplete='off'/>
+        <input type="text" id='text' placeholder='Введите ваш отзыв о ресторане' autoComplete='off'/>
         <input type="submit" />
       </form>
+      <p>{commentStatus}</p>
       <div>
         { currentComments.map((comment) => comment.status && <Comment username={comment.username} text={comment.text} status={comment.status} /> ) }
       </div>

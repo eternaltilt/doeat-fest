@@ -35,11 +35,11 @@
 }
 
 .imgContainer {
-  width: 1360px;
-  height: 562px;
   margin-left: 40px;
   margin-right: 40px;
   margin-bottom: 80px;
+  justify-content: center;
+  display: flex;
 }
 
 .mainImg {
@@ -63,8 +63,10 @@
 }
 
 .contentContainer {
-  grid-template-columns: 500px 1fr;
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
 }
 .restTitle {
   font-weight: 400;

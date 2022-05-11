@@ -15,6 +15,7 @@ import FestList from '../Fests/FestList/FestList';
 import Footer from '../Footer/Footer';
 import style from './App.module.css';
 import AdminCommentApproval from '../AdminCommentApproval/AdminCommentApproval';
+import Info from '../Info/Info';
 
 function App() {
   // проверка на наличие ключа в localStorage
@@ -43,6 +44,7 @@ function App() {
           <Route path="/calendar" element={<FestList />} />
           <Route path="/calendar/:id" element={<CurrentFestCard />} />
           <Route path="/calendar/:id/:restId" element={<RestaurantCurrentCard />} />
+          <Route path="/info" element={<Info />}/>
         </Routes>
         <Footer />
       </BrowserRouter>
