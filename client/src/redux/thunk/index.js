@@ -7,7 +7,7 @@ import { festivalAC, addFestivalAC } from '../ActionCreators/festivalAC';
 import { addRequestAC } from '../ActionCreators/managerRequestAC';
 import { managerAC } from '../ActionCreators/managerAC';
 import { delManagerAC } from '../ActionCreators/delManagerAC';
-import { initRestaurantAC } from '../ActionCreators/restaurantAC';
+import { initRestaurantAC, initRestaurantCommentsAC } from '../ActionCreators/restaurantAC';
 import { findRestaurantSetAC, initRestaurantSetAC} from '../ActionCreators/restaurantSetAC'
 
 
@@ -94,6 +94,31 @@ export const restaurantSetFetch = () => {
   };
 }
 
+export const restaurantCommentsFetch = () => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/comments`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch(initRestaurantCommentsAC(data)))
+      .catch((err) => console.log(err.message));
+  };
+}
+
+export const submitCommentFetch = (payload) => {
+  return () => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/comments`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+  };
+};
 // export const restaurantSetIdFetch = () => {
 //   return (dispatch) => {
 //     fetch(`${process.env.REACT_APP_BACK_DB}/restaurantCards`, {
