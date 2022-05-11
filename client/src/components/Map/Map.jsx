@@ -1,21 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { restaurantFetch } from '../../redux/thunk';
 
 
 function Map() {
-  // const [ myMap, setmyMap ]= useState('')
+  const [ myMap, setmyMap ]= useState({})
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(restaurantFetch())
   },[dispatch])
-  let myMap;
-  
+
   const {restaurants} = useSelector(state=>state.restaurantReducer);
 
   const initMap = () => {
     window.ymaps.ready( () => {
-     myMap = new window.ymaps.Map(
+      const myMapS = new window.ymaps.Map(
         'map',
         {
           center: [59.92, 30.33],
@@ -30,50 +29,54 @@ function Map() {
         {
           searchControlProvider: 'yandex#search',
         }
-      );
-     
-        restaurants.map((rest) => {
-          window.ymaps
-            .geocode(rest.adress, {
-              // boundedBy: myMap.getBounds(),
-            })
-            .then( (res)=> {
-              const firstGeoObj = res.geoObjects.get(0);
-              const coords = firstGeoObj.geometry.getCoordinates();
-  
-              const myPlacemark = new window.ymaps.Placemark(
-                coords,
-                {
-                    hintContent: rest.title,
-                    balloonContentHeader: `${rest.title}`,
-                    balloonContentBody: `${rest.description} `,
-                    // balloonContentBody: `<img src="${event.event_picture}" alt="event_pic" height="170">`,
-                    balloonContentFooter: `<br> ${rest.work_time }<br><a href="/calendar/${rest.id}">Посмотреть подробнее</a>`,
-                  },
-                {
-                  iconImageHref: '/home/egor/elbrus/doeat-fest/client/public/img/geometka.png',
-                  iconImageSize: [30, 42],
-                  iconImageOffset: [-5, -38],
-                }
-              );
-                myMap.geoObjects.add(myPlacemark);
-              })
-              return (rest)
-        });
-      
-   
-      });
+        )
+        setmyMap(myMapS)
+        
+      })
     };
 
+   const addMarks = ()=>restaurants.map((rest) => {
+      window.ymaps
+        .geocode(rest.adress, {
+          // boundedBy: myMap.getBounds(),
+        })
+        .then( (res)=> {
+          const firstGeoObj = res.geoObjects.get(0);
+          const coords = firstGeoObj.geometry.getCoordinates();
+          const myPlacemark = new window.ymaps.Placemark(
+            coords,
+            {
+                hintContent: rest.title,
+                balloonContentHeader: `${rest.title}`,
+                balloonContentBody: `${rest.description} <br>
+                <img src="${rest.img}" alt="event_pic" width=200 height="150">`,
+                balloonContentFooter: `<br> ${rest.work_time }<br><a href="/calendar/${rest.id}">Посмотреть подробнее</a>`,
+              },
+            {
+              iconImageSize: [30, 42],
+              iconImageOffset: [-5, -38],
+            }
+          );
+           myMap.geoObjects.add(myPlacemark);
+          })
+    });
+    // вынести на верх
+useEffect(()=>{
+  addMarks()
+},[myMap])
   
 
   useEffect(() => {
-      initMap();
-      return ()=> myMap.destroy()
-    }, [myMap,restaurants]);
+if(restaurants.length) {  
+  initMap()};
+    }, [restaurants]);
 
 
-  return <div id="map" style={{ width:"90%", height:'600px', marginLeft:"5%" }}>.</div>;
+  return (
+   
+  <div id="map" style={{ width:"90%", height:'80vh', marginLeft:"5%",marginTop:'20px', marginBottom:'50px' }} /> 
+  
+ )
 }
 
 export default Map;

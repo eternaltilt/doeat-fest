@@ -23,6 +23,8 @@ function CurrentFestCard() {
     dispatch(restaurantSetFetch())
   },[dispatch]) 
 
+  const navigate = useNavigate();
+
   return (
     <div className={style.background}>
       <div className={style.header}>
@@ -39,7 +41,7 @@ function CurrentFestCard() {
             <button className={style.buttonLeft} type="submit">
               Список
             </button>
-            <button className={style.buttonRight} type="submit">
+            <button onClick={() => navigate(`/map`)} className={style.buttonRight} type="submit">
               Карта
             </button>
           </div>
