@@ -138,6 +138,7 @@ function RestaurantCurrentCard() {
    { pictures.length > 0 && <img  className={style.mainImg} src={pictures[0].img_menu} alt='img'/> }
       </div>
     </section>
+
     <section className={style.contentContainer}>
     <div className={style.cardsContainer}>
     <Card className={style.test}>
@@ -223,13 +224,14 @@ function RestaurantCurrentCard() {
     </div>
     </div>
     <div>
-      <p className={style.mapTitle}>Карта</p>
-      <div style={{'width':'861px', 'height':'653px'}} id="map" />
-        {/* <Map /> */}
+        <p className={style.mapTitle}>Карта</p>
+        <div style={{'width':'861px', 'height':'653px'}} id="map">
+          {/* <Map /> */}
+        </div>
       </div>
     </div>
-  </div>
     </section>
+
     <section className={style.commentsContainer}>
       <form action="" onSubmit={addComment}>
         <input type="text" id='username' placeholder='Введите ваше имя' autoComplete='off'/>
