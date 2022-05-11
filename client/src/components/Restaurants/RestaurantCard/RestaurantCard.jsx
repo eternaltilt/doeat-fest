@@ -32,7 +32,7 @@ function RestaurantCard({ restaurant, festId }) {
           {restaurant.RestaurantCard.title}
         </Typography>
         <Typography variant="body2" color="text.white">
-         Адрес: ул.{restaurant.RestaurantCard.description}
+         Адрес: ул.{restaurant.RestaurantCard.adress}
         </Typography>
         <Typography variant="body2" color="text.white">
           Время работы: {restaurant.RestaurantCard.work_time}

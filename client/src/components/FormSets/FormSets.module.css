@@ -70,7 +70,7 @@ input::-webkit-input-placeholder {
 }
 
 .inputDate {
-  -webkit-box-shadow: 0 0 0 50px rgb(0, 0, 0) inset; /* Change the color to your own background color */
+  -webkit-box-shadow: 0 0 0 50px rgb(0, 0, 0) inset;
   -webkit-text-fill-color: #d9b8a5;
 }
 .formBtnExit {
@@ -171,5 +171,10 @@ input {
   padding: 10px 47px;
   border: 2px solid #482f21;
   background: black;
+  color: #d9b8a5;
+}
+
+.inputDownload {
+  padding-top: 7px;
   color: #d9b8a5;
 }

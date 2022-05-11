@@ -21,13 +21,7 @@ function FormSets() {
   const [image3, setImage3] = useState({ selectedFile: null });
   const [imageMenu, setImageMenu] = useState({ selectedFile: null });
   const [imageRestaurant, setImageRestaurant] = useState({ selectedFile: null });
-  // const [url1, setUrl1] = useState('');
-  // const [url2, setUrl2] = useState('');
-  // const [url3, setUrl3] = useState('');
-  // const [urlMenu, setUrlMenu] = useState('');
-  // const [urlRestaurant, setUrlRestaurant] = useState('');
-  // const [load, setLoad] = useState('');
-  // const [showUpload, setShowUpload] = useState(false);
+
 
   const { festival } = useSelector((state) => state.festivalReducer);
   const dispatch = useDispatch();
@@ -41,14 +35,6 @@ function FormSets() {
   const rezultat = festival || [];
 
 
-  // const config = {
-  //   onUploadProgress (progressEvent) {
-  //     const percentCompleted = Math.round(
-  //       (progressEvent.loaded * 100) / progressEvent.total
-  //     );
-  //     setLoad(`Загружено: ${  percentCompleted  }%`);
-  //   },
-  // };
   const fileSelectedHandler1 = (e) => {
       setImage1({
         selectedFile: e.target.files[0],
@@ -205,7 +191,7 @@ function FormSets() {
   useEffect(()=>{
     dispatch(managerFetch())
     dispatch(festivalFetch());
-  },[])
+  },[dispatch])
   const { RestaurantManager } = useSelector((state) => state.applicationReducer);
 
   // удаление заявки
@@ -291,19 +277,19 @@ function FormSets() {
         autoComplete="off"/>
 
         <div>
-          <input id='imgid1' type="file" className={style.inputSize} onChange={fileSelectedHandler1}/>
+          <input id='imgid1' type="file" className={style.inputDownload} onChange={fileSelectedHandler1}/>
         </div>
         <div>
-          <input id='imgid2' type="file" className={style.inputSize} onChange={fileSelectedHandler2}/>
+          <input id='imgid2' type="file" className={style.inputDownload} onChange={fileSelectedHandler2}/>
         </div>
         <div>
-          <input id='imgid3' type="file" className={style.inputSize} onChange={fileSelectedHandler3}/>
+          <input id='imgid3' type="file" className={style.inputDownload} onChange={fileSelectedHandler3}/>
         </div>
         <div>
-          <input id='imgidMenu' type="file" className={style.inputSize} onChange={fileSelectedHandlerMenu}/>
+          <input id='imgidMenu' type="file" className={style.inputDownload} onChange={fileSelectedHandlerMenu}/>
         </div>
         <div>
-          <input id='imgidRestaurant' type="file" className={style.inputSize} onChange={fileSelectedHandlerRestaurant}/>
+          <input id='imgidRestaurant' type="file" className={style.inputDownload} onChange={fileSelectedHandlerRestaurant}/>
         </div>
        <button className={style.formBtn} type="submit">Отправить</button>
      </div>
