@@ -19,7 +19,7 @@
   line-height: 155.02%;
   color: #d9b8a5;
   padding-top: 9px;
-  padding-right: 850px;
+  padding-right: 700px;
 }
 
 .currentRestPrice {
@@ -32,4 +32,58 @@
 
 .commentsContainer {
   margin-top: 40px;
+}
+
+.imgContainer {
+  width: 1360px;
+  height: 562px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 80px;
+}
+
+.mainImg {
+  width: 100%;
+}
+
+.testimg {
+  width: 100%;
+  height: 234px;
+}
+
+.cardContentTitle {
+  background: black;
+  color: white;
+}
+
+.test {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 40px;
+}
+
+.contentContainer {
+  grid-template-columns: 500px 1fr;
+  display: grid;
+}
+.restTitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 155.02%;
+  color: #ffffff;
+  margin-left: 40px;
+  margin-top: 30px;
+}
+
+.restContainer {
+  display: flex;
+  justify-content: row;
+}
+
+.mapTitle {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 155.02%;
+  color: #ffffff;
+  padding-left: 45px;
 }
