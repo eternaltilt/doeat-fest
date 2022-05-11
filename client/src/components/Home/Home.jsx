@@ -27,7 +27,7 @@ function Home() {
       </div>
     </section>
     <section className={style.actualFestival}>
-        <h2 className={style.actualFestivalTitle}>Актуальный фестиваль ПОФИКСИТЬ!!!!</h2>
+        <h2 className={style.actualFestivalTitle}>Актуальный фестиваль</h2>
         <div className={style.actualFestivalContainer}>
          <div className={style.actualFestivalImg}>
           <img src="img/mainpagePic2.jpg" alt="mainpage2" />
@@ -49,14 +49,6 @@ function Home() {
         </Link>
         </div>
         </div>
-    </section>
-    <section className={style.news}> 
-      <h3 className={style.newsTitle}>Новости</h3>
-      <div className={style.cardsContainer}>
-        <div>
-          123
-        </div>
-      </div>
     </section>
     </>
   );
