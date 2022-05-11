@@ -51,6 +51,18 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       },
     },
+    first_dish_description: {
+      type: DataTypes.TEXT,
+      allowNull:false,
+    },
+    second_dish_description: {
+      type: DataTypes.TEXT,
+      allowNull:false,
+    },
+    third_dish_description: {
+      type: DataTypes.TEXT,
+      allowNull:false,
+    },
   }, {
     sequelize,
     modelName: 'RestaurantSet',
