@@ -74,7 +74,7 @@ if(restaurants.length) {
 
   return (
    
-  <div id="map" style={{ width:"90%", height:'600px', marginLeft:"5%",marginTop:'20px', marginBottom:'50px' }} /> 
+  <div id="map" style={{ width:"90%", height:'80vh', marginLeft:"5%",marginTop:'20px', marginBottom:'50px' }} /> 
   
  )
 }
