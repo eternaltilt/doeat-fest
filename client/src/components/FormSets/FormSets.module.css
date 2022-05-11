@@ -179,6 +179,16 @@ input {
   color: #d9b8a5;
 }
 
+.massege {
+  width: 400px;
+  height: 57px;
+  margin-bottom: 16px;
+  padding: 10px 47px;
+  background: black;
+  border: 2px solid #482f21;
+  color: white;
+
 label {
   color: #d9b8a5;
+
 }

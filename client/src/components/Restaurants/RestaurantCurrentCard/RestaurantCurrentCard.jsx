@@ -22,6 +22,7 @@ function RestaurantCurrentCard() {
   const { pictures } = useSelector((state) => state.picturesReducer);
  
 
+
   const currentFest = festival.find((el) => el.id === +restId);
   const currentRest = restaurants.find((el) => el.id === +restId);
   const currentSet = sets.filter((el) => el.id === +currentRest.id);

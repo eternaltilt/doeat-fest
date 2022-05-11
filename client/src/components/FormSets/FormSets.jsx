@@ -3,9 +3,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useEffect, useState } from 'react';
+import * as React from 'react';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
 import { axiosImg } from './axios/upload';
-
-import {
+import { loginFetch ,
   fetchDelitSession,
   formSetFetch,
   festivalFetch,
@@ -13,6 +16,7 @@ import {
   managerFetch,
   delManager,
 } from '../../redux/thunk';
+
 import style from './FormSets.module.css';
 
 
@@ -204,6 +208,42 @@ function FormSets() {
   // удаление заявки
   const deleteManager = (id) =>{
     dispatch(delManager(id))
+    setManager(true)
+    setOpen(true);
+    setTimeout(() => {
+      setManager(false)
+      handleClose();
+    }, 2000);
+  };
+
+  // модально окно 
+
+  const [open, setOpen] = React.useState(false);
+  const [ fest , setFest ] = React.useState(false);
+  const [ manager , setManager ] = React.useState(false);
+  const [ applic , setApplic ] = React.useState(false);
+
+  
+  const application = () => {
+    setApplic(true)
+    setOpen(true);
+    setTimeout(() => {
+      handleClose();
+      setApplic(false)
+    }, 2000);
+  };
+
+  const handleClickOpen = () => {
+    setFest(true)
+    setOpen(true);
+    setTimeout(() => {
+      handleClose();
+      setFest(false)
+    }, 2000);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -318,7 +358,7 @@ function FormSets() {
         <label style={{'padding-left':'10px'}} htmlFor="imgidRestaurant">Фотография ресторана</label> 
           <input id='imgidRestaurant' type="file" className={style.inputDownload} onChange={fileSelectedHandlerRestaurant}/>
         </div>
-       <button className={style.formBtn} type="submit">Отправить</button>
+       <button onClick={application} className={style.formBtn} type="submit">Отправить</button>
      </div>
      </div>
      </form>
@@ -391,10 +431,24 @@ function FormSets() {
                 autoComplete="off"
               />
             </div>
-            <button className={style.festivalBtn}type="submit">Сохранить</button>
+            <button onClick={handleClickOpen} className={style.festivalBtn}type="submit">Сохранить</button>
           </form>
-        </div>
-        
+        </div>  <div>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent style={{backgroundColor: 'black'}}>
+          <DialogContentText style={{backgroundColor: 'black'}} id="alert-dialog-description">
+          {fest?<div className={style.massege} >Фестиваль создан</div>:fest}
+          {manager?<div  className={style.massege}>Заявка удалена</div>:manager}
+          {applic?<div  className={style.massege}>Форма успешно отправлена</div>:applic}
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
+      </div>        
       </section>
     </>
   );

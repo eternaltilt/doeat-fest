@@ -1,0 +1,18 @@
+.buttonRight {
+  margin-top: 10px;
+  width: 250px;
+  height: 49px;
+  margin-left: 40%;
+  padding: 10px 47px;
+  border: 2px solid #482f21;
+  background: black;
+  color: #d9b8a5;
+}
+
+.map {
+  width: 90%;
+  height: 80vh;
+  margin-left: 5%;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
