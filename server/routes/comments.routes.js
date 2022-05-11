@@ -19,6 +19,22 @@ router
       status: false,
     })
     res.json(newComment);
+  })
+  .post('/confirmdecline', async (req, res) => {
+    const {
+      id,
+      isConfirmed,
+    } = req.body;
+    if (isConfirmed) {
+      const currComment = RestaurantComments.update(
+        { status: true },
+        { where: { id } },
+      );
+    } else {
+      RestaurantComments.destroy({
+        where: { id },
+      });
+    }
   });
 
 module.exports = router;

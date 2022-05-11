@@ -1,0 +1,21 @@
+.Formapp {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border: 2px solid #482f21;
+  color: white;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+}
+.manager {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border: 2px solid #482f21;
+  margin: 1%;
+  padding: 1%;
+  min-width: 40vh;
+}

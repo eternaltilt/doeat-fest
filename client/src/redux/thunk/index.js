@@ -121,6 +121,18 @@ export const submitCommentFetch = (payload) => {
     });
   };
 };
+
+export const confirmDeclineRestaurantCommentFetch = (payload) => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/comments/confirmdecline`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+  };
+};
 // export const restaurantSetIdFetch = () => {
 //   return (dispatch) => {
 //     fetch(`${process.env.REACT_APP_BACK_DB}/restaurantCards`, {
