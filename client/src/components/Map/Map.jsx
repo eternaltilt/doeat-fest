@@ -9,6 +9,9 @@ function Map() {
   const navigate = useNavigate();
   const [ myMap, setmyMap ]= useState({})
   const dispatch = useDispatch()
+  const {restaurants} = useSelector(state=>state.restaurantReducer);
+  // ToDo:убрать костыли )
+  const [ state, setState ] = useState(true)
 
   useEffect(()=>{
     dispatch(restaurantFetch())
@@ -17,17 +20,16 @@ function Map() {
     dispatch(festivalFetch());
   },[dispatch])
   
-  const {restaurants} = useSelector(state=>state.restaurantReducer);
+  useEffect(() => {
+  if(restaurants.length && state ) {
+  initMap()};
+  }, [restaurants]);
 
   useEffect(()=>{
   addMarks()
   },[myMap])
 
 
-  useEffect(() => {
-  if(restaurants.length) {  
-  initMap()};
-  }, [restaurants]);
 
   function initMap() {
     window.ymaps.ready( () => {
@@ -48,10 +50,9 @@ function Map() {
         }
         )
         setmyMap(myMapS)
-        
       })
+      setState(false)
     };
-
 
     function addMarks() {
     restaurants.map((rest) => {

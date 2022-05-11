@@ -10,7 +10,7 @@ import { loginFetch } from '../../redux/thunk';
 
 function AdminLogin() {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 const  {user}  = useSelector(state=>state.loginReducer)
   const [error, setError] = useState(false)
   const [entrance, setEntrance] = useState(false)
