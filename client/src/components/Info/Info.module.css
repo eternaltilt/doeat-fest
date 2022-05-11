@@ -9,12 +9,16 @@
 .middleDiv {
   margin-top: 40px;
   margin-bottom: 40px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .bottomDiv {
   display: flex;
   flex-direction: row;
   margin-bottom: 40px;
+  justify-content: center;
 }
 
 .bottomRightDiv {
@@ -28,8 +32,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* margin-left: 40px; */
-  width: 577px;
 }
 
 .row {
@@ -44,16 +46,6 @@
 
 .listText {
   margin-left: 10px;
-}
-
-.topPicture {
-  width: 1360px;
-  height: 476px;
-}
-
-.skovorodka {
-  width: 670px;
-  height: 625px;
 }
 
 .buttons {
