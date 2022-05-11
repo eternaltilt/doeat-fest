@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
@@ -14,6 +14,7 @@ import { festivalFetch, restaurantFetch, restaurantSetFetch, restaurantCommentsF
 
 function RestaurantCurrentCard() {
   const dispatch = useDispatch();
+  const [ stateMap, setState ] = useState(true)
   const { restId, id } = useParams();
   const { restaurants } = useSelector((state) => state.restaurantReducer);
   const { sets } = useSelector((state) => state.restaurantSetReducer);
@@ -27,7 +28,7 @@ function RestaurantCurrentCard() {
   const currentRest = restaurants.find((el) => el.id === +restId);
   const currentSet = sets.filter((el) => el.id === +currentRest.id);
   const currentComments = comments.filter(comm => comm.restaurantCard_id === currentRest.id);
-  console.log(currentRest)
+  const arrRest = [currentRest]
 
   useEffect(() => {
     dispatch(restaurantFetch());
@@ -51,6 +52,71 @@ function RestaurantCurrentCard() {
     e.target.reset();
     dispatch(submitCommentFetch(body));
   }
+
+  // map
+  const [ myMap, setmyMap ]= useState({})
+
+  useEffect(()=>{
+    addMarks()
+    },[myMap])
+  
+  
+    useEffect(() => {
+      if(restaurants.length && stateMap ) {
+    initMap()};
+    }, [arrRest]);
+  
+    function initMap() {
+      window.ymaps.ready( () => {
+        const myMapS = new window.ymaps.Map(
+          'map',
+          {
+            center: [59.92, 30.33],
+            zoom: 12,
+            controls: [
+              'zoomControl',
+              'searchControl',
+              'fullscreenControl',
+              'routeButtonControl',
+            ],
+          },
+          {
+            searchControlProvider: 'yandex#search',
+          }
+          )
+          setmyMap(myMapS)
+          
+        })
+      setState(false)
+      };
+  
+      function addMarks() {
+        arrRest.map((rest) => {
+         window.ymaps
+           .geocode(rest.adress, {
+             // boundedBy: myMap.getBounds(),
+           })
+           .then( (res)=> {
+             const firstGeoObj = res.geoObjects.get(0);
+             const coords = firstGeoObj.geometry.getCoordinates();
+             const myPlacemark = new window.ymaps.Placemark(
+               coords,
+               {
+                   hintContent: rest.title,
+                   balloonContentHeader: `${rest.title}`,
+                   balloonContentBody: `${rest.description} <br>
+                   <img src="${rest.img}" alt="event_pic" width=200 height="150">`,
+                   balloonContentFooter: `<br> ${rest.work_time }<br><a href="/calendar/1/${rest.id}">Посмотреть подробнее</a>`,
+                 },
+               {
+                 iconImageSize: [30, 42],
+                 iconImageOffset: [-5, -38],
+               }
+             );
+              myMap.geoObjects.add(myPlacemark);
+             })
+       })};
+  
 
   return (
     <>
@@ -151,7 +217,7 @@ function RestaurantCurrentCard() {
     <div>
       <p className={style.mapTitle}>Карта</p>
       <div style={{'width':'861px', 'height':'653px'}}>
-        <Map />
+      <div style={{'width':'861px', 'height':'653px'}} id="map" />
       </div>
     </div>
   </div>

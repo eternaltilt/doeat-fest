@@ -73,12 +73,23 @@ input::-webkit-input-placeholder {
   -webkit-box-shadow: 0 0 0 50px rgb(0, 0, 0) inset;
   -webkit-text-fill-color: #d9b8a5;
 }
+.formBtnClick {
+  margin-top: 10px;
+  position: absolute;
+  width: 188px;
+  height: 49px;
+  margin-left: 31%;
+  padding: 10px 47px;
+  border: 2px solid #482f21;
+  background: black;
+  color: #d9b8a5;
+}
 .formBtnExit {
   margin-top: 10px;
   position: absolute;
   width: 188px;
   height: 49px;
-  margin-left: 45%;
+  margin-left: 48%;
   padding: 10px 47px;
   border: 2px solid #482f21;
   background: black;
@@ -187,7 +198,7 @@ input {
   background: black;
   border: 2px solid #482f21;
   color: white;
-
+}
 label {
   color: #d9b8a5;
 

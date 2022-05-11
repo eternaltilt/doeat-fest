@@ -250,7 +250,8 @@ function FormSets() {
     <>
  <div className={style.FormSetContainer}>
      <form className={style.form} onSubmit={onSubmit} action="">
-       <button onClick ={toLogout} className={style.formBtnExit} type='button'>Выйти</button> <br />
+           <button onClick ={toLogout} className={style.formBtnExit} type='button'>Выйти</button> 
+           <button onClick ={()=>navigate('/admin/comments')} className={style.formBtnClick} type='button'>Коментарии</button> <br />
        <div  className={style.title} >Добавить участника</div>
      <div className={style.formContainer}  id="sets">
       <div className={style.rightContainer} >

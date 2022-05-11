@@ -1,7 +1,11 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+// import * as React from 'react';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
 
 import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
@@ -32,14 +36,27 @@ function ManagerForm() {
   }
 
 
-  // const festival1 = () => {
-  //   dispatch(festivalFetch())
-  // }
-
   useEffect(() => {
     dispatch(festivalFetch());
   },[dispatch]) 
   
+  // модальное окно
+
+  const [open, setOpen] = React.useState(false);
+  const [entrance, setEntrance] = useState(false)
+
+  const handleClickOpen = () => {
+    setEntrance(true)
+    setOpen(true);
+    setTimeout(() => {
+      handleClose()
+      setEntrance(false)
+    }, 2000);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className={style.formContainer}>
@@ -92,12 +109,26 @@ function ManagerForm() {
           </div>
 
           <div>
-            <button className={style.formBtn} type="submit" id="formBtn">
+            <button onClick={handleClickOpen} className={style.formBtn} type="submit" id="formBtn">
               Отправить
             </button>
           </div>
         </form>
       </div>
+      <div>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent style={{backgroundColor: 'black'}}>
+          <DialogContentText style={{backgroundColor: 'black'}} id="alert-dialog-description">
+          {entrance?<div className={style.massege} >Заявка отправлена</div>:entrance}
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
+    </div>
     </div>
   );
 }
