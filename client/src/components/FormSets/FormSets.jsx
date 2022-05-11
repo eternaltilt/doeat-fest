@@ -181,7 +181,7 @@ function FormSets() {
       festivalEnd: festivalEnd.value,
       festivalSetPrice: festivalSetPrice.value,
     };
-    e.target.reset();
+     e.target.reset();
     dispatch(fetchAddFestival(body));
   };
 

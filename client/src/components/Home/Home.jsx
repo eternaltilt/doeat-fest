@@ -1,11 +1,30 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
 import style from './Home.module.css';
+import { festivalFetch } from '../../redux/thunk';
 
 // мейнпейдж
 function Home() {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const dispatch = useDispatch();
+  const { festival } = useSelector((state) => state.festivalReducer);
+
+  useEffect(() => {
+    dispatch(festivalFetch());
+    festival.forEach(eachFest => {
+      const now = new Date();
+      const startDate = new Date(eachFest.start_date);
+      const finishDate = new Date(eachFest.finish_date);
+      if (now >= startDate && now <= finishDate) {
+        setTitle(eachFest.title)
+        setDescription(eachFest.description);
+      }
+    });
+  },[dispatch]) 
+
   return (
     <>
     <section className={style.homeContainer}>
@@ -27,17 +46,17 @@ function Home() {
       </div>
     </section>
     <section className={style.actualFestival}>
-        <h2 className={style.actualFestivalTitle}>Актуальный фестиваль ПОФИКСИТЬ!!!!</h2>
+        <h2 className={style.actualFestivalTitle}>Актуальный фестиваль</h2>
         <div className={style.actualFestivalContainer}>
          <div className={style.actualFestivalImg}>
           <img src="img/mainpagePic2.jpg" alt="mainpage2" />
          </div>
          <div className={style.actualFestivalWrapper}>
            <h3 className={style.actualFestivalTitle}>
-            Фестиваль Европейской еды ПОФИКСИТЬ!!!
+            { title }
            </h3>
            <p className={style.actualFestivalText}>
-           Каждый из нас знаком с фразой "европейская кухня", но что это такое, вряд ли мы сможет сразу ответить. Казалось бы, европейская кухня - это кухня стран Европы, но в Европейском союзе более 40 государств. Получается, что во всех этих странах люди едят одинаковые блюда? Конечно же, это не так.
+           { description }
            </p>
            <p className={style.actualFestivalTextIt}>
            “Наш фестиваль расскажет обо всех тонкостях, особенностях и традициях гастрономических пристрастий народов этого континента.”

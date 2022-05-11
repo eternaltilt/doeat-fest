@@ -7,7 +7,7 @@ import style from './FestCard.module.css';
 function FestCard({festival}) {
   const [btnValue, setBtnValue] = useState('Список участников');
 
-  useEffect(() => {
+  useEffect(() => { 
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
