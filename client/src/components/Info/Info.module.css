@@ -1,0 +1,74 @@
+.allDiv {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.middleDiv {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.bottomDiv {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+}
+
+.bottomRightDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 40px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* margin-left: 40px; */
+  width: 577px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.arrow {
+  margin-top: 6px;
+}
+
+.listText {
+  margin-left: 10px;
+}
+
+.topPicture {
+  width: 1360px;
+  height: 476px;
+}
+
+.skovorodka {
+  width: 670px;
+  height: 625px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btnList {
+  width: 207px;
+  height: 48px;
+  padding: 0px 15px;
+  border: 2px solid #482f21;
+  background: #030102;
+  color: #d9b8a5;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+}
