@@ -225,18 +225,117 @@ function RestaurantCurrentCard() {
           </div>
         </div>
       </div>
-      </section>
-<section section className={style.commentsContainer}>
-        <form onSubmit={addComment}>
-          <input type="text" id='username' placeholder='Введите ваше имя' autoComplete='off' />
-          <input type="text" id='text' placeholder='Введите ваш отзыв о ресторане' autoComplete='off' />
-          <input type="submit" />
-        </form>
-        <p>{commentStatus}</p>
-        <div>
-          {currentComments.map((comment) => comment.status && <Comment username={comment.username} text={comment.text} status={comment.status} />)}
+      <div className={style.imgContainer}>
+   { pictures.length > 0 && <img  className={style.mainImg} src={pictures[0].img_menu} alt='img'/> }
+      </div>
+    </section>
+
+    <section className={style.contentContainer}>
+    <div className={style.cardsContainer}>
+    <Card className={style.test}>
+    <CardActionArea>
+   { pictures.length > 0 && <CardMedia
+        component="img"
+        className={style.testimg}
+        image={pictures[0].first_dish_img}
+        alt="1st"
+      />}
+      <CardContent className={style.cardContentTitle}>
+        <Typography gutterBottom variant="h5" component="div">
+          {currentSet[0].first_dish}
+        </Typography>
+        <Typography variant="body2" color="text.white">
+          {currentSet[0].first_dish_description}
+        </Typography>
+      </CardContent>
+    </CardActionArea>
+  </Card>
+  <Card className={style.test}>
+    <CardActionArea>
+      {pictures.length > 0 && <CardMedia
+        component="img"
+        className={style.testimg}
+        image={pictures[0].second_dish_img}
+        alt="2nd"
+      />}
+      <CardContent className={style.cardContentTitle}>
+        <Typography gutterBottom variant="h5" component="div">
+          {currentSet[0].second_dish}
+        </Typography>
+        <Typography variant="body2" color="text.white">
+          {currentSet[0].second_dish_description}
+        </Typography>
+      </CardContent>
+    </CardActionArea>
+  </Card>
+  <Card className={style.test}>
+    <CardActionArea>
+      {pictures.length > 0 && <CardMedia
+        component="img"
+        className={style.testimg}
+        image={pictures[0].third_dish_img}
+        alt="3d"
+      />}
+      <CardContent className={style.cardContentTitle}>
+        <Typography gutterBottom variant="h5" component="div">
+          {currentSet[0].third_dish}
+        </Typography>
+        <Typography variant="body2" color="text.white">
+          {currentSet[0].third_dish_description}
+        </Typography>
+      </CardContent>
+    </CardActionArea>
+  </Card>
+  </div>
+  <div>
+    <div className={style.restContainer}>
+    <Card className={style.test}>
+    <CardActionArea>
+      <CardMedia
+        component="img"
+        className={style.testimg}
+        image={currentRest.img}
+        alt="3d"
+      />
+      <CardContent className={style.cardContentTitle}>
+        <Typography gutterBottom variant="h5" component="div">
+          {currentRest.title}
+        </Typography>
+        <Typography variant="body2" color="text.white">
+          {currentRest.adress}
+        </Typography>
+        <Typography variant="body2" color="text.white">
+          {currentRest.work_time}
+        </Typography>
+      </CardContent>
+    </CardActionArea>
+  </Card>
+    <div className={style.restTitle}>
+      {currentRest.description}
+    </div>
+    </div>
+    <div>
+        <p className={style.mapTitle}>Карта</p>
+        <div style={{'width':'861px', 'height':'653px'}} id="map">
+          {/* <Map /> */}
         </div>
-      </section></>
+      </div>
+    </div>
+    </section>
+
+    <section className={style.commentsContainer}>
+      <form action="" onSubmit={addComment}>
+        <input type="text" id='username' placeholder='Введите ваше имя' autoComplete='off'/>
+        <input type="text" id='text' placeholder='Введите ваш отзыв о ресторане' autoComplete='off'/>
+        <input type="submit" />
+      </form>
+      <p>{commentStatus}</p>
+      <div>
+        { currentComments.map((comment) => comment.status && <Comment username={comment.username} text={comment.text} status={comment.status} /> ) }
+      </div>
+    </section>
+    </>
+      </section>
   );
 }
 
