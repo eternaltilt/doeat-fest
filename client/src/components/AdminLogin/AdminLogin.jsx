@@ -1,9 +1,12 @@
 import { useEffect , useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import './AdminLogin';
-import { loginFetch } from '../../redux/thunk';
+import * as React from 'react';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
 import style from './AdminLogin.module.css';
+import { loginFetch } from '../../redux/thunk';
 
 function AdminLogin() {
   const dispatch = useDispatch();
@@ -16,6 +19,7 @@ const  {user}  = useSelector(state=>state.loginReducer)
       setError(true)
       setTimeout(() => {
         setError(false);
+        setOpen(false);
       }, 2000);
     }else if (user?.message === 'Вы успешно вошли на сайт') {
       setEntrance(true)
@@ -37,6 +41,16 @@ const  {user}  = useSelector(state=>state.loginReducer)
     dispatch(loginFetch(body));
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
   return (
     <section className={style.adminLogin}>
       <h2 className={style.adminTitle}>Вход</h2> 
@@ -47,12 +61,27 @@ const  {user}  = useSelector(state=>state.loginReducer)
       <div>
       <input className={style.adminInput} type="password" id="password" placeholder="Пароль" minLength={3} required autoComplete='off'/>
       </div>
-      <button className={style.adminBtn} type="submit">Войти</button>
-      {entrance?<div className='message'>Вы успешно вошли на сайт</div>:entrance}
-      {error?<div className='message'>Ошибка! Неверный логин или пароль</div>:error}
+      <button onClick={handleClickOpen} className={style.adminBtn} type="submit">Войти</button>
+      
     </form>
+    <div>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent style={{backgroundColor: 'black'}}>
+          <DialogContentText style={{backgroundColor: 'black'}} id="alert-dialog-description">
+          {entrance?<div className={style.massege} >Вы успешно вошли на сайт</div>:entrance}
+          {error?<div  className={style.massege}>Ошибка! Неверный логин или пароль</div>:error}
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
+    </div>
     </section>
   );
 }
 
 export default AdminLogin;
+
