@@ -14,6 +14,7 @@ import RestaurantCurrentCard from '../Restaurants/RestaurantCurrentCard/Restaura
 import FestList from '../Fests/FestList/FestList';
 import Footer from '../Footer/Footer';
 import style from './App.module.css';
+import AdminCommentApproval from '../AdminCommentApproval/AdminCommentApproval';
 
 function App() {
   // проверка на наличие ключа в localStorage
@@ -35,6 +36,7 @@ function App() {
           ) : (
             <Route path="/admin/panel" element={<AdminLogin />} />
           )}
+          <Route path='/admin/comments' element={<AdminCommentApproval />} />
           <Route path="/" element={<Home />} />
           {/* <Route path="/fests" element={<Fests />} /> */}
           <Route path="/participate" element={<ManagerForm />} />

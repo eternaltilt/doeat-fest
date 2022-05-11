@@ -10,6 +10,7 @@ const festivalRouter = require("./routes/festival.router");
 const managerFormRouter = require("./routes/managerForm.route");
 const managerRouter = require("./routes/managerRouter.routes");
 const restaurantRouter = require('./routes/restaurant.router');
+const commentsRouter = require('./routes/comments.routes');
 
 const path = require("path");
 
@@ -26,6 +27,7 @@ app.use("/sets", setsRouter);
 app.use("/logout", logoutRouter);
 app.use("/festival", festivalRouter);
 app.use("/participate", managerFormRouter);
-app.use('/restaurantCards', restaurantRouter)
+app.use('/restaurantCards', restaurantRouter);
+app.use('/comments', commentsRouter);
 
 app.listen(port, () => console.log(`***Server started at ${port} port ***`));
