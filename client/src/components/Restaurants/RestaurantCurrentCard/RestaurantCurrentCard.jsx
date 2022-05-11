@@ -19,9 +19,9 @@ function RestaurantCurrentCard() {
   const currentRest = restaurants.find((el) => el.id === +restId);
   const currentSet = sets.filter((el) => el.id === +currentRest.id);
   const currentComments = comments.filter(comm => comm.restaurantCard_id === currentRest.id);
-  const currentFest = festival.find((el) => el.id === +id)
-  const currentRest = restaurants.find((el) => el.id === +restId);
-  const currentSet = sets.filter((el) => el.id === +currentRest.id)
+  // const currentFest = festival.find((el) => el.id === +id)
+  // const currentRest = restaurants.find((el) => el.id === +restId);
+  // const currentSet = sets.filter((el) => el.id === +currentRest.id)
 
   useEffect(() => {
     dispatch(restaurantFetch());
