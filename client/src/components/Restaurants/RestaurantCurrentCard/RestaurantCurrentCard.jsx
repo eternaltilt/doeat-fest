@@ -8,26 +8,20 @@ import Comment  from '../../Comment/Comment';
 
 function RestaurantCurrentCard() {
   const dispatch = useDispatch();
-  const { restId } = useParams();
- console.log(restId)
+  const { restId, id } = useParams();
   const { restaurants } = useSelector((state) => state.restaurantReducer);
   const { sets } = useSelector((state) => state.restaurantSetReducer);
   const { festival } = useSelector((state) => state.festivalReducer)
   const { comments } = useSelector((state) => state.restaurantReducer);
-  console.log('COMMENTS ', comments);
-  console.log(festival);
+ 
 
   const currentFest = festival.find((el) => el.id === +restId);
   const currentRest = restaurants.find((el) => el.id === +restId);
   const currentSet = sets.filter((el) => el.id === +currentRest.id);
   const currentComments = comments.filter(comm => comm.restaurantCard_id === currentRest.id);
-  console.log('CURR COMMS', currentComments);
-
-  console.log('СЕТЫ ИЗ СТЕЙТА =>' , sets)
-  console.log('КАРРЕНТ ФЕСТ => ', currentFest)
-  console.log('КАРРЕНТ РЕСТ => ', currentRest)
-  console.log('КАРРЕНТ СЕТ => ', currentSet)
-
+  const currentFest = festival.find((el) => el.id === +id)
+  const currentRest = restaurants.find((el) => el.id === +restId);
+  const currentSet = sets.filter((el) => el.id === +currentRest.id)
 
   useEffect(() => {
     dispatch(restaurantFetch());
@@ -47,7 +41,6 @@ function RestaurantCurrentCard() {
       text: text.value,
       restaurantCard_id: currentRest.id,
     }
-    console.log('BODY! ', body);
     e.target.reset();
     dispatch(submitCommentFetch(body));
   }
@@ -57,7 +50,7 @@ function RestaurantCurrentCard() {
       <div className={style.currentRestInfo}>
         <h2 className={style.currentRestTitle}>{currentRest.title}</h2>
         <p className={style.currentRestText}>{currentRest.description}</p>
-        <p className={style.currentRestPrice}>Стоимость сета: {currentFest.festivalSetPrice}&#8381;</p>
+        <p className={style.currentRestPrice}>Стоимость сета: {currentFest?.festivalSetPrice}&#8381;</p>
       </div>
       <form action="" onSubmit={addComment}>
         <input type="text" id='username' placeholder='Введите ваше имя'/>

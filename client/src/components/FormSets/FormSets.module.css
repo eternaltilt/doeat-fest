@@ -1,5 +1,8 @@
 .form {
-  padding: 1%;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .formContainer {
@@ -7,7 +10,7 @@
   flex-direction: row;
   align-content: center;
   justify-content: center;
-  border: 2px solid #482F21;
+  border: 2px solid #482f21;
   margin-top: 5%;
 }
 
@@ -22,7 +25,7 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 29px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .leftContainer {
@@ -33,7 +36,6 @@
 .rightContainer {
   margin: 0 auto;
   padding: 1%;
-
 }
 
 .inputSize {
@@ -41,7 +43,7 @@
   height: 40px;
   margin-top: 16px;
   height: 57px;
-  border: 1px solid #482F21;
+  border: 1px solid #482f21;
   background: black;
   font-weight: 400;
   padding-left: 20px;
@@ -54,15 +56,23 @@
   height: 49px;
   margin-left: 10%;
   padding: 10px 47px;
-  border: 2px solid #482F21;
+  border: 2px solid #482f21;
   background: black;
-  color: #D9B8A5;
+  color: #d9b8a5;
 }
 
 input::-webkit-input-placeholder {
-  color: #D9B8A5;
+  color: #d9b8a5;
 }
 
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.inputDate {
+  -webkit-box-shadow: 0 0 0 50px rgb(0, 0, 0) inset;
+  -webkit-text-fill-color: #d9b8a5;
+}
 .formBtnExit {
   margin-top: 10px;
   position: absolute;
@@ -70,9 +80,9 @@ input::-webkit-input-placeholder {
   height: 49px;
   margin-left: 45%;
   padding: 10px 47px;
-  border: 2px solid #482F21;
+  border: 2px solid #482f21;
   background: black;
-  color: #D9B8A5;
+  color: #d9b8a5;
 }
 
 input::-webkit-input-placeholder {
@@ -81,21 +91,21 @@ input::-webkit-input-placeholder {
 
 .delete {
   background: black;
-  color: #D9B8A5;
+  color: #d9b8a5;
   border: none;
   margin-left: 90%;
 }
-
 
 .Formapp {
   display: flex;
   flex-direction: row;
   align-content: center;
   justify-content: center;
-  border: 2px solid #482F21;
-  margin: 1%;
-  padding: 1%;
+  border: 2px solid #482f21;
   color: white;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 40px;
 }
 
 .manager {
@@ -103,7 +113,7 @@ input::-webkit-input-placeholder {
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  border: 2px solid #482F21;
+  border: 2px solid #482f21;
   margin: 1%;
   padding: 1%;
   min-width: 40vh;
@@ -111,7 +121,7 @@ input::-webkit-input-placeholder {
 
 .application {
   width: 45vh;
-  border-bottom: 2px solid #482F21;
+  border-bottom: 2px solid #482f21;
 }
 
 input {
@@ -125,7 +135,9 @@ input {
 }
 .festForm {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin-bottom: 45px;
+  border: 2px solid #482f21;
 }
 
 .festFormTitle {
@@ -149,4 +161,20 @@ input {
 
 .festFormContainer {
   margin-left: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.festivalBtn {
+  width: 188px;
+  height: 49px;
+  padding: 10px 47px;
+  border: 2px solid #482f21;
+  background: black;
+  color: #d9b8a5;
+}
+
+.inputDownload {
+  padding-top: 7px;
+  color: #d9b8a5;
 }

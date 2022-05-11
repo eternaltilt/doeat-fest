@@ -14,10 +14,8 @@ function CurrentFestCard() {
   const { sets } = useSelector((state) => state.restaurantSetReducer);
   const { id } = useParams()
   const currentFestCard = festival.find(el => el.id === +id)
-  console.log('КАРРЕНТ ФЕСТИВАЛЬ КАРД' , currentFestCard)
   const currentSet = sets.filter(el => el.festival_id ===currentFestCard.id)
 
-  console.log('SETS =>', currentSet)
  
 
   useEffect(() => {
@@ -47,7 +45,7 @@ function CurrentFestCard() {
           </div>
         </div>
       </div>
-      <div>
+      <div className={style.cardsContainer}>
        {currentSet.length && currentSet.map(el => <RestaurantCard key={el.id} restaurant = {el} festId ={id}/>)}
       </div>
     </div>

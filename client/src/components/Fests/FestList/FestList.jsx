@@ -14,7 +14,7 @@ function FestList() {
   },[dispatch]) 
 
   return (
-      <div> 
+      <div className={style.festListContaner}> 
         {festival.length && festival.map(el => <FestCard key={el.id} festival = {el}/>)}
       </div>
   );

@@ -93,7 +93,6 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
-  margin-left: 373px;
 }
 
 .newsTitle {
@@ -106,4 +105,14 @@
 
 .cardsContainer {
   margin: 40px 40px;
+}
+
+.actualFestivalWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.actualFestivalLink {
+  align-self: flex-end;
+  margin-right: 40px;
 }

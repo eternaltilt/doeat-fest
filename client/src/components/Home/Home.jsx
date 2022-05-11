@@ -27,14 +27,14 @@ function Home() {
       </div>
     </section>
     <section className={style.actualFestival}>
-        <h2 className={style.actualFestivalTitle}>Актуальный фестиваль</h2>
+        <h2 className={style.actualFestivalTitle}>Актуальный фестиваль ПОФИКСИТЬ!!!!</h2>
         <div className={style.actualFestivalContainer}>
          <div className={style.actualFestivalImg}>
           <img src="img/mainpagePic2.jpg" alt="mainpage2" />
          </div>
-         <div>
+         <div className={style.actualFestivalWrapper}>
            <h3 className={style.actualFestivalTitle}>
-            Фестиваль Европейской еды 
+            Фестиваль Европейской еды ПОФИКСИТЬ!!!
            </h3>
            <p className={style.actualFestivalText}>
            Каждый из нас знаком с фразой "европейская кухня", но что это такое, вряд ли мы сможет сразу ответить. Казалось бы, европейская кухня - это кухня стран Европы, но в Европейском союзе более 40 государств. Получается, что во всех этих странах люди едят одинаковые блюда? Конечно же, это не так.
@@ -42,7 +42,7 @@ function Home() {
            <p className={style.actualFestivalTextIt}>
            “Наш фестиваль расскажет обо всех тонкостях, особенностях и традициях гастрономических пристрастий народов этого континента.”
            </p>
-           <Link to="/restaurants"> {/* ссылка на акутальные рестораны участники фестиваля */}
+           <Link to="/restaurants" className={style.actualFestivalLink}> {/* ссылка на акутальные рестораны участники фестиваля */}
           <button className={style.btnActualFestival} type="submit">
             Список участников
           </button>

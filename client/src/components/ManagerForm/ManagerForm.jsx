@@ -85,7 +85,8 @@ function ManagerForm() {
             />
           </div>
           <div>
-            <select className={style.inputSize} id="festivalId">
+            <select className={style.inputSize}  id="festivalId">
+              <option value="" disabled selected hidden>Выберете фестиваль</option>
              {result.map((el)=> (<option key={el.id} value={el.id}>{el.title}</option>) )}
              </select>
           </div>

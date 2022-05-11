@@ -7,7 +7,7 @@ import FormSets from '../FormSets/FormSets';
 import AdminLogin from '../AdminLogin/AdminLogin';
 import Navbar from '../Navbar/Navbar';
 import Home from '../Home/Home';
-import Map from '../Map/Map';
+// import Map from '../Map/Map';
 import ManagerForm from '../ManagerForm/ManagerForm';
 import CurrentFestCard from '../Fests/CurrentFestCard/CurrentFestCard';
 import RestaurantCurrentCard from '../Restaurants/RestaurantCurrentCard/RestaurantCurrentCard';
@@ -29,7 +29,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-      <Route path='/map' element={<Map/>}/>
+          {/* <Route path="/map" element={<Map />} /> */}
           <Route path="/admin" element={<AdminLogin />} />
           {local ? (
             <Route path="/admin/panel" element={<FormSets />} />
