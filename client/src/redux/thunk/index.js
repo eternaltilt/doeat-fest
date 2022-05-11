@@ -8,7 +8,9 @@ import { addRequestAC } from '../ActionCreators/managerRequestAC';
 import { managerAC } from '../ActionCreators/managerAC';
 import { delManagerAC } from '../ActionCreators/delManagerAC';
 import { initRestaurantAC, initRestaurantCommentsAC } from '../ActionCreators/restaurantAC';
-import { findRestaurantSetAC, initRestaurantSetAC} from '../ActionCreators/restaurantSetAC'
+import { findRestaurantSetAC, initRestaurantSetAC} from '../ActionCreators/restaurantSetAC';
+import { initPicturesAC } from '../ActionCreators/picturesAC';
+
 
 
 export const loginFetch = (payload) => {
@@ -187,5 +189,14 @@ export const delManager = (payload) => {
       .then((res) => res.json())
       .then((data) => dispatch(delManagerAC(data)))
       .catch((err) => console.log(err.message));
+  };
+};
+
+export const picturesFetch = (payload) => {
+  return (dispatch) => {
+    fetch(`${process.env.REACT_APP_BACK_DB}/pictures/${payload}`)
+    .then((res) => res.json())
+    .then((data) => dispatch(initPicturesAC(data)))
+    .catch((err) => console.log(err.message));
   };
 };

@@ -4,7 +4,6 @@ const { RestaurantComments } = require('../db/models');
 router
   .get('/', async (req, res) => {
     const comments = await RestaurantComments.findAll();
-    console.log('COMMS ', comments);
     res.json(comments);
   })
   .post('/', async (req, res) => {
