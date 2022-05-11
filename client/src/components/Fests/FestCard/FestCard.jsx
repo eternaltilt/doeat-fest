@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import style from './FestCard.module.css';
 
 function FestCard({festival}) {
-  const [btnValue, setBtnValue] = useState('Подать заявку');
+  const [btnValue, setBtnValue] = useState('Список участников');
 
   useEffect(() => {
     const now = new Date();
@@ -23,14 +23,14 @@ function FestCard({festival}) {
     const finishMonth = Number(finishDay[1]);
     const finishDate = Number(finishDay[2]);
 
-    if (year > startYear && year < finishYear) {
-      setBtnValue('Список участников');
-    } else if (year === startYear || year === finishYear) {
-      if (month > startMonth && month < finishMonth) {
-        setBtnValue('Список участников'); 
+    if (year < startYear) {
+      setBtnValue('Подать заявку');
+    } else if (year === startYear) {
+      if (month < startMonth) {
+        setBtnValue('Подать заявку'); 
       } else if (month === startMonth) {
-        if (date >= startDate && date <= finishDate) {
-          setBtnValue('Список участников'); 
+        if (date < startDate) {
+          setBtnValue('Подать заявку'); 
         }
       }
     }
