@@ -13,15 +13,6 @@
   color: #ffffff;
 }
 
-.currentRestText {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 155.02%;
-  color: #d9b8a5;
-  padding-top: 9px;
-  padding-right: 700px;
-}
-
 .currentRestPrice {
   font-weight: 500;
   font-size: 20px;
@@ -32,60 +23,166 @@
 
 .commentsContainer {
   margin-top: 40px;
+  margin-left: 40px;
+}
+
+.icon {
+  height: 60px;
+  width: 60px;
+  margin-top: 40px;
+}
+
+.textField {
+  margin-top: 40px;
+  -webkit-box-shadow: 0 0 0 50px rgb(0, 0, 0) inset; /* Change the color to your own background color */
+  -webkit-text-fill-color: #d9b8a5;
+}
+
+input::-webkit-input-placeholder {
+  color: #d9b8a5;
 }
 
 .imgContainer {
   margin-left: 40px;
   margin-right: 40px;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   justify-content: center;
   display: flex;
+  height: 331px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .mainImg {
   width: 100%;
+  object-fit: cover;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
 }
 
-.testimg {
-  width: 100%;
-  height: 234px;
+.setContainer {
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  margin-bottom: 60px;
+  margin-top: 60px;
+  margin-left: 60px;
+  margin-right: 60px;
 }
 
 .cardContentTitle {
   background: black;
   color: white;
+  padding: 0px;
 }
-
 .test {
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 40px;
+  /* width: 30%; */
+  background-color: black !important;
 }
 
-.contentContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 100px;
-}
 .restTitle {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 155.02%;
   color: #ffffff;
-  margin-left: 40px;
-  margin-top: 30px;
 }
 
-.restContainer {
+.RestMapContainer {
   display: flex;
-  justify-content: row;
+  gap: 20px;
+  margin-left: 60px;
 }
 
 .mapTitle {
   font-weight: 500;
-  font-size: 18px;
-  line-height: 155.02%;
   color: #ffffff;
-  padding-left: 45px;
 }
+
+.mapSize {
+  width: 600px;
+  height: 260px;
+}
+
+.restContainer {
+  width: 40vw;
+  padding-top: 10px;
+}
+
+.containerWidth {
+  width: 53.5%;
+}
+
+.restaurantTitle {
+  font-size: 100%;
+}
+
+.restaurantAdres {
+  font-size: 70%;
+}
+
+.restaurantWork {
+  font-size: 60%;
+  padding-top: 10px;
+}
+
+.restaurantDesk {
+  font-size: 60%;
+  padding-top: 10px;
+}
+
+.test {
+  background-color: black;
+}
+
+.commentStatus {
+  color: #d9b8a5;
+}
+
+.input1 {
+  color: white !important;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.commentButton {
+  margin-top: 40px;
+  border-color: white;
+}
+
+.whiteColor {
+  color: white;
+}
+
+.commentInputForm {
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+  padding: 1%;
+}
+
+.nameInput {
+  width: 500px;
+  background-color: rgb(4, 4, 4);
+}
+
+.textInput {
+  width: 500px;
+  height: 200px;
+  background-color: rgb(4, 4, 4);
+   color: white;
+   padding-right: 10px;
+   border: 2px solid #482f21;
+}
+
+.buttonInput {
+  margin-top: 15px;
+  width: 500px;
+  background-color: rgb(4, 4, 4);
+  color: #d9b8a5;
+}
+
+textarea::placeholder {color: #d9b8a5;}

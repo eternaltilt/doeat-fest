@@ -7,4 +7,18 @@
   margin: 1%;
   padding: 1%;
   min-width: 40vh;
+  width: 500px;
+  background-color: rgb(4, 4, 4);
+
+  word-wrap: break-word;
+}
+
+.name {
+  color: #ad8c79;
+}
+
+.text {
+  margin-top: 17px;
+  color: #d9b8a5;
+  width: 450px;
 }
