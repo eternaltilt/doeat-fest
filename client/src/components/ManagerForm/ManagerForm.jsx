@@ -107,7 +107,7 @@ function ManagerForm() {
              {result.map((el)=> ((new Date() < new Date(el.start_date)) && <option key={el.id} value={el.id}>{el.title}</option>) )}
              </select>
           </div>
- 
+  
           <div>
             <button onClick={handleClickOpen} className={style.formBtn} type="submit" id="formBtn">
               Отправить

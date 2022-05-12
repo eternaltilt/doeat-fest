@@ -304,9 +304,9 @@ function FormSets() {
         autoComplete="off"/>
        <select
         className={style.inputSize}
-        placeholder='Фестиваль'
+        placeholder='Фестиваль' 
         id="festivalId">
-       {rezultat.map((el)=> (<option key={el.id} value={el.id}>{el.title}</option>) )}  
+       {rezultat.map((el)=> ((new Date() < new Date(el.start_date)) && <option key={el.id} value={el.id}>{el.title}</option>) )}  
        </select>
        </div>
        <div id="Resta" className={style.leftContainer}>
