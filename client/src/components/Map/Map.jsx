@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState  } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -85,9 +86,9 @@ function Map() {
 
   return (
     <div>
-      <div>
+      {/* <div>
           <button onClick={() => navigate(-1) } className={style.buttonRight} type="submit">Список участников</button>
-      </div> 
+      </div>  */}
       <div className={style.map} id="map" />
     </div>
  )
