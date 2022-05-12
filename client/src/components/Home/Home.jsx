@@ -22,7 +22,7 @@ function Home() {
       if (now >= startDate && now <= finishDate) {
         setTitle(eachFest.title)
         setDescription(eachFest.description);
-      }
+      } 
     });
   },[dispatch]) 
 
