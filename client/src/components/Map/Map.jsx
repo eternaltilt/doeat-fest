@@ -89,10 +89,10 @@ function Map() {
     <div className={style.header}>
     <div className={style.headerLeft}>
       <h3 className={style.text}>Фестиваль</h3>
-      <p className={style.extraText}>
+      <div className={style.extraText}>
         Наш фестиваль расскажет обо всех тонкостях, особенностях и традициях гастрономических
         пристрастий народов этого континента.
-      </p>
+      </div>
     </div>
     <div className={style.headerRight}>
       <div className={style.buttons}>
