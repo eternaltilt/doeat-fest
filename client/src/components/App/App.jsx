@@ -23,6 +23,7 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('Admin') === 'anna') {
       setLocal(true);
+      console.log(localStorage.getItem('Admin'));
     }
   }, []);
   return (

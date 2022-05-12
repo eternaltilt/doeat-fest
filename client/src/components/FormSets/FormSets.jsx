@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -31,12 +31,14 @@ function FormSets() {
   const { festival } = useSelector((state) => state.festivalReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   // выход, очищение сессии
-  const toLogout = async () => {
-    await dispatch(fetchDelitSession());
+  const toLogout = () => {
     localStorage.clear();
-    navigate('/admin');
+    dispatch(fetchDelitSession());
+      navigate('/');
   };
+
   const rezultat = festival || [];
 
 

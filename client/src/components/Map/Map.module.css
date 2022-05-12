@@ -1,13 +1,47 @@
-.buttonRight {
-  margin-top: 10px;
-  width: 250px;
-  height: 49px;
-  margin-left: 40%;
-  padding: 10px 47px;
-  border: 2px solid #482f21;
-  background: black;
+.header {
+  margin-top: 20px;
+}
+
+.text {
+  color: white;
+}
+
+.extraText {
+  width: 607px;
+  height: 50px;
+  left: 40px;
+  top: 171px;
   color: #d9b8a5;
 }
+
+.header {
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.buttonLeft {
+  margin-top: 25px;
+  width: 100px;
+  height: 40px;
+  border: 1px solid #d9b8a5;
+  box-sizing: border-box;
+  border-radius: 20px 0px 0px 20px;
+  background-color: black;
+  color: white;
+}
+.buttonRight {
+  width: 100px;
+    height: 40px;
+    border: 1px solid #d9b8a5;
+    box-sizing: border-box;
+    border-radius: 0px 20px 20px 0px;
+    background-color: black;
+    color: white;
+}
+
 
 .map {
   width: 90%;

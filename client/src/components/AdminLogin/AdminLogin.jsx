@@ -26,9 +26,10 @@ const  {user}  = useSelector(state=>state.loginReducer)
       setTimeout(() => {
         navigate('/admin/panel');
       }, 2000);
-      localStorage.setItem('Admin', user.AdminSession)
+        localStorage.setItem('Admin', user.AdminSession)
     }
-  }, [user, navigate]);
+  }, [user]);
+
 
   const loginAdmin = (e) => {
     e.preventDefault();
