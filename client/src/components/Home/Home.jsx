@@ -1,12 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Home.module.css';
 import { festivalFetch } from '../../redux/thunk';
 
 // мейнпейдж
 function Home() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const dispatch = useDispatch();
@@ -35,11 +36,9 @@ function Home() {
           придется по душе всем ценителям вкусной <br />
           еды и качественных напитков.
         </p>
-        <Link to="/restaurants">
-          <button className={style.btnList} type="submit">
-            Список заведений
+          <button onClick={() => navigate('/calendar')} className={style.btnList} type="submit">
+            Список фестивалей
           </button>
-        </Link>
       </div>
       <div className={style.imgContainer}>
         <img src="img/mainpagePic.jpg" alt="mainpage" />
@@ -61,11 +60,11 @@ function Home() {
            <p className={style.actualFestivalTextIt}>
            “Наш фестиваль расскажет обо всех тонкостях, особенностях и традициях гастрономических пристрастий народов этого континента.”
            </p>
-           <Link to="/restaurants" className={style.actualFestivalLink}> {/* ссылка на акутальные рестораны участники фестиваля */}
-          <button className={style.btnActualFestival} type="submit">
-            Список участников
+           <div className={style.actualFestivalLink}> {/* ссылка на акутальные рестораны участники фестиваля */}
+          <button onClick={() => navigate('/calendar')} className={style.btnActualFestival} type="submit">
+            Список фестивалей
           </button>
-        </Link>
+        </div>
         </div>
         </div>
     </section>

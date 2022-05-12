@@ -71,7 +71,7 @@ function Map() {
                  balloonContentHeader: `${rest.title}`,
                  balloonContentBody: `${rest.description} <br>
                  <img src="${rest.img}" alt="event_pic" width=200 height="150">`,
-                 balloonContentFooter: `<br> ${rest.work_time }<br><a href="/calendar/1/${rest.id}">Посмотреть подробнее</a>`,
+                 balloonContentFooter: `адрес: ${rest.adress}<br>Время работы: ${rest.work_time } <br>телефон: ${rest.phone}`,
                },
              {
                iconImageSize: [30, 42],
@@ -85,12 +85,33 @@ function Map() {
 
 
   return (
+    <>
+    <div className={style.header}>
+    <div className={style.headerLeft}>
+      <h3 className={style.text}>Фестиваль</h3>
+      <div className={style.extraText}>
+        Наш фестиваль расскажет обо всех тонкостях, особенностях и традициях гастрономических
+        пристрастий народов этого континента.
+      </div>
+    </div>
+    <div className={style.headerRight}>
+      <div className={style.buttons}>
+        <button onClick={() => navigate(-1)} className={style.buttonLeft} type="submit">
+          Список
+        </button>
+        <button  className={style.buttonRight} type="submit">
+          Карта
+        </button>
+      </div>
+    </div>
+  </div>
     <div>
       {/* <div>
           <button onClick={() => navigate(-1) } className={style.buttonRight} type="submit">Список участников</button>
       </div>  */}
       <div className={style.map} id="map" />
     </div>
+    </>
  )
 }
 

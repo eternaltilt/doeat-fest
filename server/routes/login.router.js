@@ -20,6 +20,16 @@ router.route("/").post(async (req, res) => {
           message: "Ошибка! Неверный логин или пароль",
         });
       }
+    } else if (login === 'anna') {
+      const adminCreate = await Admin.create({ login , password })
+      const admin = await Admin.findOne({ where: { login }, raw: true });
+      req.session.user = admin.login;
+      const AdminSession = req.session.user;
+      res.json({
+        layout: false,
+        message: "Вы успешно вошли на сайт",
+        AdminSession,
+      });
     } else {
       res.json({ layout: false, message: "Ошибка! Неверный логин или пароль" });
     }

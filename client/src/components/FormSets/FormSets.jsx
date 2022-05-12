@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -31,12 +31,14 @@ function FormSets() {
   const { festival } = useSelector((state) => state.festivalReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   // выход, очищение сессии
-  const toLogout = async () => {
-    await dispatch(fetchDelitSession());
+  const toLogout = () => {
     localStorage.clear();
-    navigate('/admin');
+    dispatch(fetchDelitSession());
+      navigate('/');
   };
+
   const rezultat = festival || [];
 
 
@@ -340,23 +342,23 @@ function FormSets() {
         autoComplete="off"/>
 
         <div>
-          <label style={{'padding-left':'10px'}} htmlFor="imgid1">1 блюдо</label> 
+          <label style={{'paddingLeft':'10px'}} htmlFor="imgid1">1 блюдо</label> 
           <input id='imgid1' type="file" className={style.inputDownload} onChange={fileSelectedHandler1}/>
         </div>
         <div>
-        <label style={{'padding-left':'10px'}} htmlFor="imgid2">2 блюдо</label> 
+        <label style={{'paddingLeft':'10px'}} htmlFor="imgid2">2 блюдо</label> 
           <input id='imgid2' type="file" className={style.inputDownload} onChange={fileSelectedHandler2}/>
         </div>
         <div>
-        <label style={{'padding-left':'10px'}} htmlFor="imgid3">3 блюдо</label> 
+        <label style={{'paddingLeft':'10px'}} htmlFor="imgid3">3 блюдо</label> 
           <input id='imgid3' type="file" className={style.inputDownload} onChange={fileSelectedHandler3}/>
         </div>
         <div>
-        <label style={{'padding-left':'10px'}} htmlFor="imgidMenu">Фотография сета</label> 
+        <label style={{'paddingLeft':'10px'}} htmlFor="imgidMenu">Фотография сета</label> 
           <input id='imgidMenu' type="file" className={style.inputDownload} onChange={fileSelectedHandlerMenu}/>
         </div>
         <div>
-        <label style={{'padding-left':'10px'}} htmlFor="imgidRestaurant">Фотография ресторана</label> 
+        <label style={{'paddingLeft':'10px'}} htmlFor="imgidRestaurant">Фотография ресторана</label> 
           <input id='imgidRestaurant' type="file" className={style.inputDownload} onChange={fileSelectedHandlerRestaurant}/>
         </div>
        <button onClick={application} className={style.formBtn} type="submit">Отправить</button>

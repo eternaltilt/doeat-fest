@@ -22,13 +22,15 @@ const  {user}  = useSelector(state=>state.loginReducer)
         setOpen(false);
       }, 2000);
     }else if (user?.message === 'Вы успешно вошли на сайт') {
+      localStorage.setItem('Admin', user.AdminSession)
       setEntrance(true)
       setTimeout(() => {
+        handleClose()
         navigate('/admin/panel');
       }, 2000);
-      localStorage.setItem('Admin', user.AdminSession)
     }
-  }, [user, navigate]);
+  }, [user]);
+
 
   const loginAdmin = (e) => {
     e.preventDefault();

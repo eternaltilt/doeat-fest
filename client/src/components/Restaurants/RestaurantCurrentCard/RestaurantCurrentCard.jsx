@@ -114,18 +114,16 @@ function RestaurantCurrentCard() {
               balloonContentHeader: `${rest.title}`,
               balloonContentBody: `${rest.description} <br>
                    <img src="${rest.img}" alt="event_pic" width=200 height="150">`,
-              balloonContentFooter: `<br> ${rest.work_time}<br><a href="/calendar/1/${rest.id}">Посмотреть подробнее</a>`,
-            },
-            {
-              iconImageSize: [30, 42],
-              iconImageOffset: [-5, -38],
-            }
-          );
-          myMap.geoObjects.add(myPlacemark);
-        });
-    });
-  }
-
+                   balloonContentFooter: `адрес: ${rest.adress}<br>Время работы: ${rest.work_time } <br>телефон: ${rest.phone}`,
+                 },
+               {
+                 iconImageSize: [30, 42],
+                 iconImageOffset: [-5, -38],
+               }
+             );
+              myMap.geoObjects.add(myPlacemark);
+             })
+       })};
   return (
     <>
       <section className={style.currentRestContainer}>
