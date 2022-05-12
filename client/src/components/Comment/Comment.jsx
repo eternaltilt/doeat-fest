@@ -10,5 +10,5 @@ function Comment({ username, text }) {
     </div>
   );
 }
-
+ 
 export default Comment;
