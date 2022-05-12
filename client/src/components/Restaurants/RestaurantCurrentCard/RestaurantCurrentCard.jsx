@@ -7,7 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import Comment from '../../Comment/Comment';
+import Comment  from '../../Comment/Comment';
 import Map from '../../Map/Map';
 import style from './RestaurantCurrentCard.module.css';
 import {
@@ -19,7 +19,10 @@ import {
   picturesFetch,
 } from '../../../redux/thunk';
 
+
+
 function RestaurantCurrentCard() {
+
   const dispatch = useDispatch();
   const [stateMap, setState] = useState(true);
   const [commentStatus, setCommentStatus] = useState('');
@@ -37,8 +40,11 @@ function RestaurantCurrentCard() {
   console.log(currentSet);
   const arrRest = [currentRest];
 
+  console.log('COMMENTS ', currentComments);
+
   useEffect(() => {
-    dispatch(picturesFetch(currentSet[0].id));
+    dispatch(picturesFetch(currentSet[0].id))
+    dispatch(restaurantCommentsFetch());
   }, [dispatch]);
 
   const addComment = (e) => {
@@ -233,26 +239,22 @@ function RestaurantCurrentCard() {
         </div>
       </section>
       <section className={style.commentsContainer}>
-        <form action="" onSubmit={addComment}>
-          <input type="text" id="username" placeholder="Введите ваше имя" autoComplete="off" />
-          <input
-            type="text"
-            id="text"
-            placeholder="Введите ваш отзыв о ресторане"
-            autoComplete="off"
-          />
-          <input type="submit" />
-        </form>
-        <p>{commentStatus}</p>
-        <div>
-          {currentComments.map(
-            (comment) =>
-              comment.status && (
-                <Comment username={comment.username} text={comment.text} status={comment.status} />
-              )
-          )}
-        </div>
-      </section>
+      <h3 style={{color: 'white'}}>Уже тут побывали? Оставьте свой отзыв!</h3>
+
+      <form action="" onSubmit={addComment} className={style.commentInputForm}>
+        <input type="text" id='username' className={style.nameInput} placeholder='Введите ваше имя'/>
+        <textarea type="text" id='text' className={style.textInput} placeholder='     Введите ваш отзыв'/>
+        <input type="submit" className={style.buttonInput}/>
+      </form>
+
+      
+
+      <p className={style.commentStatus}>{commentStatus}</p>
+      <h2 className={style.whiteColor}>Отзывы:</h2>
+      <div>
+        { currentComments.map((comment) => comment.status && <Comment username={comment.username} text={comment.text} status={comment.status} /> ) }
+      </div>
+    </section>
     </>
   );
 }
