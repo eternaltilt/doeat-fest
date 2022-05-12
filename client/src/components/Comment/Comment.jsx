@@ -5,8 +5,8 @@ import style from './Comment.module.css'
 function Comment({ username, text }) {
   return (
     <div className={style.manager}>
-      <h5 className={style.name}>{username}</h5>
-      <p className={style.text}>{text}</p>
+      <h5 className={style.name}>Имя: {username}</h5>
+      <p className={style.text}>Отзыв: {text}</p>
     </div>
   );
 }

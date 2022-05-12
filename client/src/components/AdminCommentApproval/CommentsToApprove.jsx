@@ -44,8 +44,8 @@ function Comment({ id, username, text, restId }) {
     //   <button type='submit' onClick={onDecline}>Отклонить</button>
     // </div>
     <div className={style.manager}>
-      <h5 className={style.name}>{username}</h5>
-      <p className={style.text}>{text}</p>
+      <h5 className={style.name}>Имя: {username}</h5>
+      <p className={style.text}>Отзыв: {text}</p>
       <p className={style.text}>Ресторан: {currentRest?.title}</p>
       <div className={style.btnsDiv}>
       <button type='submit' className={style.buttonInput} onClick={onConfirm}>Утвердить</button>
