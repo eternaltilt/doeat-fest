@@ -239,10 +239,10 @@ function RestaurantCurrentCard() {
         </div>
       </section>
       <section className={style.commentsContainer}>
-      <h3 style={{color: 'white'}}>Уже тут побывали? Оставьте свой отзыв!</h3>
+      <h3 style={{color: 'white', paddingLeft: '28px'}}>Уже тут побывали? Оставьте свой отзыв!</h3>
 
       <form action="" onSubmit={addComment} className={style.commentInputForm}>
-        <input type="text" id='username' className={style.nameInput} placeholder='Введите ваше имя'/>
+        <input type="text" id='username' className={style.nameInput} placeholder='Введите ваше имя' autoComplete='off'/>
         <textarea type="text" id='text' className={style.textInput} placeholder='     Введите ваш отзыв'/>
         <input type="submit" className={style.buttonInput}/>
       </form>

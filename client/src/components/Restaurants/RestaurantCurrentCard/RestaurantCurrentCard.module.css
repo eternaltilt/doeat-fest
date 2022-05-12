@@ -1,7 +1,7 @@
 .currentRestInfo {
   display: flex;
   justify-content: space-between;
-  margin-left: 40px;
+  margin-left: 58px;
   margin-right: 40px;
   margin-top: 50px;
 }
@@ -155,6 +155,7 @@ input::-webkit-input-placeholder {
 
 .whiteColor {
   color: white;
+  padding-left: 28px;
 }
 
 .commentInputForm {
@@ -173,9 +174,9 @@ input::-webkit-input-placeholder {
   width: 500px;
   height: 200px;
   background-color: rgb(4, 4, 4);
-   color: white;
-   padding-right: 10px;
-   border: 2px solid #482f21;
+  color: white;
+  padding-right: 10px;
+  border: 2px solid #482f21;
 }
 
 .buttonInput {
@@ -185,4 +186,6 @@ input::-webkit-input-placeholder {
   color: #d9b8a5;
 }
 
-textarea::placeholder {color: #d9b8a5;}
+textarea::placeholder {
+  color: #d9b8a5;
+}
