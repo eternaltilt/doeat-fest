@@ -1,0 +1,41 @@
+.manager {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border: 2px solid #482f21;
+  margin: 1%;
+  padding: 1%;
+  min-width: 40vh;
+  width: 500px;
+  background-color: rgb(4, 4, 4);
+
+  word-wrap: break-word;
+}
+
+.name {
+  color: #ad8c79;
+}
+
+.text {
+  margin-top: 17px;
+  color: #d9b8a5;
+  width: 450px;
+}
+
+.buttonInput {
+  width: 240px;
+  height: 58px;
+  padding: 17px 38px;
+  border: 2px solid #482f21;
+  background: #030102;
+  color: #d9b8a5;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.btnsDiv {
+  display: flex;
+  flex-direction: row;
+}
