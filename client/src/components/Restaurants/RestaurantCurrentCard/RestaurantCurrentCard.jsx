@@ -250,7 +250,7 @@ function RestaurantCurrentCard() {
 
       <p className={style.commentStatus}>{commentStatus}</p>
       <h2 className={style.whiteColor}>Отзывы:</h2>
-      <div>
+      <div className={style.commentContainer}>
         { currentComments.map((comment) => comment.status && <Comment username={comment.username} text={comment.text} status={comment.status} /> ) }
       </div>
     </section>

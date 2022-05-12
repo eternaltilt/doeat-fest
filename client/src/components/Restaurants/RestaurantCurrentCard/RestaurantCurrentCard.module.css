@@ -157,6 +157,7 @@ input::-webkit-input-placeholder {
 .whiteColor {
   color: white;
   padding-left: 28px;
+  text-align: center;
 }
 
 .commentInputForm {
@@ -190,4 +191,10 @@ input::-webkit-input-placeholder {
 
 textarea::placeholder {
   color: #d9b8a5;
+}
+.commentContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
 }
