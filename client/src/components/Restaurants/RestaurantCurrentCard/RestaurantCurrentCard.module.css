@@ -19,6 +19,7 @@
   line-height: 24px;
   color: white;
   padding-top: 9px;
+  padding-right: 18px;
 }
 
 .commentsContainer {
@@ -113,25 +114,25 @@ input::-webkit-input-placeholder {
 }
 
 .restaurantTitle {
-  font-size: 100%;
+  font-size: 200% !important;
 }
 
 .restaurantAdres {
-  font-size: 70%;
+  font-size: 130% !important;
 }
 
 .restaurantWork {
-  font-size: 60%;
+  font-size: 130% !important;
   padding-top: 10px;
 }
 
-.restaurantDesk {
-  font-size: 60%;
+.restaurantDesc {
+  font-size: 130% !important;
   padding-top: 10px;
 }
 
 .test {
-  background-color: black;
+  background: black !important;
 }
 
 .commentStatus {
@@ -163,6 +164,7 @@ input::-webkit-input-placeholder {
   flex-direction: column;
   margin: 1%;
   padding: 1%;
+  align-items: center;
 }
 
 .nameInput {

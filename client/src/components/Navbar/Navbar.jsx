@@ -16,7 +16,6 @@ function Navbar() {
   const items = [
     { value: 'Главная', href: '/' },
     { value: 'О нас', href: '/info' },
-    { value: 'Участники', href: '/fests' },
   ];
   return (
     <nav className={style.navContainer}>

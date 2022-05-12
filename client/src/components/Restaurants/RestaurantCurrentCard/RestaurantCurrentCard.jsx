@@ -129,7 +129,7 @@ function RestaurantCurrentCard() {
       <section className={style.currentRestContainer}>
         <div className={style.currentRestInfo}>
           <h2 className={style.currentRestTitle}>{currentRest.title}</h2>
-          <p className={style.currentRestPrice}>Общий вес сета: {currentSet[0].all_weight}г.</p>
+          <p className={style.currentRestPrice}>Общий вес сета: {currentSet[0].all_weight} г.</p>
         </div>
         <div className={style.imgContainer}>
           {pictures.length > 0 && (
@@ -168,6 +168,7 @@ function RestaurantCurrentCard() {
                 {currentRest.work_time}
               </Typography>
               <Typography variant="body2" color="text.white" className={style.restaurantDesc}>
+                Описание сета:&nbsp; <br/>
                 {currentSet[0].set_description}
               </Typography>
             </CardContent>
@@ -188,7 +189,7 @@ function RestaurantCurrentCard() {
                 <Typography gutterBottom variant="h5" component="div">
                   {currentSet[0].first_dish}
                 </Typography>
-                <Typography variant="body2" color="text.white">
+                <Typography variant="body3" color="text.white">
                   {currentSet[0].first_dish_description}
                 </Typography>
               </CardContent>
@@ -208,7 +209,7 @@ function RestaurantCurrentCard() {
                 <Typography gutterBottom variant="h5" component="div">
                   {currentSet[0].second_dish}
                 </Typography>
-                <Typography variant="body2" color="text.white">
+                <Typography variant="body3" color="text.white" >
                   {currentSet[0].second_dish_description}
                 </Typography>
               </CardContent>
@@ -228,7 +229,7 @@ function RestaurantCurrentCard() {
                 <Typography gutterBottom variant="h5" component="div">
                   {currentSet[0].third_dish}
                 </Typography>
-                <Typography variant="body2" color="text.white">
+                <Typography variant="body3" color="text.white">
                   {currentSet[0].third_dish_description}
                 </Typography>
               </CardContent>
@@ -237,7 +238,7 @@ function RestaurantCurrentCard() {
         </div>
       </section>
       <section className={style.commentsContainer}>
-      <h3 style={{color: 'white', paddingLeft: '28px'}}>Уже тут побывали? Оставьте свой отзыв!</h3>
+      <h3 style={{color: 'white', paddingLeft: '28px', textAlign:'center'}}>Уже тут побывали? Оставьте свой отзыв!</h3>
 
       <form action="" onSubmit={addComment} className={style.commentInputForm}>
         <input type="text" id='username' className={style.nameInput} placeholder='Введите ваше имя' autoComplete='off'/>
