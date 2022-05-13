@@ -12,7 +12,6 @@ function Home() {
   const [description, setDescription] = useState('');
   const dispatch = useDispatch();
   const { festival } = useSelector((state) => state.festivalReducer);
-
   useEffect(() => {
     dispatch(festivalFetch());
     festival.forEach(eachFest => {
@@ -24,7 +23,7 @@ function Home() {
         setDescription(eachFest.description);
       } 
     });
-  },[dispatch]) 
+  },[festival]) 
 
   return (
     <>
@@ -50,22 +49,22 @@ function Home() {
          <div className={style.actualFestivalImg}>
           <img src="img/mainpagePic2.jpg" alt="mainpage2" />
          </div>
-         <div className={style.actualFestivalWrapper}>
-           <h3 className={style.actualFestivalTitle}>
+       {festival.length > 0 && <div className={style.actualFestivalWrapper}>
+          <h3 className={style.actualFestivalTitle}>
             { title }
-           </h3>
-           <p className={style.actualFestivalText}>
-           { description }
-           </p>
-           <p className={style.actualFestivalTextIt}>
-           “Наш фестиваль расскажет обо всех тонкостях, особенностях и традициях гастрономических пристрастий народов этого континента.”
-           </p>
-           <div className={style.actualFestivalLink}> {/* ссылка на акутальные рестораны участники фестиваля */}
+          </h3>
+          <p className={style.actualFestivalText}>
+          { description }
+          </p>
+          <p className={style.actualFestivalTextIt}>
+          “Наш фестиваль расскажет обо всех тонкостях, особенностях и традициях гастрономических пристрастий народов этого континента.”
+          </p>
+          <div className={style.actualFestivalLink}> {/* ссылка на акутальные рестораны участники фестиваля */}
           <button onClick={() => navigate('/calendar')} className={style.btnActualFestival} type="submit">
             Список фестивалей
           </button>
-        </div>
-        </div>
+          </div>
+        </div>}
         </div>
     </section>
     </>

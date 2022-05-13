@@ -9,13 +9,13 @@ router.route("/").post(async (req, res) => {
       if (+password === +admin.password) {
         req.session.user = admin.login;
         const AdminSession = req.session.user;
-        res.json({
+        return res.json({
           layout: false,
           message: "Вы успешно вошли на сайт",
           AdminSession,
         });
       } else {
-        res.json({
+       return res.json({
           layout: false,
           message: "Ошибка! Неверный логин или пароль",
         });
@@ -25,16 +25,16 @@ router.route("/").post(async (req, res) => {
       const admin = await Admin.findOne({ where: { login }, raw: true });
       req.session.user = admin.login;
       const AdminSession = req.session.user;
-      res.json({
+      return res.json({
         layout: false,
         message: "Вы успешно вошли на сайт",
         AdminSession,
       });
     } else {
-      res.json({ layout: false, message: "Ошибка! Неверный логин или пароль" });
+      return res.json({ layout: false, message: "Ошибка! Неверный логин или пароль" });
     }
   } catch (error) {
-    res.status(500).json(error);
+    return res.status(500).json(error);
   }
 });
 module.exports = router;

@@ -12,7 +12,7 @@ router.route('/')
   const set = await RestaurantSet.findAll({include: {
     model: RestaurantCard
   }});
-  res.json( set )
+  return res.json( set )
 })
 .post(async (req, res) => {
   const {

@@ -10,7 +10,7 @@ router
     const pictures = await Pictures.findAll({
       where: { restaurantSet_id: Number(id)}
     })
-    res.json(pictures)
+    return res.json(pictures);
   })
 
 module.exports = router;

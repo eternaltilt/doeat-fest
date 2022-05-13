@@ -16,7 +16,9 @@ import style from './App.module.css';
 import AdminCommentApproval from '../AdminCommentApproval/AdminCommentApproval';
 import Info from '../Info/Info';
 
+
 function App() {
+
 
   // проверка на наличие ключа в localStorage
   const [local, setLocal] = useState(false);

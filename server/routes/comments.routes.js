@@ -4,7 +4,7 @@ const { RestaurantComments } = require('../db/models');
 router
   .get('/', async (req, res) => {
     const comments = await RestaurantComments.findAll();
-    res.json(comments);
+    return res.json(comments);
   })
   .post('/', async (req, res) => {
     const {
@@ -18,7 +18,7 @@ router
       restaurantCard_id,
       status: false,
     })
-    res.json(newComment);
+    return res.json(newComment);
   })
   .post('/confirmdecline', async (req, res) => {
     const {
