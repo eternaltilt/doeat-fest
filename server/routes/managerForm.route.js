@@ -18,7 +18,7 @@ router.route('/')
       restaurant_name: restaurantName,
       festival_id: festivalId,
     })
-    res.json({ newRequest })
+    return res.json({ newRequest });
   } catch(error) {
     console.log(error.message)
   }
