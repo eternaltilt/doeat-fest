@@ -59,6 +59,7 @@
   border: 2px solid #482f21;
   background: black;
   color: #d9b8a5;
+  margin-top: 10px;
 }
 
 input::-webkit-input-placeholder {
@@ -149,6 +150,8 @@ input {
   justify-content: center;
   margin-bottom: 45px;
   border: 2px solid #482f21;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .festFormTitle {

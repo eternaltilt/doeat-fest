@@ -34,14 +34,13 @@
 }
 .buttonRight {
   width: 100px;
-    height: 40px;
-    border: 1px solid #d9b8a5;
-    box-sizing: border-box;
-    border-radius: 0px 20px 20px 0px;
-    background-color: black;
-    color: white;
+  height: 40px;
+  border: 1px solid #d9b8a5;
+  box-sizing: border-box;
+  border-radius: 0px 20px 20px 0px;
+  background-color: black;
+  color: white;
 }
-
 
 .map {
   width: 90%;
@@ -50,4 +49,9 @@
   margin-top: 10px;
   margin-bottom: 50px;
   color: black;
+}
+
+.buttons {
+  padding-right: 9px;
+  margin-top: 7px;
 }
