@@ -15,7 +15,9 @@ function Navbar() {
   // ссылки в меню
   const items = [
     { value: 'Главная', href: '/' },
+    { value: 'Подать заявку', href: '/participate'},
     { value: 'О нас', href: '/info' },
+    { value: 'Контакты', href: '/contacts'}
   ];
   return (
     <nav className={style.navContainer}>

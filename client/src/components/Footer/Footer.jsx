@@ -15,7 +15,7 @@ function Footer() {
       </div>
 
       <div>
-        <p>Подать заявку</p>
+        <p><Link to='/participate'>Подать заявку</Link></p>
         <p>Поддержка</p>
         <p>Пользовательское соглашение</p>
       </div>
